@@ -11,28 +11,29 @@
     <meta name="description" content="">
     <!-- Page Title -->
     <title>Parroquia Chocalán</title>
+    <!-- Links -->
+    <!-- <link rel="stylesheet" href="../public/link.php"> -->
+    <?php include_once '../public/link.php'; ?>
+
     <!-- Favicon -->
-    <link href="vista/img/logosinletras.png" rel="icon">
+    <!-- <link href="vista/img/logosinletras.png" rel="icon"> -->
     <!-- Bundle -->
-    <link rel="stylesheet" href="vendor/css/bundle.min.css">
+    <!-- <link rel="stylesheet" href="vendor/css/bundle.min.css"> -->
     <!-- Plugin Css -->
-    <link href="vendor/css/LineIcons.min.css" rel="stylesheet">
+    <!-- <link href="vendor/css/LineIcons.min.css" rel="stylesheet">
     <link href="vendor/css/jquery.fancybox.min.css" rel="stylesheet">
     <link href="vendor/css/owl.carousel.min.css" rel="stylesheet">
     <link href="vendor/css/cubeportfolio.min.css" rel="stylesheet">
     <link href="vendor/css/wow.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet"> -->
     <!-- Style Sheet -->
-    <link href="vista/css/line-awesome.min.css" rel="stylesheet">
-    <link href="vista/css/style.css" rel="stylesheet">
+    <!-- <link href="vista/css/line-awesome.min.css" rel="stylesheet">
+    <link href="vista/css/style.css" rel="stylesheet"> -->
 
     <style>
         .about-sec,
@@ -96,33 +97,26 @@
                         </a>
                         <ul class="navbar-nav right-nav d-flex  ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#home">Parroquia</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#home">Parroquia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#about-sec">Historia</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#about-sec">Historia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#servicios">Servicios</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#servicios">Servicios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#sacramentos">Sacramentos</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#sacramentos">Sacramentos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#patientgallery">Capillas</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#patientgallery">Capillas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#personal">Personal</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#personal">Personal</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                    href="#contact">Contacto</a>
+                                <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#contact">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -140,27 +134,22 @@
                 <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
                     <ul class="navbar-nav text-center">
                         <li class="nav-item">
-                            <a class="nav-link" style="font-family: 'Sofia', serif"
-                                href="/PARROQUIA_CHOCALAN/admin/login.php">Login</a>
+                            <a class="nav-link" style="font-family: 'Sofia', serif" href="/PARROQUIA_CHOCALAN/admin/login.php">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#home">Parroquia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                href="#about-sec">Historia</a>
+                            <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#about-sec">Historia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                href="#servicios">Servicios</a>
+                            <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#servicios">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                href="#sacramentos">Sacramentos</a>
+                            <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#sacramentos">Sacramentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" style="font-family: 'Sofia', serif"
-                                href="#patientgallery">Capillas</a>
+                            <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#patientgallery">Capillas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll" style="font-family: 'Sofia', serif" href="#personal">Personal</a>
@@ -175,28 +164,21 @@
         </div>
         <a id="close_side_menu" class="close_side_menu" href="javascript:void(0);"></a>
     </header>
-    <section id="home" class="parro"
-        style="background-image: url('vista/img/hola.png'); background-size: cover; background-position: center; height: 90vh;">
+    <section id="home" class="parro" style="background-image: url('vista/img/hola.png'); background-size: cover; background-position: center; height: 90vh;">
         <div class="row ">
-            <div class="background-overlay"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);">
+            <div class="background-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);">
             </div>
             <div class="row">
-                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area text-left"
-                    data-wow-duration="1s" data-wow-delay=".1s">
+                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area text-left" data-wow-duration="1s" data-wow-delay=".1s">
                     <br>
                     <br>
                     <br>
                     <br>
                     <br>
                     <h3 class="heading text-black" style="font-family: Arial, sans-serif;"> </h3>
-                    <span class="d-block text-black font-weight-bold"
-                        style="color: #e1e1e1 !important; font-family: 'Sofia', serif; font-size: 100px;"> Parroquia
-                    </span>
+                    <span class="d-block text-black font-weight-bold" style="color: #e1e1e1 !important; font-family: 'Sofia', serif; font-size: 100px;"> Parroquia</span>
                     <br>
-                    <h3 class="heading text-black font-weight-bold subtitle"
-                        style="color: #e1e1e1 !important; font-family: 'Sofia', monospace; font-size: 65px;"> Santa Rosa
-                        de Lima, Chocalán</span>
+                    <h3 class="heading text-black font-weight-bold subtitle" style="color: #e1e1e1 !important; font-family: 'Sofia', monospace; font-size: 65px;"> Santa Rosa de Lima, Chocalán</span>
                 </div>
             </div>
         </div>
@@ -206,20 +188,10 @@
         <div class="container">
             <!--Heading-->
             <div class="row text-center">
-                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area"
-                    data-wow-duration="1s" data-wow-delay=".1s">
-                    <h3 class="heading text-center"> <span class="d-block;"
-                            style="color: #2f4ba5 !important;font-family: 'Sofia', serif;text-decoration: underline;">Historia</span>
+                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area" data-wow-duration="1s" data-wow-delay=".1s">
+                    <h3 class="heading text-center"> <span class="d-block;" style="color: #2f4ba5 !important;font-family: 'Sofia', serif;text-decoration: underline;">Historia</span>
                     </h3>
-                    <p class="text text-center;" style="font-family: 'Sofia', serif;">Terreno que fue donado por Doña
-                        Carmen Lecaros, la cual fallece en 1836
-                        y fue enterrada en su propia iglesia bajo el altar. En 1863 se inaugura la segunda iglesia y
-                        casa de ejercicios por Doña Rosana Valdes de Solar, sobrina de Doña Carmen heredera de la
-                        hacienda ya que esta no tuvo hijos. En 1875 Doña Valdes renuncia
-
-
-                        06 de septiembre del 1909
-                    </p>
+                    <p class="text text-center;" style="font-family: 'Sofia', serif;">Terreno que fue donado por Doña Carmen Lecaros, la cual fallece en 1836 y fue enterrada en su propia iglesia bajo el altar. En 1863 se inaugura la segunda iglesia y casa de ejercicios por Doña Rosana Valdes de Solar, sobrina de Doña Carmen heredera de la hacienda ya que esta no tuvo hijos. En 1875 Doña Valdes renuncia 06 de septiembre del 1909</p>
                 </div>
             </div>
         </div>
@@ -232,38 +204,23 @@
                     <div class="team-detail-sec wow fadeInLeft">
                         <!--Heading-->
                         <div class="heading-area">
-                            <h3 class="heading"><span class="d-block;"
-                                    style="color: #2f4ba5 ; font-family: 'Sofia', serif;text-decoration: underline;">
-                                    Servicios
-                                </span>
+                            <h3 class="heading"><span class="d-block;" style="color: #2f4ba5 ; font-family: 'Sofia', serif;text-decoration: underline;">Servicios</span>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <p style="text-align: center;">Nos complace ofrecer una variedad de servicios para nuestra
-                comunidad, desde brindar consuelo en tiempos de duelo hasta celebrar la vida y
-                la fé a
-                través de nuestras eucaristías, estamos aquí para servir con compasión, amor y
-                fé.
-                <br>
-                Nuestro
-                compromiso es ser un faro de luz y esperanza, extendiendo la bendición divina a
-                cada
-                hogar
-                y corazón necesitado.
-            </p>
-            <br>
+            
+            <p style="text-align: center;">Nos complace ofrecer una variedad de servicios para nuestra comunidad, desde brindar consuelo en tiempos de duelo hasta celebrar la vida y la fé a través de nuestras eucaristías, estamos aquí para servir con compasión, amor y fé. <br> Nuestro compromiso es ser un faro de luz y esperanza, extendiendo la bendición divina a cada hogar y corazón necesitado.</p><br>
+            
             <div class="row justify-content-center mt-4">
 
                 <div class="col-md-2 mb-4">
                     <div style="text-align: center;">
                         <a href="cementerio.php">
-                            <img src="vista/img/cemen.jpg" class="servicio" alt="..."
-                                style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
+                            <img src="vista/img/cemen.jpg" class="servicio" alt="..." style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
                         </a>
-                        <div class="image-caption;"
-                            style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
+                        <div class="image-caption;" style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
                             Cementerio
                         </div>
                     </div>
@@ -271,11 +228,9 @@
                 <div class="col-md-2 mb-4">
                     <div style="text-align: center;">
                         <a href="velatorio.php">
-                            <img src="vista/img/velatorio.png" class="servicio" alt="..."
-                                style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
+                            <img src="vista/img/velatorio.png" class="servicio" alt="..." style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
                         </a>
-                        <div class="image-caption;"
-                            style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
+                        <div class="image-caption;" style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
                             Velatorio
                         </div>
                     </div>
@@ -283,49 +238,41 @@
                 <div class="col-md-2 mb-4">
                     <div style="text-align: center;">
                         <a href="corona.php">
-                            <img src="vista/img/corona.png" class="servicio" alt="..."
-                                style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
+                            <img src="vista/img/corona.png" class="servicio" alt="..." style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
                         </a>
-                        <div class="image-caption;"
-                            style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">Corona
-                            de
-                            Caridad</div>
+                        <div class="image-caption;" style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">Corona
+                            de Caridad
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-2 mb-4">
                     <div style="text-align: center;">
                         <a href="visita.php">
-                            <img src="vista/img/visita.png" class="servicio" alt="..."
-                                style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
+                            <img src="vista/img/visita.png" class="servicio" alt="..." style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
                         </a>
-                        <div class="image-caption;"
-                            style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">Visita
-                            a
-                            Enfermos</div>
+                        <div class="image-caption;" style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">Visita
+                            a Enfermos
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2 mb-4">
                     <div style="text-align: center;">
                         <a href="bendicion.php">
-                            <img src="vista/img/bendicion.jpg" class="servicio" alt="..."
-                                style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
+                            <img src="vista/img/bendicion.jpg" class="servicio" alt="..." style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
                         </a>
-                        <div class="image-caption;"
-                            style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
-                            Bendición a
-                            Hogares</div>
+                        <div class="image-caption;" style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
+                            Bendición a Hogares
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-2 mb-4">
                     <div style="text-align: center;">
                         <a href="eucaristias.php">
-                            <img src="vista/img/euc.jpg" class="servicio" alt="..."
-                                style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
+                            <img src="vista/img/euc.jpg" class="servicio" alt="..." style="box-shadow: 0 0 20px #2f4ba5; padding:-1px;">
                         </a>
-                        <div class="image-caption;"
-                            style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
+                        <div class="image-caption;" style="font-family: 'Sofia', serif; margin-top: 10px;font-weight: bold;color: black;">
                             Eucaristías
                         </div>
                     </div>
@@ -338,18 +285,14 @@
     <section id="sacramentos" class="about-sec" style="background-color: #ffffff;">
         <div class="container">
             <div class="row text-center">
-                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area"
-                    data-wow-duration="1s" data-wow-delay=".1s">
-                    <h3 class="heading text-center"> </h3> <span class="d-block;"
-                        style="color: #2f4ba5 !important; font-family: 'Sofia', serif;text-decoration: underline;">
-                        Sacramentos</span>
+                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area" data-wow-duration="1s" data-wow-delay=".1s">
+                    <h3 class="heading text-center"> </h3> 
+                    <span class="d-block;" style="color: #2f4ba5 !important; font-family: 'Sofia', serif;text-decoration: underline;">Sacramentos</span>
                 </div>
             </div>
             <br>
-            <p style="text-align: center;">Los sacramentos sagrados son pilares fundamentales en la vida espiritual de
-                nuestros fieles.
-                A través de estos, acompañamos a nuestra querida comunidad en su camino de fé y crecimiento
-                espiritual, fortaleciendo su vínculo con Dios y la comunidad cristiana.</p>
+            <p style="text-align: center;">Los sacramentos sagrados son pilares fundamentales en la vida espiritual de nuestros fieles. A través de estos, acompañamos a nuestra querida comunidad en su camino de fé y crecimiento espiritual, fortaleciendo su vínculo con Dios y la comunidad cristiana.</p>
+            
             <!--Heading-->
             <div class="row text-center padding-top-half">
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
@@ -1141,23 +1084,6 @@
         </div>
     </section>
 
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            loop: true,
-            coverflowEffect: {
-                depth: 500,
-                modifer: 1,
-                slidesShadows: true,
-                rotate: 0,
-                stretch: 0
-            }
-        });
-    </script>
-
     <section class="contact-sec position-relative" id="contact2" style="background-color: #ffffff">
         <div class="heading-area text-center">
             <h3 class="heading"><span class="d-block;"
@@ -1214,6 +1140,7 @@
         style="border:0;box-shadow: 0 0 20px #2f4ba5;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     <!-- END Google Maps -->
+
     <!-- Start Contact -->
     <section class="contact-sec position-relative" id="contact" style="background-color: #ffffff">
         <div class="heading-area text-center">
@@ -1284,24 +1211,6 @@
         </div>
     </footer>
     <!-- End Footer -->
-    <!-- JavaScript -->
-    <script src="vendor/js/bundle.min.js"></script>
-    <script src="vendor/js/wow.min.js"></script>
-    <!-- Plugin Js -->
-    <script src="vendor/js/jquery.appear.js"></script>
-    <script src="vendor/js/morphext.min.js"></script>
-    <script src="vendor/js/jquery.fancybox.min.js"></script>
-    <script src="vendor/js/owl.carousel.min.js"></script>
-    <script src="vendor/js/jquery.cubeportfolio.min.js"></script>
-    <script src="vista/js/isotope.pkgd.js"></script>
-    <script src="vendor/js/modernizr.custom.97074.js"></script>
-    <script src="vendor/js/jquery.hoverdir.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJRG4KqGVNvAPY4UcVDLcLNXMXk2ktNfY"></script>
-    <script src="vista/js/map.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
         var swiper = new Swiper(".mySwiper", {
@@ -1317,17 +1226,33 @@
                 rotate: 0,
                 stretch: 0
             }
+        });
+        
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            coverflowEffect: {
+                depth: 500,
+                modifer: 1,
+                slidesShadows: true,
+                rotate: 0,
+                stretch: 0
+            }
         })
-    </script>
-    <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             var serviciosSection = document.getElementById("servicios");
             serviciosSection.classList.add("animacion-fondo");
         });
     </script>
     <!-- CUSTOM JS -->
-    <script src="vendor/js/contact_us.js"></script>
-    <script src="vista/js/script.js"></script>
+    <?php
+     include_once '../public/linkScript.php'; 
+    ?>
+    
 </body>
 
 </html>
