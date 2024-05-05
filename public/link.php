@@ -17,6 +17,3 @@
 <!-- Style Sheet -->
 <link href="vista/css/line-awesome.min.css" rel="stylesheet">
 <link href="vista/css/style.css" rel="stylesheet">
-<!-- CUSTOM JS -->
-<script src="vendor/js/contact_us.js"></script>
-<script src="vista/js/script.js"></script>
