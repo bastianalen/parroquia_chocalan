@@ -12,7 +12,26 @@
     <!-- Page Title -->
     <title>Parroquia Chocalán</title>
     <!-- General links-->
-    <?php include_once '../public/link.php'; ?>
+    <!-- Favicon -->
+    <link href="vista/img/logosinletras.png" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="vendor/css/bundle.min.css">
+    <!-- Plugin Css -->
+    <link href="vendor/css/LineIcons.min.css" rel="stylesheet">
+    <link href="vendor/css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="vendor/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="vendor/css/cubeportfolio.min.css" rel="stylesheet">
+    <link href="vendor/css/wow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+    <!-- Style Sheet -->
+    <link href="vista/css/line-awesome.min.css" rel="stylesheet">
+    <link href="vista/css/style.css" rel="stylesheet">
+
     <!-- Personal link -->
     <link rel="stylesheet" href="styleIndex.css">
 </head>
@@ -111,7 +130,6 @@
                         <li class="nav-item">
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#personal">Personal</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#contact">Contacto</a>
                         </li>
@@ -983,10 +1001,26 @@
     </footer>
     <!-- End Footer -->
 
+    <!-- General js -->
+    <!-- JavaScript -->
+    <script src="vendor/js/bundle.min.js"></script>
+    <script src="vendor/js/wow.min.js"></script>
+    <!-- Plugin Js -->
+    <script src="vendor/js/jquery.appear.js"></script>
+    <script src="vendor/js/morphext.min.js"></script>
+    <script src="vendor/js/jquery.fancybox.min.js"></script>
+    <script src="vendor/js/owl.carousel.min.js"></script>
+    <script src="vendor/js/jquery.cubeportfolio.min.js"></script>
+    <script src="vista/js/isotope.pkgd.js"></script>
+    <script src="vendor/js/modernizr.custom.97074.js"></script>
+    <script src="vendor/js/jquery.hoverdir.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJRG4KqGVNvAPY4UcVDLcLNXMXk2ktNfY"></script>
+    <script src="vista/js/map.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- CUSTOM JS -->
-    <?php
-     include_once '../public/linkScript.php'; 
-     ?>
+    <script src="vendor/js/contact_us.js"></script>
+    <script src="vista/js/script.js"></script>
     
     <!-- Funciones -->
     <script src="funcionesIndex.js"></script>

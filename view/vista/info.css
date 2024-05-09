@@ -1,0 +1,77 @@
+/* Estilos para hacer que la imagen cubra todo el fondo */
+body {
+    position: relative;
+    background-color: #ddcfb5;
+    background-size: cover;
+    background-position: center;
+    min-height: 150vh;
+    margin: 0;
+    padding: 80;
+
+}
+
+body::before {
+    content: "";
+    /* Contenido del pseudo-elemento */
+    position: absolute;
+    /* Establecer posición absoluta */
+    top: 0;
+    /* Alinear en la parte superior */
+    left: 0;
+    /* Alinear a la izquierda */
+    width: 100%;
+    /* Ancho completo */
+    height: 100%;
+    /* Altura completa */
+    background-color: rgba(255, 255, 255, 0.6);
+    /* Color blanco semi-transparente */
+}
+
+/* Estilos Generales */
+.center {
+    text-align: center;
+}
+.font-Sofia-serif {
+    font-family: 'Sofia', serif !important;
+}
+.back-fff {
+    background-color: #ffffff;
+}
+.div-cream-color{
+    background-color: #e1e1e1;
+}
+.position-relative{
+    position: relative;
+}
+.underline {
+    text-decoration: underline;
+}
+/* Fin Estilos Generales */
+
+/* Loader */
+.logo-loader {
+    width: 80px;
+    height: 30px;
+}
+/* Fin Loader */
+
+/* Header */
+/* Fin Header */
+
+/* Section sacrementos */
+.d-block {
+    color: #2f4ba5 !important;
+}
+
+.container-info {
+    font-size: 18px;
+    border: 2px solid #2f4ba5;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.img-fluid {
+    border-radius: 15px;
+    box-shadow: 0 0 20px #2f4ba5;
+}
+/* Fin Section sacrementos */

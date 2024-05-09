@@ -7,7 +7,7 @@
     background: linear-gradient(45deg, #ddcfb5, #e1e1e1, #e1e1e1, #ddcfb5);
     background-size: 4000% 100%;
     position: relative;
-    animation: cambiar 4s ease-in-out infinite;
+    animation: cambiar 1s ease-in-out infinite;
 }
 
 @keyframes cambiar {
@@ -30,6 +30,9 @@
 .back-fff {
     background-color: #ffffff;
 }
+.div-crem-color{
+    background-color: #e1e1e1;
+}
 /* Fin Estilos Generales */
 
 .nav-link-specific{
@@ -41,9 +44,7 @@
     height: 30px;
 }
 
-.div-crem-color{
-    background-color: #e1e1e1;
-}
+
 
 /* Seccion home */
 .parro {
