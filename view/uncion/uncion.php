@@ -50,30 +50,31 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block">
                     <div class="main-nav collapse navbar-collapse d-flex">
-                        <a class="navbar-brand scroll" href="../index.php#home">
+                        <a class="navbar-brand scroll" href="index.php#home">
                             <img src="../vista/img/logosinletras.png" alt="logo">
                         </a>
                         <ul class="navbar-nav right-nav d-flex  ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#home">Parroquia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#about-sec">Historia</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#about-sec">Historia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#servicios">Servicios</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#sacramentos">Sacramentos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Sacramentos</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#mini-blog-sec">Personal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#pateintgallery">Capillas</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#servicios">Servicios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#pateintgallery">Capillas</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
+                                <a class="nav-link font-Sofia-serif" href="index.php#contact">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -94,25 +95,25 @@
                             <a class="nav-link font-Sofia-serif" href="/PARROQUIA_CHOCALAN/admin/login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#home">Parroquia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#about-sec">Historia</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#about-sec">Historia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Servicios</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#sacramentos">Sacramentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Sacramentos</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#mini-blog-sec">Personal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#pateintgallery">Capillas</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#sacramentos">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#pateintgallery">Capillas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
+                            <a class="nav-link font-Sofia-serif" href="index.php#contact">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -120,79 +121,37 @@
         </div>
         <a id="close_side_menu" class="close_side_menu" href="javascript:void(0);"></a>
     </header>
-    <section id="sacramentos" class="about-sec">
-        <div class="background-image">
-            <!-- Imagen de fondo -->
-        </div>
-        <div class="overlay"> <!-- Capa semitransparente -->
-            <div class="container position-relative">
-                <div class="row text-center">
-                    <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area"
-                        data-wow-duration="1s" data-wow-delay=".1s">
-                        <br>
-                        <br>
-                        <h3 class="heading text-center"> </h3> <span class="d-block font-Sofia-serif"> Bautismo</span>
-                    </div>
-                </div>
-                <!--Heading-->
-                <div class="row padding-top-half position-relative container-info">
-                    <div class="row ">
-                        <div class="col-md-4 mb-4">
-                            <img src="../vista/img/bautismo.png" class="img-fluid" alt="Imagen 2">
-                        </div>
-                        <div class="col-md-8 text-justify">
-                            <h4>
-                                El sacramento del Bautismo marca el inicio de la vida en la fe, representando una puerta
-                                de
-                                entrada
-                                fundamental a la iglesia. Por tanto, es crucial que los padres estén debidamente
-                                preparados al
-                                solicitar este sacramento para sus hijos, renovando así el compromiso que en su momento
-                                adquirieron
-                                sus propios padres y padrinos. A través del Bautismo, se nos libera del Pecado Original,
-                                nos
-                                regeneramos como hijos de Dios, nos integramos a la comunidad católica, nos unimos a la
-                                misión
-                                de
-                                Cristo y recibimos la promesa de la Vida Eterna.
-                                <br><br>
-                                <span class="underline">Procedimiento para solicitar el
-                                    Bautismo:</span>
-                                <br><br>
 
-                                <li>&#8226; Realizar la solicitud en la oficina parroquial, por uno de los padres
-                                    (tutores
-                                    legales).
-                                </li>
-                            </h4>
-                        </div>
-                        <div class="col-md-12 text-justify">
-                            <h4>
-                                <li>&#8226; Presentar el Certificado de Nacimiento del niño que será bautizado.</li>
-                                <br>
-                                <li>&#8226; Certificado de confirmación de los padrinos, debidamente casados por la
-                                    iglesia
-                                    o solteros.
-                                </li>
-                                <br>
-                                <li>&#8226; Los bautizos se llevarán a cabo sólo los días sábados entre las 11:00 y
-                                    12:00
-                                    hrs.</li>
-                                <br>
-                                <li>&#8226; Inscribirse en la oficina parroquial, idealmente en el mes de febrero,
-                                    con
-                                    su
-                                    certificado de bautismo.</li>
-                                <br>
-                            </h4>
-                        </div>
-                        <!-- Pseudo-elemento para superposición de imagen de fondo semitransparente -->
-                        <div class="background-overlay"></div>
-                    </div>
+
+    <section id="sacramentos" class="about-sec">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area"
+                    data-wow-duration="1s" data-wow-delay=".1s">
+                    <br>
+                    <br>
+                    <h3 class="heading text-center"> </h3> <span class="d-block font-Sofia-serif"> Unción De Los Enfermos</span>
                 </div>
             </div>
-    </section>
+            <!--Heading-->
+            <div class="row padding-top-half container-info">
+                <h4>
+                    El sacramento de la unción de los enfermos  es un rito en el que un sacerdote o un obispo unge con aceite a una persona enferma,
+                    mayor o en riesgo de morir. Este gesto representa la ayuda especial que Dios brinda al enfermo para darle fuerzas y 
+                    consuelo durante su enfermedad, preparándolo para encontrarse con Dios. 
+                    La Iglesia enseña que Jesucristo instituyó este sacramento en beneficio de todo el pueblo fiel.  
+                    <br><br>
+                    <span class="underline">Procedimiento para solicitar la Unción de los Enfermos:</span>
+                    <br><br>
+                    <ul>
+                        <li>&#8226; Realizar la solicitud en la oficina parroquial o directamente con el sacerdote.</li><br>
+                        <li>&#8226; Solo el sacerdote o el obispo están autorizados para administrar este sacramento.</li><br>
+                        <li>&#8226; El párroco puede administrar la unción a los enfermos graves, ya sea en la iglesia o en su hogar.</li><br>
+                    </ul>
+                </h4>
+            </div>
 
+    </section>
     <!-- End About -->
 
 
@@ -223,7 +182,7 @@
                         </ul>
                     </div>
                     <!--Text-->
-                    <p class="company-about fadeIn">&copy; 2024 Made by JennyP@nk <a href="../javascript:void(0);"></a></p>
+                    <p class="company-about fadeIn">&copy; 2024 Made by JennyP@nk <a href="javascript:void(0);"></a></p>
                 </div>
             </div>
         </div>
