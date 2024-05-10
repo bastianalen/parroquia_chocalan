@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <!-- Page Title -->
     <title>Parroquia Chocalán</title>
-    
+
     <!-- General links-->
     <?php include_once '../../public/link.php'; ?>
     <!-- Personal link -->
@@ -73,7 +73,7 @@
                                 <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
+                                <a class="nav-link font-Sofia-serif" href="contact">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -91,7 +91,7 @@
                 <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
                     <ul class="navbar-nav text-center">
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="/PARROQUIA_CHOCALAN/admin/login.php">Login</a>
+                            <a class="nav-link font-Sofia-serif" href="../../admin/login.php">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>

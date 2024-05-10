@@ -16,34 +16,6 @@
     <!-- Personal link -->
     <link rel="stylesheet" href="../vista/info.css">
 
-    <style>
-        /* Estilos para hacer que la imagen cubra todo el fondo */
-        body {
-            position: relative;
-            background-color: #ddcfb5;
-            background-size: cover;
-            background-position: center;
-            min-height: 150vh;
-            margin: 0;
-            padding: 80;
-        }
-        body::before {
-            content: "";
-            /* Contenido del pseudo-elemento */
-            position: absolute;
-            /* Establecer posición absoluta */
-            top: 0;
-            /* Alinear en la parte superior */
-            left: 0;
-            /* Alinear a la izquierda */
-            width: 100%;
-            /* Ancho completo */
-            height: 100%;
-            /* Altura completa */
-            background-color: rgba(255, 255, 255, 0.6);
-            /* Color blanco semi-transparente */
-        }
-    </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
@@ -78,31 +50,31 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block">
                     <div class="main-nav collapse navbar-collapse d-flex">
-                        <a class="navbar-brand scroll" href="index.php#home">
+                        <a class="navbar-brand scroll" href="../index.php#home">
                             <img src="../vista/img/logosinletras.png" alt="logo">
                         </a>
                         <ul class="navbar-nav right-nav d-flex  ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#home">Parroquia</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#about-sec">Historia</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#about-sec">Historia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#sacramentos">Sacramentos</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Sacramentos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#mini-blog-sec">Personal</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#servicios">Servicios</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#servicios">Servicios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#pateintgallery">Capillas</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#pateintgallery">Capillas</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link font-Sofia-serif" href="index.php#contact">Contacto</a>
+                                <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -120,28 +92,28 @@
                 <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
                     <ul class="navbar-nav text-center">
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="/PARROQUIA_CHOCALAN/admin/login.php">Login</a>
+                            <a class="nav-link font-Sofia-serif" href="../../admin/login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#home">Parroquia</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#about-sec">Historia</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#about-sec">Historia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#sacramentos">Sacramentos</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Sacramentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#mini-blog-sec">Personal</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#sacramentos">Servicios</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#pateintgallery">Capillas</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#pateintgallery">Capillas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="index.php#contact">Contacto</a>
+                            <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
                         </li>
                     </ul>
                 </div>
