@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once ('../public/include/initialize.php');
+=======
+require_once("../public/include/initialize.php");
+>>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
 
 ?>
 <?php
@@ -31,7 +35,11 @@ if (isset($_SESSION['USERID'])) {
   <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/jquery.js"></script>
   <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/jquery.dataTables.js"></script>
   <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/fixnmix.js"></script> / -->
+<<<<<<< HEAD
   <link rel="icon" href="../home/vista/img/logosinletras.png" type="image/x-icon">
+=======
+  <link rel="icon" href="../view/vista/img/logosinletras.png" type="image/x-icon">
+>>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
   <style>
     @CHARSET "UTF-8";
 
@@ -118,15 +126,15 @@ if (isset($_SESSION['USERID'])) {
       <div class="col-md-4">
 
         <section class="login-form">
-          <!-- se corrige la identacion de esta alerta almacenada en carpeta include/session.php "check_message" -->
-          <?php echo check_message(); ?>
+          <? echo check_message(); ?>
           <form method="post" action="" role="login">
-            <img src="../img/logo.png" height="25px" class="img-responsive" alt="" />
+            <img src="../public/img/logo.png" height="25px" class="img-responsive" alt="" />
 
             <input type="input" name="user_email" placeholder="correo electrónico" required class="form-control input-lg"
               value="" />
 
-            <input type="password" name="user_pass" class="form-control input-lg" id="password" placeholder="contraseña"required />
+            <input type="password" name="user_pass" class="form-control input-lg" id="password" placeholder="contraseña"
+              required />
             <div class="pwstrength_viewport_progress"></div>
             <button type="submit" name="btnLogin" class="btn btn-lg btn-primary btn-block">iniciar sesión</button>
           </form>
