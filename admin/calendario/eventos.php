@@ -1,5 +1,5 @@
 <?php
-require_once ("../../include/initialize.php");
+require_once ("../../public/include/initialize.php");
 
 header('Content-Type: application/json');
 $pdo = new PDO("mysql:dbname=parroquia_chocalan;host=127.0.0.1", "root", "");

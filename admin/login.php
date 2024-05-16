@@ -1,5 +1,5 @@
 <?php
-require_once("../include/initialize.php");
+require_once("../public/include/initialize.php");
 
 ?>
 <?php
@@ -31,7 +31,7 @@ if (isset($_SESSION['USERID'])) {
   <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/jquery.js"></script>
   <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/jquery.dataTables.js"></script>
   <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/fixnmix.js"></script> / -->
-  <link rel="icon" href="../home/vista/img/logosinletras.png" type="image/x-icon">
+  <link rel="icon" href="../view/vista/img/logosinletras.png" type="image/x-icon">
   <style>
     @CHARSET "UTF-8";
 
@@ -120,7 +120,7 @@ if (isset($_SESSION['USERID'])) {
         <section class="login-form">
           <? echo check_message(); ?>
           <form method="post" action="" role="login">
-            <img src="../img/logo.png" height="25px" class="img-responsive" alt="" />
+            <img src="../public/img/logo.png" height="25px" class="img-responsive" alt="" />
 
             <input type="input" name="user_email" placeholder="correo electrónico" required class="form-control input-lg"
               value="" />

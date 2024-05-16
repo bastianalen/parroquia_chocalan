@@ -1,5 +1,5 @@
 <?php
- require_once("../../include/initialize.php");
+ require_once("../../public/include/initialize.php");
 	 if (!isset($_SESSION['USERID'])){
       redirect(web_root."admin/login.php");
      } 

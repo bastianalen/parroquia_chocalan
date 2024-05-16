@@ -41,7 +41,7 @@
 
   <link href="<?php echo web_root; ?>admin/css/ekko-lightbox.css" rel="stylesheet">
   <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/fixnmix.js"></script> / -->
-  <link rel="icon" href="../home/vista/img/logosinletras.png" type="image/x-icon">
+  <link rel="icon" href="../view/vista/img/logosinletras.png" type="image/x-icon">
 
   <link rel="stylesheet" href="<?php echo web_root; ?>admin/select2/select2.min.css">
 
@@ -80,7 +80,7 @@ if ($res > 0) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <img src="<?php echo web_root; ?>img/logo49.png" style="height: px;">
+        <img src="<?php echo web_root; ?>public/img/logo49.png" style="height: px;">
         <a class="navbar-brand" href="<?php echo web_root; ?>admin/index.php" style="color: #262878;">Parroquia Santa Rosa de Lima, Chocalán </a>
       </div>
       <!-- /.navbar-header -->

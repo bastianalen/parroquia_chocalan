@@ -1,5 +1,5 @@
 <?php
-require_once("../../include/initialize.php");
+require_once("../../public/include/initialize.php");
 
 
 function generarCadenaAleatoria($longitud = 20)

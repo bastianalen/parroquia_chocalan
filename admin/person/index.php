@@ -1,5 +1,5 @@
 <?php
-require_once("../../include/initialize.php");
+require_once("../../public/include/initialize.php");
 //checkAdmin();
 	# code...
 if(!isset($_SESSION['USERID'])){
