@@ -1,5 +1,5 @@
 <?php
-require_once("../include/initialize.php");
+require_once ('../public/include/initialize.php');
 
 ?>
 <?php
@@ -118,7 +118,8 @@ if (isset($_SESSION['USERID'])) {
       <div class="col-md-4">
 
         <section class="login-form">
-          <? echo check_message(); ?>
+          <!-- se corrige la identacion de esta alerta almacenada en carpeta include/session "message" -->
+          <?php echo check_message(); ?>
           <form method="post" action="" role="login">
             <img src="../img/logo.png" height="25px" class="img-responsive" alt="" />
 

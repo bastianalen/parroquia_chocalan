@@ -58,6 +58,7 @@ function message($msg = "", $msgtype = "")
     return $message;
   }
 }
+// funcion de alerta comprueba si el cliente ingresa correctamente sus credenciales al login
 function check_message()
 {
 

@@ -94,6 +94,10 @@
                             <li class="nav-item">
                                 <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#contact">Contacto</a>
                             </li>
+                            <!-- se agrega el apartado de donaciones donde se implementara pagos por api de webpay -->
+                            <li class="nav-item">
+                                <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -132,6 +136,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#contact">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
                         </li>
                     </ul>
                 </div>
