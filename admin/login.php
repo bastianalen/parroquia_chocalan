@@ -118,7 +118,7 @@ if (isset($_SESSION['USERID'])) {
       <div class="col-md-4">
 
         <section class="login-form">
-          <!-- se corrige la identacion de esta alerta almacenada en carpeta include/session "message" -->
+          <!-- se corrige la identacion de esta alerta almacenada en carpeta include/session.php "check_message" -->
           <?php echo check_message(); ?>
           <form method="post" action="" role="login">
             <img src="../img/logo.png" height="25px" class="img-responsive" alt="" />
@@ -126,8 +126,7 @@ if (isset($_SESSION['USERID'])) {
             <input type="input" name="user_email" placeholder="correo electrónico" required class="form-control input-lg"
               value="" />
 
-            <input type="password" name="user_pass" class="form-control input-lg" id="password" placeholder="contraseña"
-              required />
+            <input type="password" name="user_pass" class="form-control input-lg" id="password" placeholder="contraseña"required />
             <div class="pwstrength_viewport_progress"></div>
             <button type="submit" name="btnLogin" class="btn btn-lg btn-primary btn-block">iniciar sesión</button>
           </form>
