@@ -84,11 +84,7 @@ if ($res > 0) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-<<<<<<< HEAD
-        <img src="<?php echo web_root; ?>img/logo49.png" style="height: px;">
-=======
-        <img src="<?php echo web_root; ?>public/img/logo49.png" style="height: px;">
->>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
+        <img  src="<?php echo web_root; ?>public/img/logo49.png" style="height: px;">
         <a class="navbar-brand" href="<?php echo web_root; ?>admin/index.php" style="color: #262878;">Parroquia Santa Rosa de Lima, Chocalán </a>
       </div>
       <!-- /.navbar-header -->

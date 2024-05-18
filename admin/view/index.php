@@ -1,5 +1,5 @@
 <?php 
-require_once("../public/include/initialize.php");
+require_once("../model/initialize.php");
 	 if (!isset($_SESSION['USERID'])){
       redirect(web_root."admin/login.php");
      } 
@@ -15,5 +15,5 @@ switch ($view) {
 	    $title="Panel Administrador";	
 		$content ='home.php';		
 }
-require_once("theme/templates.php");
+require_once("../theme/templates.php");
 ?>

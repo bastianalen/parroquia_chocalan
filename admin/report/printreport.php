@@ -51,7 +51,7 @@ if (!isset($_SESSION['USERID'])) {
         </div>
         <br>
         <br>
-        
+        <!-- en este apartado se envia el formulario y se de reportes a printreport.php y se abre en una nueva pestaña -->
         <form class="" method="POST" action="printreport.php" target="_blank">
 
           <table id="dash-table" class="table table-striped table-bordered table-hover " style="font-size:12px"
