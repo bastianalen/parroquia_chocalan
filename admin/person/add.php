@@ -138,7 +138,25 @@ if (!isset($_SESSION['USERID'])) {
       </div>
     </div>
   </div>
-
+  <div class="form-group">
+    <div class="col-md-8">
+      <label class="col-md-4 control-label" for="new_escritura">Renobación de escrituras:</label>
+      <div class="col-md-8">
+        
+        <input type="file" id="new_escritura" name="new_escritura" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-8">
+      <label class="col-md-4 control-label" for="pase_sepultacion">Pase de sepultacion:</label>
+      <div class="col-md-8">
+        
+        <input type="file" id="pase_sepultacion" name="pase_sepultacion" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
+      </div>
+    </div>
+  </div>
+  
   <div class="form-group">
     <div class="col-md-8">
       <label class="col-md-4 control-label" for="idno"></label>

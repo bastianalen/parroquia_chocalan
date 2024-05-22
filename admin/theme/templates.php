@@ -34,18 +34,14 @@
   <link href="<?php echo web_root; ?>admin/css/dataTables.bootstrap.css" rel="stylesheet">
 
   <!-- datetime picker CSS -->
-  <link href="<?php echo web_root; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-  <link href="<?php echo web_root; ?>css/datepicker.css" rel="stylesheet" media="screen">
+  <link href="<?php echo web_root; ?>public/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <link href="<?php echo web_root; ?>public/css/datepicker.css" rel="stylesheet" media="screen">
 
   <link href="<?php echo web_root; ?>admin/css/costum.css" rel="stylesheet">
 
   <link href="<?php echo web_root; ?>admin/css/ekko-lightbox.css" rel="stylesheet">
   <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/fixnmix.js"></script> / -->
-<<<<<<< HEAD
-  <link rel="icon" href="../home/vista/img/logosinletras.png" type="image/x-icon">
-=======
   <link rel="icon" href="../view/vista/img/logosinletras.png" type="image/x-icon">
->>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
 
   <link rel="stylesheet" href="<?php echo web_root; ?>admin/select2/select2.min.css">
 
@@ -84,11 +80,7 @@ if ($res > 0) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-<<<<<<< HEAD
-        <img src="<?php echo web_root; ?>img/logo49.png" style="height: px;">
-=======
         <img src="<?php echo web_root; ?>public/img/logo49.png" style="height: px;">
->>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
         <a class="navbar-brand" href="<?php echo web_root; ?>admin/index.php" style="color: #262878;">Parroquia Santa Rosa de Lima, Chocalán </a>
       </div>
       <!-- /.navbar-header -->
@@ -300,9 +292,9 @@ if ($res > 0) {
   <script src="<?php echo web_root; ?>admin/js/jquery.dataTables.min.js"></script>
   <script src="<?php echo web_root; ?>admin/js/dataTables.bootstrap.min.js"></script>
 
-  <script type="text/javascript" src="<?php echo web_root; ?>js/bootstrap-datepicker.js" charset="UTF-8"></script>
-  <script type="text/javascript" src="<?php echo web_root; ?>js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-  <script type="text/javascript" src="<?php echo web_root; ?>js/bootstrap-datetimepicker.uk.js"
+  <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datepicker.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.uk.js"
     charset="UTF-8"></script>
 
   <script type="text/javascript" language="javascript"

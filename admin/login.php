@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-require_once ('../public/include/initialize.php');
-=======
 require_once("../public/include/initialize.php");
->>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
 
 ?>
 <?php
@@ -24,22 +20,18 @@ if (isset($_SESSION['USERID'])) {
   <title>Login Cementerio Parroquial</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="<?php echo web_root; ?>css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?php echo web_root; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-  <link href="<?php echo web_root; ?>css/dataTables.bootstrap.css" rel="stylesheet" media="screen">
-  <link rel="stylesheet" type="text/css" href="<?php echo web_root; ?>css/jquery.dataTables.css">
-  <link href="<?php echo web_root; ?>css/bootstrap.css" rel="stylesheet" media="screen">
+  <link href="<?php echo web_root; ?>public/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo web_root; ?>public/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <link href="<?php echo web_root; ?>public/css/dataTables.bootstrap.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" type="text/css" href="<?php echo web_root; ?>public/css/jquery.dataTables.css">
+  <link href="<?php echo web_root; ?>public/css/bootstrap.css" rel="stylesheet" media="screen">
 
-  <link href="<?php echo web_root; ?>fonts/font-awesome.min.css" rel="stylesheet" media="screen">
+  <link href="<?php echo web_root; ?>public/fonts/font-awesome.min.css" rel="stylesheet" media="screen">
   <!-- Plugins -->
-  <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/jquery.js"></script>
-  <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/jquery.dataTables.js"></script>
-  <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/fixnmix.js"></script> / -->
-<<<<<<< HEAD
-  <link rel="icon" href="../home/vista/img/logosinletras.png" type="image/x-icon">
-=======
+  <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>public/js/jquery.js"></script>
+  <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>public/js/jquery.dataTables.js"></script>
+  <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>public/js/fixnmix.js"></script> / -->
   <link rel="icon" href="../view/vista/img/logosinletras.png" type="image/x-icon">
->>>>>>> 39ce9063b8e3da072aac4e54c825256562ef1a72
   <style>
     @CHARSET "UTF-8";
 
