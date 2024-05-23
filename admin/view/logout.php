@@ -14,5 +14,5 @@ unset( $_SESSION['U_PASS'] );
 unset( $_SESSION['U_ROLE'] ); 
 // 4. Destroy the session
 // session_destroy();
-redirect(web_root."admin/login.php?logout=1");
+redirect(web_root."admin/view/login.php?logout=1");
 ?>

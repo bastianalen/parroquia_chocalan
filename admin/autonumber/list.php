@@ -1,6 +1,6 @@
 <?php 
 	  if (!isset($_SESSION['USERID'])){
-      redirect(web_root."admin/index.php");
+      redirect(web_root."admin/view/index.php");
      } 
 ?>
 	<div class="row">
@@ -31,8 +31,8 @@
 				  		echo '<tr>';  
 			  			echo '<td>' . $result->AUTOSTART. $result->AUTOEND.'</td>';
 			  			echo '<td>' . $result->AUTOKEY.'</td>';
-				  		echo '<td align="center"><a title="Edit" href="index.php?view=edit&id='.$result->ID.'" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
-				  		     <a title="Delete" href="controller.php?action=delete&id='.$result->ID.'" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
+				  		echo '<td align="center"><a title="Edit" href="autonumber/index.php?view=edit&id='.$result->ID.'" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
+				  		     <a title="Delete" href="autonumber/controller.php?action=delete&id='.$result->ID.'" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
 				  		// echo '<td></td>';
 				  		echo '</tr>';
 				  	} 
@@ -50,4 +50,3 @@
 			
 			
 				</form> 
-	 

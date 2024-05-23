@@ -1,8 +1,8 @@
 <?php
-require_once("../../public/include/initialize.php");
+require_once("../model/initialize.php");
 //checkAdmin();
   	 if (!isset($_SESSION['USERID'])){
-      redirect(web_root."admin/index.php");
+      redirect(web_root."admin/view/index.php");
      }
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';

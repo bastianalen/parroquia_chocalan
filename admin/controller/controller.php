@@ -8,7 +8,7 @@ if (isset($_POST['btnLogin'])) {
   if ($email == '' or $upass == '') {
 
     message("¡correo y contraseña inválidos!", "error");
-    redirect("login.php");
+    redirect("admin/view/login.php");
 
   } else {
     $user = new User();
@@ -16,13 +16,13 @@ if (isset($_POST['btnLogin'])) {
     if ($res == true) {
       message("Has iniciado sesión como " . $_SESSION['U_ROLE'] . ".", "success");
       if ($_SESSION['U_ROLE'] == 'Administrador') {
-        redirect(web_root . "admin/index.php");
+        redirect(web_root . "admin/view/index.php");
       } else {
-        redirect(web_root . "admin/login.php");
+        redirect(web_root . "admin/view/login.php");
       }
     } else {
       message("¡La cuenta no existe! Por favor contacte al Administrador.", "error");
-      redirect(web_root . "admin/login.php");
+      redirect(web_root . "admin/view/login.php");
     }
   }
 }

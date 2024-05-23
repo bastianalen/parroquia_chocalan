@@ -114,7 +114,7 @@
                 <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
                     <ul class="navbar-nav text-center">
                         <li class="nav-item">
-                            <a class="nav-link nav-link-specific font-Sofia-serif" href="/PARROQUIA_CHOCALAN/admin/login.php">Login</a>
+                            <a class="nav-link nav-link-specific font-Sofia-serif" href="../admin/view/login.php">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#home">Parroquia</a>
