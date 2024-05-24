@@ -1,8 +1,7 @@
-
 <?php
-require_once ("../../public/include/initialize.php");
+require_once ("../model/initialize.php");
  	 if (!isset($_SESSION['USERID'])){
-      redirect(web_root."admin/index.php");
+      redirect(web_root."admin/view/index.php");
      }
 
 

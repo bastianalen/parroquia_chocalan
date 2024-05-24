@@ -7,7 +7,7 @@ defined('database_name') ? null : define("database_name", "parroquia_chocalan") 
 $this_file = str_replace('\\', '/', __File__) ;
 $doc_root = $_SERVER['DOCUMENT_ROOT'];
 
-$web_root =  str_replace (array($doc_root, "public/include/config.php") , '' , $this_file);
+$web_root =  str_replace (array($doc_root, "../model/config.php") , '' , $this_file);
 $server_root = str_replace ('public/config/config.php' ,'', $this_file);
 
 

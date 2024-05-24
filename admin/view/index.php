@@ -1,7 +1,7 @@
 <?php 
 require_once("../model/initialize.php");
 	 if (!isset($_SESSION['USERID'])){
-      redirect(web_root."admin/login.php");
+      redirect(web_root."admin/view/login.php");
      } 
 
 $content='home.php';

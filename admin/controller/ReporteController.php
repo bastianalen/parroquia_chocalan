@@ -1,11 +1,10 @@
 <?php
-require_once("../../../public/include/initialize.php");
-require_once("../../model/ReporteModel.php");
+require_once("../model/initialize.php");
 
 class ReporteController {
     public function index() {
         if (!isset($_SESSION['USERID'])) {
-            redirect(web_root . "admin/index.php");
+            redirect(web_root . "../view/reporte/index.php");
         }
 
         $section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
@@ -17,7 +16,7 @@ class ReporteController {
     }
 
     public function view($reporte) {
-        include("../view/report/index.php");
+        include("../view/reportes/index.php");
     }
 }
 
