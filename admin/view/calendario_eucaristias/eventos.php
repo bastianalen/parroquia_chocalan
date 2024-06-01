@@ -10,17 +10,17 @@ switch ($accion) {
     case 'agregar':
         /*instruccion de agregado */
         $sentenciaSQL = $pdo->prepare("INSERT INTO
-        eventos(title,descripcion,color,textColor,start,end)
-        VALUES(:title,:descripcion,:color,:textColor,:start,:end)");
+        tblcaleneucaristia(titulo,descripcion,color,colorTexto,inicio,fin)
+        VALUES(:titulo,:descripcion,:color,:colorTexto,:inicio,:fin)");
 
         $respuesta = $sentenciaSQL->execute(
             array(
-                "title" => $_POST['title'],
+                "titulo" => $_POST['titulo'],
                 "descripcion" => $_POST['descripcion'],
                 "color" => $_POST['color'],
-                "textColor" => $_POST['textColor'],
-                "start" => $_POST['start'],
-                "end" => $_POST['end'],
+                "colorTexto" => $_POST['colorTexto'],
+                "inicio" => $_POST['inicio'],
+                "fin" => $_POST['fin'],
             )
         );
         echo json_encode($respuesta);
@@ -31,32 +31,32 @@ switch ($accion) {
         /*instruccion de eliminar */
         $respuesta = false;
         if (isset($_POST['id'])) {
-            $sentenciaSQL = $pdo->prepare("DELETE FROM eventos WHERE ID=:ID");
-            $respuesta = $sentenciaSQL->execute(array("ID" => $_POST['id']));
+            $sentenciaSQL = $pdo->prepare("DELETE FROM tblcaleneucaristia WHERE id=:id");
+            $respuesta = $sentenciaSQL->execute(array("id" => $_POST['id']));
         }
         echo json_encode($respuesta);
 
         break;
     case 'modificar':
         /*instruccion de modificar */
-        $sentenciaSQL = $pdo->prepare("UPDATE eventos SET
-        title=:title,
+        $sentenciaSQL = $pdo->prepare("UPDATE tblcaleneucaristia SET
+        titulo=:titulo,
         descripcion=:descripcion,
         color=:color,
-        textColor=:textColor,
-        start=:start,
-        end=:end
-        WHERE ID=:ID
+        colorTexto=:colorTexto,
+        inicio=:inicio,
+        fin=:fin
+        WHERE id=:id
         ");
         $respuesta = $sentenciaSQL->execute(
             array(
-                "ID"=> $_POST['id'],
-                "title" => $_POST['title'],
+                "id"=> $_POST['id'],
+                "titulo" => $_POST['titulo'],
                 "descripcion" => $_POST['descripcion'],
                 "color" => $_POST['color'],
-                "textColor" => $_POST['textColor'],
-                "start" => $_POST['start'],
-                "end" => $_POST['end'],
+                "colorTexto" => $_POST['colorTexto'],
+                "inicio" => $_POST['inicio'],
+                "fin" => $_POST['fin'],
             )
         );
         echo json_encode($respuesta);
@@ -64,7 +64,7 @@ switch ($accion) {
     
     default:
         /*sellecionar los eventos del calendario */
-        $sentenciaSQL = $pdo->prepare("SELECT * FROM eventos");
+        $sentenciaSQL = $pdo->prepare("SELECT * FROM tblcaleneucaristia");
         $sentenciaSQL->execute();
 
         $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);

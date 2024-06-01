@@ -1,7 +1,7 @@
 <?php
 require_once(LIB_PATH.DS.'database.php');
 class User {
-	protected static  $tblname = "tbluseraccount";
+	protected static  $tblname = "tblcuentauser";
 
 	function dbfields () {
 		global $mydb;
@@ -16,14 +16,14 @@ class User {
 	function find_user($id="",$user_name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE USERID = {$id} OR U_USERNAME = '{$user_name}'");
+			WHERE user_id = {$id} OR user_nom = '{$user_name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
 	static function userAuthentication($U_USERNAME,$h_pass){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM `tbluseraccount` WHERE `U_USERNAME` = '". $U_USERNAME ."' and `U_PASS` = '". $h_pass ."'");
+		$mydb->setQuery("SELECT * FROM tblcuentauser WHERE user_nom = '". $U_USERNAME ."' and user_contra = '". $h_pass ."'");
 		$cur = $mydb->executeQuery();
 		if($cur==false){
 			die(mysql_error());
@@ -31,11 +31,11 @@ class User {
 		$row_count = $mydb->num_rows($cur);//get the number of count
 		 if ($row_count == 1){
 		 $user_found = $mydb->loadSingleResult();
-		 	$_SESSION['USERID']   		= $user_found->USERID;
-		 	$_SESSION['U_NAME']      	= $user_found->U_NAME;
-		 	$_SESSION['U_USERNAME'] 	= $user_found->U_USERNAME;
-		 	$_SESSION['U_PASS'] 		= $user_found->U_PASS;
-		 	$_SESSION['U_ROLE'] 		= $user_found->U_ROLE;
+		 	$_SESSION['user_id']   		= $user_found->user_id;
+		 	$_SESSION['nombre']      	= $user_found->nombre;
+		 	$_SESSION['user_nom'] 	= $user_found->user_nom;
+		 	$_SESSION['user_contra'] 		= $user_found->user_contra;
+		 	$_SESSION['id_rol'] 		= $user_found->id_rol;
 		   return true;
 		 }else{
 		 	return false;
@@ -44,7 +44,7 @@ class User {
 	function single_user($id=""){
 			global $mydb;
 			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where USERID= '{$id}' LIMIT 1");
+				Where user_id= '{$id}' LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
@@ -100,10 +100,6 @@ class User {
 	
 	public function create() {
 		global $mydb;
-		// Don't forget your SQL syntax and good habits:
-		// - INSERT INTO table (key, key) VALUES ('value', 'value')
-		// - single-quotes around all values
-		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitized_attributes();
 		$sql = "INSERT INTO ".self::$tblname." (";
 		$sql .= join(", ", array_keys($attributes));
@@ -129,7 +125,7 @@ class User {
 		}
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE USERID=". $id;
+		$sql .= " WHERE user_id=". $id;
 	  $mydb->setQuery($sql);
 	 	if(!$mydb->executeQuery()) return false; 	
 		
@@ -138,7 +134,7 @@ class User {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE USERID=". $id;
+		  $sql .= " WHERE user_id=". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  

@@ -3,7 +3,7 @@
 class ReporteModel {
     public function getReporte($section) {
         global $mydb;
-        $query = "SELECT * FROM `tblpeople` WHERE CATEGORIES='{$section}'";
+        $query = "SELECT * FROM `tblpersonas` WHERE id_sector='{$section}'";
         $mydb->setQuery($query);
         return $mydb->loadResultList();
     }

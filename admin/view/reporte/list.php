@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['U_ROLE']) == 'Administrator') {
+if (!isset($_SESSION['id_rol']) == 1) {
 	redirect(web_root . "../view/index.php");
 }
 ?>
@@ -13,12 +13,12 @@ if (!isset($_SESSION['U_ROLE']) == 'Administrator') {
 				<label>Patio:</label>
 				<select class="form-control" name="SECTION" id="SECTION" style="width: 100%;">
 					<?php
-					$query = "SELECT * FROM `tblcategory` ORDER BY CATEGORIES ASC";
+					$query = "SELECT * FROM tblsector ORDER BY id_sector ASC";
 					$mydb->setQuery($query);
 					$cur = $mydb->loadResultList();
 
 					foreach ($cur as $result) {
-						echo '<option value="' . $result->CATEGORIES . '">' . $result->CATEGORIES . '</option>';
+						echo '<option value="' . $result->sector . '">' . $result->sector . '</option>';
 					}
 					?>
 				</select>
@@ -86,8 +86,8 @@ if (!isset($_SESSION['U_ROLE']) == 'Administrator') {
 			</div>
 			<form class="" method="POST" action="printreport.php" target="_blank">
 				<div style="margin: 0px 0px 15px 0px">
-					<input type="hidden" name="TIPO_TUMBA"
-						value="<?php echo isset($_POST['TIPO_TUMBA']) ? $_POST['TIPO_TUMBA'] : ''; ?>">
+					<input type="hidden" name="tipo_tumba"
+						value="<?php echo isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : ''; ?>">
 					<input type="hidden" name="SECTION"
 						value="<?php echo isset($_POST['SECTION']) ? $_POST['SECTION'] : ''; ?>">
 					<!-- <input type="hidden" name="date_pickerfrom" value="<?php echo isset($_POST['date_pickerfrom']) ? date_format(date_create($_POST['date_pickerfrom']), "Y-m-d") : ''; ?>">
@@ -120,28 +120,28 @@ if (!isset($_SESSION['U_ROLE']) == 'Administrator') {
 
 							<?php
 
-							$TIPO_TUMBA = isset($_POST['TIPO_TUMBA']) ? $_POST['TIPO_TUMBA'] : "";
+							$tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
 							$section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
 
-							$query = "SELECT * FROM `tblpeople` WHERE  CATEGORIES='{$section}'";
+							$query = "SELECT * FROM `tblpersonas` p INNER JOIN tblsector s ON p.id_sector= s.id_sector WHERE  s.sector='{$section}'";
 							$mydb->setQuery($query);
 							$cur = $mydb->loadResultList();
 
 							foreach ($cur as $result) {
 
-								$borndate = $result->BORNDATE;
-								$dieddate = $result->DIEDDATE;
+								$fecha_nacimiento = $result->fecha_nacimiento;
+								$fecha_muerte = $result->fecha_muerte;
 
 								echo '<tr>';
-								echo '<td width="8%" align="center">' . $result->GRAVENO . '</td>';
-								echo '<td> ' . $result->FNAME . '</td>';
-								echo '<td>' . $borndate . '</td>';
-								echo '<td>' . $dieddate . '</td>';
-								echo '<td>' . $result->CATEGORIES . '</td>';
-								echo '<td>' . $result->TIPO_TUMBA . '</td>';
-								echo '<td>' . $result->PROPIETARIO . '</td>';
-								echo '<td>' . $result->MNAME . '</td>';
-								echo '<td>' . $result->ESCRITURA . '</td>';
+								echo '<td width="8%" align="center">' . $result->nro_tumba . '</td>';
+								echo '<td> ' . $result->pnombre . '</td>';
+								echo '<td>' . $fecha_nacimiento . '</td>';
+								echo '<td>' . $fecha_muerte . '</td>';
+								echo '<td>' . $result->sector . '</td>';
+								echo '<td>' . $result->tipo_tumba . '</td>';
+								echo '<td>' . $result->propietario . '</td>';
+								echo '<td>' . $result->caracteristicas . '</td>';
+								echo '<td>' . $result->escritura . '</td>';
 								echo '</tr>';
 							}
 							?>

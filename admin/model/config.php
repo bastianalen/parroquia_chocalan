@@ -13,4 +13,3 @@ $server_root = str_replace ('public/config/config.php' ,'', $this_file);
 
 define ('web_root' , $web_root);
 define('server_root' , $server_root);
-?>

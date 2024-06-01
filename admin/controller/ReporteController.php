@@ -3,7 +3,7 @@ require_once("../model/initialize.php");
 
 class ReporteController {
     public function index() {
-        if (!isset($_SESSION['USERID'])) {
+        if (!isset($_SESSION['user_id'])) {
             redirect(web_root . "../view/reporte/index.php");
         }
 

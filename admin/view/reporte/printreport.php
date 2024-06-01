@@ -1,6 +1,6 @@
 <?php
 require_once("../../model/initialize.php");
-if (!isset($_SESSION['USERID'])) {
+if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "view/index.php");
 }
 ?>
@@ -44,7 +44,7 @@ if (!isset($_SESSION['USERID'])) {
           <?php echo isset($_POST['TYPES']) ? $_POST['TYPES'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
-          <?php echo isset($_POST['TIPO_TUMBA']) ? "Cementerio Parroquial " . $_POST['TIPO_TUMBA'] : ""; ?>
+          <?php echo isset($_POST['tipo_tumba']) ? "Cementerio Parroquial " . $_POST['tipo_tumba'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
           <?php echo isset($_POST['SECTION']) ? "Patio :" . $_POST['SECTION'] : ""; ?>
@@ -73,28 +73,28 @@ if (!isset($_SESSION['USERID'])) {
 
             <tbody>
               <?php
-              $TIPO_TUMBA = isset($_POST['TIPO_TUMBA']) ? $_POST['TIPO_TUMBA'] : "";
+              $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
               $section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
 
-              $query = "SELECT * FROM `tblpeople` WHERE  CATEGORIES='{$section}'";
+              $query = "SELECT * FROM tblpersonas tp INNER JOIN tblsector ts ON tp.id_sector=ts.id_sector WHERE  ts.sector='{$section}'";
               $mydb->setQuery($query);
               $cur = $mydb->loadResultList();
 
               foreach ($cur as $result) {
 
-                $borndate = $result->BORNDATE;
-                $dieddate = $result->DIEDDATE;
+                $fecha_nacimiento = $result->fecha_nacimiento;
+                $fecha_muerte = $result->fecha_muerte;
 
                 echo '<tr>';
-                echo '<td width="8%" align="center">' . $result->GRAVENO . '</td>';
-                echo '<td> ' . $result->FNAME . '</td>';
-                echo '<td>' . $borndate . '</td>';
-                echo '<td>' . $dieddate . '</td>';
-                echo '<td>' . $result->CATEGORIES . '</td>';
-                echo '<td>' . $result->TIPO_TUMBA . '</td>';
-                echo '<td>' . $result->PROPIETARIO . '</td>';
-                echo '<td>' . $result->MNAME . '</td>';
-                echo '<td>' . $result->ESCRITURA . '</td>';
+                echo '<td width="8%" align="center">' . $result->nro_tumba . '</td>';
+                echo '<td> ' . $result->pnombre . '</td>';
+                echo '<td>' . $fecha_nacimiento . '</td>';
+                echo '<td>' . $fecha_muerte . '</td>';
+                echo '<td>' . $result->sector . '</td>';
+                echo '<td>' . $result->tipo_tumba . '</td>';
+                echo '<td>' . $result->propietario . '</td>';
+                echo '<td>' . $result->caracteristicas . '</td>';
+                echo '<td>' . $result->escritura . '</td>';
                 echo '</tr>';
               }
               ?>

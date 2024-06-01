@@ -1,6 +1,6 @@
 <?php
 require_once("../model/initialize.php");
-	 if (!isset($_SESSION['USERID'])){
+	 if (!isset($_SESSION['user_id'])){
       redirect(web_root."admin/view/login.php");
      } 
 if(isset($_POST["Import"])){
@@ -21,7 +21,7 @@ global $mydb;
 	           // $sql = "INSERT into subject (`SUBJ_CODE`, `SUBJ_DESCRIPTION`, `UNIT`, `PRE_REQUISITE`,COURSE_ID, `AY`, `SEMESTER`) 
 	           //  	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]','$emapData[6]','$emapData[7]')";
 
-	         	  $sql = "INSERT into tblpeople (`GRAVENO`, `FNAME`, `BORNDATE`, `DIEDDATE`,`CATEGORIES`,``) 
+	         	  $sql = "INSERT into tblpersonas (`nro_tumba`, `nombre`, `fecha_nacimiento`, `fecha_nacimiento`,`id_sector`,``) 
 	            	values('$emapData[0]','$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]')";
 	         //we are using mysql_query function. it returns a resource on true else False on error
 	               $mydb->setQuery($sql);

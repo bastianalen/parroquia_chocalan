@@ -1,10 +1,10 @@
 <?php
-if (!isset($_SESSION['USERID'])) {
+if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "admin/view/index.php");
 }
-$peopleid = $_GET['id'];
+$rut = $_GET['id'];
 $person = new Person();
-$p = $person->single_people($peopleid);
+$p = $person->single_people($rut);
 ?>
 <div class="row">
   <div class="col-lg-12">
@@ -12,36 +12,62 @@ $p = $person->single_people($peopleid);
   </div>
   <!-- /.col-lg-12 -->
 </div>
-<form class="form-horizontal span6" action="controller.php?action=edit" method="POST">
+<form class="form-horizontal span6" action="controller.php?action=edit" method="POST" enctype="multipart/form-data">
   <div class="row">
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="GRAVENO">Tumba:</label>
+        <label class="col-md-4 control-label" for="nro_tumba">Tumba:</label>
         <div class="col-md-8">
-          <input type="hidden" name="PEOPLEID" value="<?php echo $p->PEOPLEID; ?>">
-          <input class="form-control input-sm" id="GRAVENO" name="GRAVENO" placeholder="Grave Number" type="text"
-            value="<?php echo $p->GRAVENO ?>">
+          <input type="hidden" name="rut" value="<?php echo $p->rut; ?>">
+          <input class="form-control input-sm" id="nro_tumba" name="nro_tumba" placeholder="Grave Number" type="text"
+            value="<?php echo $p->nro_tumba ?>">
         </div>
       </div>
     </div>  
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="FNAME">Fallecido:</label>
+        <label class="col-md-4 control-label" for="pnombre">Fallecido:</label>
         <div class="col-md-8">
-          <input class="form-control input-sm" id="FNAME" name="FNAME" placeholder="Full Name" type="text"
-            value="<?php echo $p->FNAME ?>">
+          <input class="form-control input-sm" id="pnombre" name="pnombre" placeholder="Full Name" type="text"
+            value="<?php echo $p->pnombre ?>">
         </div>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="BORNDATE">Fecha Nacimiento:</label>
+        <label class="col-md-4 control-label" for="fecha_nacimiento">Fecha Nacimiento:</label>
         <div class="col-md-8">
           <div class="input-group" id="">
             <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
             </div>
-            <input id="datemask2" name="BORNDATE" value="<?php echo $p->BORNDATE ?>" type="text"
+            <input id="datemask2" name="fecha_nacimiento" 
+            value="<?php
+            $dd_nacimiento = ($p->dd_nacimiento == "" || $p->dd_nacimiento == 0) ? "--" : $p->dd_nacimiento;
+            $mm_nacimiento= ($p->mm_nacimiento == "" || $p->mm_nacimiento == 0) ? "--" : $p->mm_nacimiento;
+            $yyyy_nacimiento = ($p->yyyy_nacimiento == "" || $p->yyyy_nacimiento == 0) ? "--" : $p->yyyy_nacimiento;;
+            $fecha_nacimiento = $dd_nacimiento . "/" . $mm_nacimiento . "/" . $yyyy_nacimiento;
+            echo $fecha_nacimiento ?>"
+            type="text" class="form-control input-sm datemask2" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-8">
+        <label class="col-md-4 control-label" for="fecha_muerte">Fecha Defunción:</label>
+        <div class="col-md-8">
+          <div class="input-group" id="">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input id="datemask2" name="fecha_muerte" value="<?php 
+            $dd_muerte = $p->dd_muerte = ($p->dd_muerte == "" || $p->dd_muerte == 0) ? "--" : $p->dd_muerte; 
+            $mm_muerte = $p->mm_muerte = ($p->mm_muerte == "" || $p->mm_muerte == 0) ? "--" : $p->mm_muerte;
+            $yyyy_muerte = $p->yyyy_muerte = ($p->yyyy_muerte == "" || $p->yyyy_muerte == 0) ? "--" : $p->yyyy_muerte;
+            $fecha_muerte = $dd_muerte. "/". $mm_muerte. "/". $yyyy_muerte;
+            echo $fecha_muerte?>"
+            type="text"
               class="form-control input-sm datemask2" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
           </div>
         </div>
@@ -49,35 +75,20 @@ $p = $person->single_people($peopleid);
     </div>
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="DIEDDATE">Fecha Defunción:</label>
+        <label class="col-md-4 control-label" for="sector">Patio:</label>
         <div class="col-md-8">
-          <div class="input-group" id="">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input id="datemask2" name="DIEDDATE" value="<?php echo $p->DIEDDATE ?>" type="text"
-              class="form-control input-sm datemask2" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-md-8">
-        <label class="col-md-4 control-label" for="CATEGORIES">Patio:</label>
-        <div class="col-md-8">
-          <select class="form-control input-sm" name="CATEGORIES" id="CATEGORIES">
+          <select class="form-control input-sm" name="id_sector" id="sector">
             <option value="None">ubicación de tumba</option>
             <?php
             //Statement
-            $mydb->setQuery("SELECT * FROM `tblcategory` where CATEGORIES = '" . $p->CATEGORIES . "'");
+            $mydb->setQuery("SELECT * FROM `tblsector` ");
             $cur = $mydb->loadResultList();
             foreach ($cur as $result) {
-              echo '<option SELECTED  value=' . $result->CATEGORIES . ' >' . $result->CATEGORIES . '</option>';
-            }
-            $mydb->setQuery("SELECT * FROM `tblcategory` where CATEGORIES != '" . $p->CATEGORIES . "'");
-            $cur = $mydb->loadResultList();
-            foreach ($cur as $result) {
-              echo '<option  value=' . $result->CATEGORIES . ' >' . $result->CATEGORIES . '</option>';
+              if ($result->id_sector == $p-> id_sector){
+                echo '<option SELECTED  value=' . $result->id_sector . ' >' . $result->sector . '</option>';
+              }else {
+                echo '<option  value=' . $result->id_sector . ' >' . $result->sector . '</option>';
+              }
             }
             ?>
           </select>
@@ -86,39 +97,78 @@ $p = $person->single_people($peopleid);
     </div>
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="TIPO_TUMBA">Tipo Tumba:</label>
+        <label class="col-md-4 control-label" for="tipo_tumba">Tipo Tumba:</label>
         <div class="col-md-8">
 
-          <select class="form-control input-sm" name="TIPO_TUMBA" id="TIPO_TUMBA">
+          <select class="form-control input-sm" name="tipo_tumba" id="tipo_tumba">
             <option value="None">seleccionar</option>
-            <option value="Individual" <?php echo ($p->TIPO_TUMBA == 'Individual') ? 'SELECTED' : ''; ?>>Individual
-            </option>
-            <option value="Familiar" <?php echo ($p->TIPO_TUMBA == 'Familiar') ? 'SELECTED' : ''; ?>>Familiar</option>
-            <option value="Individual/Familiar" <?php echo ($p->TIPO_TUMBA == 'Individual/Familiar') ? 'SELECTED' : ''; ?>>
-              Individual/Familiar</option>
+
+            <?php
+            //Statement
+            $mydb->setQuery("SELECT * FROM `tbltipotumba` ");
+            $cur = $mydb->loadResultList();
+            foreach ($cur as $result) {
+              if ($result->id_tipo_tumba == $p-> tipo_tumba){
+                echo '<option SELECTED  value=' . $result->id_tipo_tumba . ' >' . $result->tipo . '</option>';
+              }else {
+                echo '<option  value=' . $result->id_tipo_tumba . ' >' . $result->tipo . '</option>';
+              }
+            }
+            ?>
           </select>
         </div>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="PROPIETARIO">Propietario:</label>
+        <label class="col-md-4 control-label" for="propietario">Propietario:</label>
         <div class="col-md-8">
-          <input class="form-control input-sm" id="PROPIETARIO" name="PROPIETARIO" placeholder="Last Name" type="text"
-            value="<?php echo $p->PROPIETARIO ?>">
+          <input class="form-control input-sm" id="propietario" name="propietario" placeholder="Last Name" type="text"
+            value="<?php echo $p->propietario ?>">
         </div>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-8">
-        <label class="col-md-4 control-label" for="MNAME">Características:</label>
+        <label class="col-md-4 control-label" for="caracteristicas">Características:</label>
 
         <div class="col-md-8">
-          <input class="form-control input-sm" id="MNAME" name="MNAME" placeholder="Middle Name" type="text"
-            value="<?php echo $p->MNAME ?>">
+          <input class="form-control input-sm" id="caracteristicas" name="caracteristicas" placeholder="Middle Name" type="text"
+            value="<?php echo $p->caracteristicas ?>">
         </div>
       </div>
     </div>
+    <!-- Cargar Escritura -->
+    <div class="form-group">
+      <div class="col-md-8">
+        <label class="col-md-4 control-label" for="escritura">Escritura:</label>
+        <div class="col-md-8">
+          
+          <input type="file" id="escritura" name="escritura" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
+        </div>
+      </div>
+    </div>
+    <!-- Cargar Escritura Actualizada-->
+    <div class="form-group">
+      <div class="col-md-8">
+        <label class="col-md-4 control-label" for="new_escritura">Escritura Actualizada:</label>
+        <div class="col-md-8">
+          
+          <input type="file" id="new_escritura" name="new_escritura" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
+        </div>
+      </div>
+    </div>
+    <!-- Cargar Pase de sepultacion-->
+    <div class="form-group">
+      <div class="col-md-8">
+        <label class="col-md-4 control-label" for="pase_sepul">Pase de sepultacion:</label>
+        <div class="col-md-8">
+          
+          <input type="file" id="pase_sepul" name="pase_sepul" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
       <div class="col-md-8">
         <label class="col-md-4 control-label" for="idno"></label>

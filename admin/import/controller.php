@@ -1,7 +1,7 @@
 
 <?php
 require_once ("../model/initialize.php");
- 	 if (!isset($_SESSION['USERID'])){
+ 	 if (!isset($_SESSION['user_id'])){
       redirect(web_root."admin/view/index.php");
      }
 
@@ -28,14 +28,14 @@ switch ($action) {
 		if(isset($_POST['save'])){
 
 
-		if ( $_POST['CATEGORY'] == "" ) {
+		if ( $_POST['sector'] == "" ) {
 			$messageStats = false;
 			message("All field is required!","error");
 			redirect('index.php?view=add');
 		}else{	
-			$category = New Category();
-			$category->CATEGORIES	= $_POST['CATEGORY'];
-			$category->create();
+			$sector = New Sector();
+			$sector->sector	= $_POST['sector'];
+			$sector->create();
 
 			message("New Section created successfully!", "success");
 			redirect("index.php");
@@ -48,9 +48,9 @@ switch ($action) {
 	function doEdit(){
 		if(isset($_POST['save'])){
 
-			$category = New Category();
-			$category->CATEGORIES	= $_POST['CATEGORY'];
-			$category->update($_POST['CATEGID']);
+			$sector = New Sector();
+			$sector->sector	= $_POST['sector'];
+			$sector->update($_POST['id_sector']);
 
 			message("Section has been updated!", "success");
 			redirect("index.php");
@@ -67,8 +67,8 @@ switch ($action) {
 
 			$id = $_GET['id'];
 
-			$category = New Category();
-			$category->delete($id);
+			$sector = New Sector();
+			$sector->delete($id);
 
 			message("Section already Deleted!","info");
 			redirect('index.php');
@@ -78,10 +78,10 @@ switch ($action) {
 
 		// for($i=0;$i<$key;$i++){
 
-		// 	$category = New Category();
-		// 	$category->delete($id[$i]);
+		// 	$sector = New Sector();
+		// 	$sector->delete($id[$i]);
 
-		// 	message("Category already Deleted!","info");
+		// 	message("Sector already Deleted!","info");
 		// 	redirect('index.php');
 		// }
 		// }

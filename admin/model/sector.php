@@ -1,31 +1,32 @@
 <?php
 require_once(LIB_PATH.DS.'database.php');
-class Category {
-	protected static  $tblname = "tblcategory";
+class Sector {
+
+	protected static  $tblname = "tblsector";
 
 	function dbfields () {
 		global $mydb;
 		return $mydb->getfieldsononetable(self::$tblname);
 
 	}
-	function listofcategory(){
+	function listofsector(){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname);
 		return $cur;
 	}
-	function find_category($id="",$name=""){
+	function find_sector($id="",$name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE CATEGID = {$id} OR CATEGORIES = '{$name}'");
+			WHERE id_sector = {$id} OR sector = '{$name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
 	 
-	function single_category($id=""){
+	function single_sector($id){
 			global $mydb;
 			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where CATEGID= '{$id}' LIMIT 1");
+				Where id_sector = '{$id}' LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
@@ -81,17 +82,13 @@ class Category {
 	
 	public function create() {
 		global $mydb;
-		// Don't forget your SQL syntax and good habits:
-		// - INSERT INTO table (key, key) VALUES ('value', 'value')
-		// - single-quotes around all values
-		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitized_attributes();
 		$sql = "INSERT INTO ".self::$tblname." (";
 		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
 		$sql .= "')";
-	echo $mydb->setQuery($sql);
+		echo $mydb->setQuery($sql);
 	
 	 if($mydb->executeQuery()) {
 	    $this->id = $mydb->insert_id();
@@ -110,7 +107,7 @@ class Category {
 		}
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE CATEGID=". $id;
+		$sql .= " WHERE id_sector =". $id;
 	  $mydb->setQuery($sql);
 	 	if(!$mydb->executeQuery()) return false; 	
 		
@@ -119,7 +116,7 @@ class Category {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE CATEGID=". $id;
+		  $sql .= " WHERE id_sector =". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  
@@ -129,4 +126,3 @@ class Category {
 
 
 }
-?>

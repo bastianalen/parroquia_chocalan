@@ -13,9 +13,10 @@ if (isset($_POST['btnLogin'])) {
   } else {
     $user = new User();
     $res = $user::userAuthentication($email, $h_upass);
+    // echo "<script>console.log('id_rol: " .$_SESSION['id_rol'] . "');</script>";
     if ($res == true) {
-      message("Has iniciado sesión como " . $_SESSION['U_ROLE'] . ".", "success");
-      if ($_SESSION['U_ROLE'] == 'Administrador') {
+      message("Has iniciado sesión como " . $_SESSION['id_rol'] . ".", "success");
+      if ($_SESSION['id_rol'] == 1) {
         redirect(web_root . "admin/view/index.php");
       } else {
         redirect(web_root . "admin/view/login.php");

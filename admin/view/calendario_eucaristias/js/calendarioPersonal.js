@@ -29,10 +29,10 @@ $(document).ready(function () {
             /*mostrar la informacion del evento en los inputs*/
             $('#txtDescripcion').val(calEvent.descripcion);
             $('#txtID').val(calEvent.id);
-            $('#txtTitulo').val(calEvent.title);
+            $('#txtTitulo').val(calEvent.titulo);
             $('#txtColor').html(calEvent.color);
 
-            FechaHora = calEvent.start._i.split(" ");
+            FechaHora = calEvent.inicio._i.split(" ");
             $('#txtFecha').val(FechaHora[0]);
             /*$('#txtHora').val(FechaHora[1]);*/
 
@@ -42,11 +42,11 @@ $(document).ready(function () {
         editable: true,
         eventDrop: function (calEvent) {
             $('#txtID').val(calEvent.id);
-            $('#txtTitulo').html(calEvent.title);
+            $('#txtTitulo').html(calEvent.titulo);
             $('#txtColor').html(calEvent.color);
             $('#txtDescripcion').val(calEvent.descripcion);
 
-            var fechaHora = calEvent.start.format().split("T");
+            var fechaHora = calEvent.inicio.format().split("T");
             $('#txtFecha').val(fechaHora[0]);
             $('#txtHora').val(fechaHora[1]);
 
@@ -79,12 +79,12 @@ var NuevoEvento;
     function RecolectarDatosGUI() {
         NuevoEvento = {
             id: $('#txtID').val(),
-            title: $('#txtTitulo').val(),
-            start: $('#txtFecha').val() + " " + $('#txtHora').val(),
+            titulo: $('#txtTitulo').val(),
+            inicio: $('#txtFecha').val() + " " + $('#txtHora').val(),
             color: $('#txtColor').val(),
             descripcion: $('#txtDescripcion').val(),
-            textColor: "#FFFFFF",
-            end: $('#txtFecha').val() + " " + $('#txtHora').val(),
+            colorTexto: "#FFFFFF",
+            fin: $('#txtFecha').val() + " " + $('#txtHora').val(),
         };
     }
 

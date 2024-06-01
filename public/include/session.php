@@ -4,7 +4,7 @@ session_start(); //before we store information of our member, we need to start f
 //create a new function to check if the session variable member_id is on set
 function logged_in()
 {
-  return isset($_SESSION['USERID']);
+  return isset($_SESSION['user_id']);
 
 }
 //this function if session member is not set then it will be redirected to login.php
@@ -21,7 +21,7 @@ function confirm_logged_in()
 }
 function admin_confirm_logged_in()
 {
-  if (@!$_SESSION['USERID']) { ?>
+  if (@!$_SESSION['user_id']) { ?>
     <script type="text/javascript">
       window.location = "login.php";
     </script>

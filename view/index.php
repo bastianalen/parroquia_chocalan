@@ -199,7 +199,7 @@
 
                 <div class="col-md-2 mb-4">
                     <div class="center">
-                        <a href="cementerio.php">
+                        <a href="cementerio/cementerio.php">
                             <img src="vista/img/cemen.jpg" class="servicio" alt="...">
                         </a>
                         <div class="image-caption font-Sofia-serif">
@@ -209,7 +209,7 @@
                 </div>
                 <div class="col-md-2 mb-4">
                     <div class="center">
-                        <a href="velatorio.php">
+                        <a href="velatorio/velatorio.php">
                             <img src="vista/img/velatorio.png" class="servicio" alt="..." >
                         </a>
                         <div class="image-caption font-Sofia-serif">
@@ -219,7 +219,7 @@
                 </div>
                 <div class="col-md-2 mb-4">
                     <div class="center">
-                        <a href="corona.php">
+                        <a href="corona/corona.php">
                             <img src="vista/img/corona.png" class="servicio" alt="..." >
                         </a>
                         <div class="image-caption font-Sofia-serif">Corona
@@ -230,7 +230,7 @@
 
                 <div class="col-md-2 mb-4">
                     <div class="center">
-                        <a href="visita.php">
+                        <a href="visita/visita.php">
                             <img src="vista/img/visita.png" class="servicio" alt="..." >
                         </a>
                         <div class="image-caption font-Sofia-serif">Visita
@@ -240,7 +240,7 @@
                 </div>
                 <div class="col-md-2 mb-4">
                     <div class="center">
-                        <a href="bendicion.php">
+                        <a href="bendicion/bendicion.php">
                             <img src="vista/img/bendicion.jpg" class="servicio" alt="..." >
                         </a>
                         <div class="image-caption font-Sofia-serif">
@@ -251,7 +251,7 @@
 
                 <div class="col-md-2 mb-4">
                     <div class="center">
-                        <a href="eucaristias.php">
+                        <a href="eucaristias/eucaristias.php">
                             <img src="vista/img/euc.jpg" class="servicio" alt="..." >
                         </a>
                         <div class="image-caption font-Sofia-serif">
@@ -279,7 +279,7 @@
             <div class="row text-center padding-top-half">
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
                     <span class="about-icon">
-                        <a href="bautismo.php"><i class="las la-dove"></i></a>
+                        <a href="bautismo/bautismo.php"><i class="las la-dove"></i></a>
                     </span>
                     <h4 class="small-heading font-Sofia-serif ">Bautismo</h4>
                     <br>
@@ -287,7 +287,7 @@
                 </div>
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
                     <span class="about-icon">
-                        <a href="matrimonio.php"><i class="las la-ring"></i></a>
+                        <a href="matrimonio/matrimonio.php"><i class="las la-ring"></i></a>
                     </span>
                     <h4 class="small-heading font-Sofia-serif ">Matrimonio</h4>
                     <br>
@@ -295,14 +295,14 @@
                 </div>
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
                     <span class="about-icon">
-                        <a href="primeracomunion.php"><i class="las la-praying-hands"></i></a>
+                        <a href="primeracomunion/primeracomunion.php"><i class="las la-praying-hands"></i></a>
                     </span>
                     <h4 class="small-heading font-Sofia-serif ">Primera comunión</h4>
                     <span class="ex-line"></span>
                 </div>
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
                     <span class="about-icon">
-                        <a href="confirmacion.php"><i class="las la-bible"></i></a>
+                        <a href="confirmacion/confirmacion.php"><i class="las la-bible"></i></a>
                     </span>
                     <h4 class="small-heading font-Sofia-serif ">Confirmación</h4>
                     <br>
@@ -310,7 +310,7 @@
                 </div>
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
                     <span class="about-icon">
-                        <a href="uncion.php"><i class="las la-cross"></i></a>
+                        <a href="uncion/uncion.php"><i class="las la-cross"></i></a>
                     </span>
                     <h4 class="small-heading font-Sofia-serif ">Unción de los enfermos
                     </h4>
@@ -318,7 +318,7 @@
                 </div>
                 <div class="col-md-2 mb-4 about-media wow fadeInUp">
                     <span class="about-icon">
-                        <a href="confesion.php"><i class="las la-pray"></i></a>
+                        <a href="confesion/confesion.php"><i class="las la-pray"></i></a>
                     </span>
                     <h4 class="small-heading font-Sofia-serif ">Confesión</h4>
                     <br>
