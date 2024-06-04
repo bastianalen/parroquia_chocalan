@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
           <?php echo isset($_POST['tipo_tumba']) ? "Cementerio Parroquial " . $_POST['tipo_tumba'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
-          <?php echo isset($_POST['SECTION']) ? "Patio :" . $_POST['SECTION'] : ""; ?>
+          <?php echo isset($_POST['sector']) ? "Patio :" . $_POST['sector'] : ""; ?>
         </div>
         <br>
         <br>
@@ -74,27 +74,29 @@ if (!isset($_SESSION['user_id'])) {
             <tbody>
               <?php
               $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-              $section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
+              $sector = isset($_POST['sector']) ? $_POST['sector'] : "";
 
-              $query = "SELECT * FROM tblpersonas tp INNER JOIN tblsector ts ON tp.id_sector=ts.id_sector WHERE  ts.sector='{$section}'";
+              $query = "SELECT * FROM tblpersonas tp INNER JOIN tblsector ts ON tp.id_sector=ts.id_sector WHERE  ts.id_sector='{$sector}'";
               $mydb->setQuery($query);
               $cur = $mydb->loadResultList();
 
               foreach ($cur as $result) {
 
-                $fecha_nacimiento = $result->fecha_nacimiento;
-                $fecha_muerte = $result->fecha_muerte;
+                $fecha_nacimiento = $result->dd_nacimiento . "/" . $result->mm_nacimiento . "/" . $result->yyyy_nacimiento;
+								$fecha_muerte = $result->dd_muerte . "/" . $result->mm_muerte . "/" . $result->yyyy_muerte;
 
                 echo '<tr>';
                 echo '<td width="8%" align="center">' . $result->nro_tumba . '</td>';
                 echo '<td> ' . $result->pnombre . '</td>';
                 echo '<td>' . $fecha_nacimiento . '</td>';
                 echo '<td>' . $fecha_muerte . '</td>';
-                echo '<td>' . $result->sector . '</td>';
+                echo '<td>' . $result->id_sector . '</td>';
                 echo '<td>' . $result->tipo_tumba . '</td>';
                 echo '<td>' . $result->propietario . '</td>';
                 echo '<td>' . $result->caracteristicas . '</td>';
                 echo '<td>' . $result->escritura . '</td>';
+                echo '<td>' . $result->new_escritura . '</td>';
+                echo '<td>' . $result->pase_sepul . '</td>';
                 echo '</tr>';
               }
               ?>
@@ -106,10 +108,6 @@ if (!isset($_SESSION['user_id'])) {
     </span>
 
   </div>
-  <!-- /#wrapper -->
-
-
-
 
 
   <!-- jQuery -->

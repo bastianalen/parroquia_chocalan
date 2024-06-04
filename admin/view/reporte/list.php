@@ -11,14 +11,14 @@ if (!isset($_SESSION['id_rol']) == 1) {
 
 			<div class="col-sm-2">
 				<label>Patio:</label>
-				<select class="form-control" name="SECTION" id="SECTION" style="width: 100%;">
+				<select class="form-control" name="sector" id="sector" style="width: 100%;">
 					<?php
 					$query = "SELECT * FROM tblsector ORDER BY id_sector ASC";
 					$mydb->setQuery($query);
 					$cur = $mydb->loadResultList();
 
 					foreach ($cur as $result) {
-						echo '<option value="' . $result->sector . '">' . $result->sector . '</option>';
+						echo '<option value="' . $result->id_sector . '">' . $result->sector . '</option>';
 					}
 					?>
 				</select>
@@ -32,43 +32,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
 			</div>
 		</div>
 	</div>
-	<!-- <div class="row">
-		<div class="col-lg-8" style="margin:0px;padding: 0px;float:right;">
-
-			<div class="col-sm-2">
-				<label>Tumba:</label>
-				<input class="form-control" name="GRAVENO" id="GRAVENO" style="width: 100%;">
-				   
-				</input>
-			</div>
-			<div class="col-sm-2">
-				<div class="input-group" style="margin-top:25px;">
-					<button class="btn btn-primary btn-sm" name="submit" type="submit">Buscar <i class="fa fa-search"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </form>
-<?php
-//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//  if (isset($_POST['GRAVENO'])) {
-//        $graveno = $_POST['GRAVENO'];
-
-
-//        $query = "SELECT * FROM `tblpeople` WHERE GRAVENO = '{$graveno}'";
-//        $mydb->setQuery($query);
-//       $cur = $mydb->loadResultList();
-
-
-//        foreach ($cur as $result) {
-//           echo 'GRAVENO: ' . $result->GRAVENO . '<br>';
-//          echo 'Nombre del fallecido: ' . $result->FNAME . '<br>';
-//          
-//      }
-//  }
-//}
-?>
 
 
 
@@ -82,28 +46,23 @@ if (!isset($_SESSION['id_rol']) == 1) {
 				<?php echo isset($_POST['TYPES']) ? $_POST['TYPES'] : ""; ?>
 			</div>
 			<div style="text-align: center;font-size: 12px;">
-				<?php echo isset($_POST['SECTION']) ? "Patio:  " . $_POST['SECTION'] : ""; ?>
+				<?php echo isset($_POST['sector']) ? "Patio:  " . $_POST['sector'] : ""; ?>
 			</div>
 			<form class="" method="POST" action="printreport.php" target="_blank">
 				<div style="margin: 0px 0px 15px 0px">
 					<input type="hidden" name="tipo_tumba"
 						value="<?php echo isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : ''; ?>">
-					<input type="hidden" name="SECTION"
-						value="<?php echo isset($_POST['SECTION']) ? $_POST['SECTION'] : ''; ?>">
-					<!-- <input type="hidden" name="date_pickerfrom" value="<?php echo isset($_POST['date_pickerfrom']) ? date_format(date_create($_POST['date_pickerfrom']), "Y-m-d") : ''; ?>">
-			<input type="hidden" name="date_pickerto" value="<?php echo isset($_POST['date_pickerto']) ? date_format(date_create($_POST['date_pickerto']), "Y-m-d") : ""; ?>">  -->
+					<input type="hidden" name="sector"
+						value="<?php echo isset($_POST['sector']) ? $_POST['sector'] : ''; ?>">
 					<button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> imprimir</button>
 				</div>
 				<div class="">
-
 
 					<table id="" class="table table-striped table-bordered table-hover " style="font-size:12px"
 						cellspacing="0">
 
 						<thead>
-
 							<tr>
-
 								<th>Tumba</th>
 								<th>Fallecido</td>
 								<th>Fecha Nacimiento</th>
@@ -121,27 +80,29 @@ if (!isset($_SESSION['id_rol']) == 1) {
 							<?php
 
 							$tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-							$section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
+							$sector = isset($_POST['sector']) ? $_POST['sector'] : "";
 
-							$query = "SELECT * FROM `tblpersonas` p INNER JOIN tblsector s ON p.id_sector= s.id_sector WHERE  s.sector='{$section}'";
+							$query = "SELECT * FROM `tblpersonas` p INNER JOIN tblsector s ON p.id_sector= s.id_sector WHERE  s.id_sector='{$sector}'";
 							$mydb->setQuery($query);
 							$cur = $mydb->loadResultList();
 
 							foreach ($cur as $result) {
 
-								$fecha_nacimiento = $result->fecha_nacimiento;
-								$fecha_muerte = $result->fecha_muerte;
+								$fecha_nacimiento = $result->dd_nacimiento . "/" . $result->mm_nacimiento . "/" . $result->yyyy_nacimiento;
+								$fecha_muerte = $result->dd_muerte . "/" . $result->mm_muerte . "/" . $result->yyyy_muerte;
 
 								echo '<tr>';
 								echo '<td width="8%" align="center">' . $result->nro_tumba . '</td>';
 								echo '<td> ' . $result->pnombre . '</td>';
 								echo '<td>' . $fecha_nacimiento . '</td>';
 								echo '<td>' . $fecha_muerte . '</td>';
-								echo '<td>' . $result->sector . '</td>';
+								echo '<td>' . $result->id_sector . '</td>';
 								echo '<td>' . $result->tipo_tumba . '</td>';
 								echo '<td>' . $result->propietario . '</td>';
 								echo '<td>' . $result->caracteristicas . '</td>';
 								echo '<td>' . $result->escritura . '</td>';
+								echo '<td>' . $result->new_escritura . '</td>';
+								echo '<td>' . $result->pase_sepul . '</td>';
 								echo '</tr>';
 							}
 							?>

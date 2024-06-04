@@ -8,12 +8,12 @@ class Sector {
 		return $mydb->getfieldsononetable(self::$tblname);
 
 	}
-	function listofcategory(){
+	function listofsector(){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname);
 		return $cur;
 	}
-	function find_category($id="",$name=""){
+	function find_sector($id="",$name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
 			WHERE id_sector = {$id} OR sector = '{$name}'");
@@ -22,7 +22,7 @@ class Sector {
 		return $row_count;
 	}
 	 
-	function single_category($id=""){
+	function single_sector($id=""){
 			global $mydb;
 			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
 				Where id_sector= '{$id}' LIMIT 1");

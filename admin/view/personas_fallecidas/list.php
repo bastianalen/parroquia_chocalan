@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
 					echo '<tr>';
 					echo '<td width="1%" align="center"><input type="checkbox" name="selector[]" id="selector[]" value="' . $result->rut . '"/>';
 					echo '<td width="1%" align="center">' . $result->nro_tumba . '</td>';
-					echo '<td><a title="edit" href="' . web_root . 'admin/person/index.php?view=edit&id=' . $result->rut . '"><i class="fa fa-pencil "></i>' . $result->pnombre . '</a></td>';
+					echo '<td><a title="edit" href="' . web_root . 'admin/view/personas_fallecidas/index.php?view=edit&id=' . $result->rut . '"><i class="fa fa-pencil "></i>' . $result->pnombre . '</a></td>';
 					echo '<td>' . $fecha_nacimiento . '</td>';
 					echo '<td>' . $fecha_muerte . '</td>';
 					echo '<td>' . $result->sector . '</td>';

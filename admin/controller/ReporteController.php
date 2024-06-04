@@ -7,10 +7,10 @@ class ReporteController {
             redirect(web_root . "../view/reporte/index.php");
         }
 
-        $section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
+        $sector = isset($_POST['sector']) ? $_POST['sector'] : "";
 
         $reporteModel = new ReporteModel();
-        $reporte = $reporteModel->getReporte($section);
+        $reporte = $reporteModel->getReporte($sector);
 
         $this->view($reporte);
     }

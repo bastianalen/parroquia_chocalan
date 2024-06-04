@@ -23,13 +23,14 @@ class Sector {
 		return $row_count;
 	}
 	 
-	function single_sector($id){
-			global $mydb;
-			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where id_sector = '{$id}' LIMIT 1");
-			$cur = $mydb->loadSingleResult();
-			return $cur;
+	function single_sector($id=""){
+		echo "<script>console.log('id: ')</script>";
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." where id_sector = {$id} LIMIT 1");
+		$cur = $mydb->loadSingleResult();
+		return $cur;
 	}
+	
 	/*---Instantiation of Object dynamically---*/
 	static function instantiate($record) {
 		$object = new self;

@@ -16,4 +16,3 @@ switch ($view) {
 		$content ='index2.php';		
 }
 require_once("../../theme/templates.php");
-?>

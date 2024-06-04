@@ -7,7 +7,7 @@
     background: linear-gradient(45deg, #ddcfb5, #e1e1e1, #e1e1e1, #ddcfb5);
     background-size: 4000% 100%;
     position: relative;
-    animation: cambiar 1s ease-in-out infinite;
+    animation: cambiar 10s ease-in-out infinite;
 }
 
 @keyframes cambiar {
@@ -34,7 +34,9 @@
     background-color: #e1e1e1;
 }
 /* Fin Estilos Generales */
-
+.lower-nav {
+    background-color: #e1e1e1 !important;
+}
 .nav-link-specific{
     color: #000;
     text-decoration: none;
@@ -65,7 +67,6 @@
 /* Fin seccion home */
 .d-block {
     color: #e1e1e1 !important;
-    font-size: 100px;
 }
 .d-block-heading {
     color: #2f4ba5 !important;
@@ -75,6 +76,12 @@
     color: #e1e1e1 !important;
     font-family: 'Sofia', monospace;
     font-size: 65px;
+}
+.padding-20-0 {
+    padding: 20px 0px !important;
+}
+.centrar {
+    margin: auto !important;
 }
 
 /* section about-sec */

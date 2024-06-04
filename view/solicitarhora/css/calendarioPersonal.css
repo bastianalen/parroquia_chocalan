@@ -1,0 +1,10 @@
+.fc th {
+    padding: 10px 0px;
+
+    background: #f2f2f2;
+}
+
+.fc-toolbar h2 {
+    margin-top: 10px;
+    /* Ajusta el margen superior según sea necesario */
+}

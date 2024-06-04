@@ -5,7 +5,6 @@ header('Content-Type: application/json');
 $pdo = new PDO("mysql:dbname=parroquia_chocalan;host=127.0.0.1", "root", "");
 
 $accion = (isset($_GET['accion'])) ? $_GET['accion'] : 'leer';
-
 switch ($accion) {
     case 'agregar':
         /*instruccion de agregado */
@@ -46,8 +45,8 @@ switch ($accion) {
         colorTexto=:colorTexto,
         inicio=:inicio,
         fin=:fin
-        WHERE id=:id
-        ");
+        WHERE id=:id "
+        );
         $respuesta = $sentenciaSQL->execute(
             array(
                 "id"=> $_POST['id'],
@@ -59,21 +58,22 @@ switch ($accion) {
                 "fin" => $_POST['fin'],
             )
         );
+        // echo "<script>console.log(".json_encode($respuesta).")</script>";
         echo json_encode($respuesta);
         break;
     
     default:
-        /*sellecionar los eventos del calendario */
-        $sentenciaSQL = $pdo->prepare("SELECT * FROM tblcaleneucaristia");
-        $sentenciaSQL->execute();
-
-        $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($resultado);
+        try{
+            /*sellecionar los eventos del calendario */
+            $sentenciaSQL = $pdo->prepare("SELECT * FROM tblcaleneucaristia");
+            $sentenciaSQL->execute();
+    
+            $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($resultado);
+        } catch (PDOException $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
         break;
 
     
 }
-
-
-
-?>

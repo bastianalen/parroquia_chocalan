@@ -17,6 +17,17 @@ if (!isset($_SESSION['user_id'])) {
 
   <div class="form-group">
     <div class="col-md-8">
+      <label class="col-md-4 control-label" for="rut">Rut del fallecido:</label>
+
+      <div class="col-md-8">
+        <input class="form-control input-sm" id="rut" name="rut" placeholder="11.111.111-1" type="text"
+          value="">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
       <label class="col-md-4 control-label" for="nro_tumba">Tumba:</label>
 
       <div class="col-md-8">
@@ -80,14 +91,14 @@ if (!isset($_SESSION['user_id'])) {
 
       <div class="col-md-8">
         <select class="form-control input-sm" name="sector" id="sector">
-          <option value="None">ubicación de tumba</option>
+          <option value="0">ubicación de tumba</option>
           <?php
           //Statement
           $mydb->setQuery("SELECT * FROM `tblsector`");
           $cur = $mydb->loadResultList();
 
           foreach ($cur as $result) {
-            echo '<option value=' . $result->sector . ' >' . $result->sector . '</option>';
+            echo '<option value=' . $result->id_sector . ' >' . $result->sector . '</option>';
           }
           ?>
 
@@ -101,10 +112,17 @@ if (!isset($_SESSION['user_id'])) {
       <div class="col-md-8">
 
         <select class="form-control input-sm" name="tipo_tumba" id="tipo_tumba">
-          <option value="None">seleccionar</option>
-          <option value="Individual">Individual</option>
-          <option value="Familiar">Familiar</option>
-          <option value="Individual/Familiar">Individual/Familiar</option>
+          <option value="0">seleccionar</option>
+          <?php
+          //Statement
+          $mydb->setQuery("SELECT * FROM `tbltipotumba`");
+          $cur = $mydb->loadResultList();
+
+          foreach ($cur as $result) {
+            echo '<option value=' . $result->id_tipo_tumba . ' >' . $result->tipo . '</option>';
+          }
+          ?>
+
         </select>
       </div>
     </div>
@@ -149,10 +167,10 @@ if (!isset($_SESSION['user_id'])) {
   </div>
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="pase_sepultacion">Pase de sepultacion:</label>
+      <label class="col-md-4 control-label" for="pase_sepul">Pase de sepultacion:</label>
       <div class="col-md-8">
         
-        <input type="file" id="pase_sepultacion" name="pase_sepultacion" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
+        <input type="file" id="pase_sepul" name="pase_sepul" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">
       </div>
     </div>
   </div>
