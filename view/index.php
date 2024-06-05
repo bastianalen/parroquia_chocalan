@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +15,8 @@
     <!-- Page Title -->
     <title>Parroquia Chocalán</title>
     <!-- General links-->
+    <!-- CSS DONACIONES -->
+    <link href="../view/cssdonaciones.css" rel="stylesheet">
     <!-- Favicon -->
     <link href="vista/img/logosinletras.png" rel="icon">
     <!-- Bundle -->
@@ -34,6 +39,8 @@
 
     <!-- Personal link -->
     <link rel="stylesheet" href="styleIndex.css">
+    <!-- logo de transbank -->
+     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
@@ -891,6 +898,84 @@
             <br><br>
         </div>
     </section>
+
+
+
+    <!--  --------------------------------------------------------------------  -->
+    <!--  --------------------------------------------------------------------  -->
+
+    <!-- Ultimo codigo para redireccionar a seccion de donaciones -->
+
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <div class="text-center">
+                    <h3>Donaciones para nuestra parroquia</h3>
+                    <br>
+                    <p class="parrafo">Tu donacion es fundamental para el funcionamiento de 
+                        nuestra paroquia  y llevar a cabo proyectos de la 
+                        comunidad. Cada aporte, por pequeño que sea, marca la diferencia
+                        y constribuye a fortalecer nuestra labor diaria.
+                        Agradecemos de todo corazon tu apoyo y generosidad. 
+                        Juntos podemos seguir constribuyendo una comunidad mas unidad y solidaria
+                        <br>
+                        <br>
+                        ¡Gracias por ser parte de nuestra familia parroquial!
+                    </p>
+                    <a href="donaciones/donaciones.php" target="_blank">
+                    <br>
+                     <button class="btn btn-primary">ir a donar </button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+            <img src="../view/vista/img/logodonaciones.jpg" class="imagen" alt="imagen a la derecha">
+            <h1 class="text-4xl font-bold text-pink-700">Transbank<span class="text-sm font-thin">Web pay parroquia chocalan</span> </h1>
+        </div>
+    </div>     
+    
+    
+    <!--  --------------------------------------------------------------------  -->
+    <!--  --------------------------------------------------------------------  -->
+    
+    <!-- codigo para realizar donacion desde el index -->
+    
+    <!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <div class="text-center">
+                <h3>Donaciones para nuestra parroquia</h3>
+                <br>
+                <p class="parrafo">
+                    Tu donación es fundamental para el funcionamiento de nuestra parroquia y llevar a cabo proyectos de la comunidad.
+                    Cada aporte, por pequeño que sea, marca la diferencia y contribuye a fortalecer nuestra labor diaria.
+                    Agradecemos de todo corazón tu apoyo y generosidad. 
+                    Juntos podemos seguir construyendo una comunidad más unida y solidaria.
+                    <br>
+                    <br>
+                    ¡Gracias por ser parte de nuestra familia parroquial!
+                </p>
+                <form action="" method="post">
+                    <label for="amount">Monto:</label>
+                    <input type="number" name="amount" id="amount" required>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Ir a donar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="../view/vista/img/logodonaciones.jpg" class="imagen" alt="imagen a la derecha">
+            <h1 class="text-3xl font-bold text-pink-700">Ir a Transbank <span class="text-sm font-thin">Parroquia Chocalan</span></h1>
+        </div>
+    </div>
+    </div> -->
+
+
+    <!--  --------------------------------------------------------------------  -->
+    <!--  --------------------------------------------------------------------  -->
+
+
+ 
 
     <section class="contact-sec position-relative" id="contact2">
         <div class="heading-area text-center">
