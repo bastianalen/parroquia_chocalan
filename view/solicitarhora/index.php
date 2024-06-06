@@ -1,160 +1,232 @@
 <?php
-require_once("../../public/include/initialize.php");
+require_once("../../admin/model/initialize.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calendario</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/moment.min.js"></script>
 
-        <link rel="stylesheet" href="css/fullcalendar.min.css">
-        <script src="js/fullcalendar.min.js"></script>
-        <script src="js/es.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-clockpicker.js"></script>
-        <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
-        <script src="js/funcionSolicitud.js"></script>
-    </head>
-    <body>
-        
-        <div class="container">
-            <div id="CalendarioWeb" style="padding: 3vh;"></div>
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Author -->
+    <meta name="author" content="Themes Industry">
+    <!-- Description -->
+    <meta name="description" content="">
+    <!-- Page Title -->
+    <title>Parroquia Chocalán</title>
+    <!-- General links-->
+    <?php include_once '../../public/link.php'; ?>
+    <!-- Personal link -->
+    <link rel="stylesheet" href="../vista/info.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="solicitarhora.css">
+    <script src="solicitarhora.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+    <!-- Start Loader -->
+    <div class="loader">
+        <div class="indicator">
+            <img src="../vista/img/logito.jpg" alt="Logo" class="logo-loader">
         </div>
-        <script src="js/funcionSolicitud.js"></script>
-    <script>$(document).ready(function () {
-                $('#CalendarioWeb').fullCalendar({
-                    header: {
-                        left: 'today,prev,next',
-                        center: 'title',
-                        right: 'month, basicWeek, basicDay, agendaWeek, agendaDay'
-                    },
-                    
-                    dayClick: function (date, jsEvent, view) {
-                        /*estos hacen que cuando pongas agregar moficar o borrar los otros botones se oculten */
-                        $('#btnAgregar').prop("disabled", false);
-                        $('#btnModificar').prop("disabled", true);
-                        $('#btnEliminar').prop("disabled", true);
-                        
-                        limpiarFormulario();
-                        $('#txtFecha').val(date.format());
-                        $("#ModalEventos").modal();
-                    },
-                    
-                    events: {
-                        url: 'http://localhost/parroquia_chocalan/admin/view/solicitarhora/funcionSolicitud.php',
-                        success: function(response) {
-                            var events = response.map(function(event) {
-                                return {
-                                    id: event.id,
-                                    title: event.titulo,
-                                    start: event.inicio,
-                                    end: event.fin,
-                                    color: event.color,
-                                    textColor: event.colorTexto,
-                                    descripcion: event.descripcion
-                                };
-                            });
-                            return events;
-                        },
-                        error: function(response) {
-                            console.error("Error al cargar eventos:", response);
-                        }
-                    },
-                
-                
-                    eventClick: function (calEvent, jsEvent, view) {
-                        $('#btnAgregar').prop("disabled", true);
-                        $('#btnModificar').prop("disabled", false);
-                        $('#btnEliminar').prop("disabled", false);
-                        
-                        $('#tituloEvento').html(calEvent.title);
-                        /*mostrar la informacion del evento en los inputs*/
-                        $('#txtDescripcion').val(calEvent.descripcion);
-                        $('#txtID').val(calEvent.id);
-                        $('#txtTitulo').val(calEvent.title);
-                        $('#txtColor').val(calEvent.color);
-                        $('#txtHora').val(calEvent.start.format('HH:mm'));
-                        
-                        FechaHora = calEvent.start.format().split("T");
-                        $('#txtFecha').val(FechaHora[0]);
-                        /*$('#txtHora').val(FechaHora[1]);*/
-                        
-                        
-                        $("#ModalEventos").modal();
-                    },
-                    editable: true,
-                    eventDrop: function (calEvent) {
-                        $('#txtID').val(calEvent.id);
-                        $('#txtTitulo').html(calEvent.title);
-                        $('#txtColor').val(calEvent.color);
-                        $('#txtDescripcion').val(calEvent.descripcion);
-                        var fechaHora = calEvent.start.format().split("T");
-                        $('#txtFecha').val(fechaHora[0]);
-                        $('#txtHora').val(calEvent.start);
-                        
-                        RecolectarDatosGUI();
-                        EnviarInformacion('modificar', NuevoEvento, true);
-                    }
-                });
-            });</script>
+    </div>
+    <!-- End Loader -->
+    <!-- Start Header -->
+    <header id="home" class="header-style4 header-style8">
+        <div class="upper-nav">
+            <div class="container">
+                <div class="row">
 
-        <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="tituloEvento"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
+                    <div class="col-12 col-lg-6 mt-auto mb-auto">
 
-                        <input type="hidden" id="txtID" name="txtID">
-                        <input type="hidden" id="txtFecha" name="txtFecha" />
-
-                        <div class="form-row">
-                            <div class="form-group col-md-8">
-                                <label>Título:</label>
-                                <input type="text" id="txtTitulo" class="form-control">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Hora del evento:</label>
-                                <div class="input-group clockpicker" data-autoclose="true">
-                                    <input type="text" id="txtHora" name="inicio" value="" class="form-control" />
-                                </div>
-                            </div>
+                        <div class="toggle-btn d-block d-lg-none">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-                        <div class="form-group">
-                            <label>Descripcion:</label>
-                            <textarea id="txtDescripcion" row="3" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Color:</label>
-                            <input type="color" value="#000000" id="txtColor" class="form-control" style="height: 36px;">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btnAgregar" class="btn btn-success">Agregar</button>
-                        <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
-                        <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <a class="navbar-brand scroll nav-logo d-inline-block d-lg-none" href="#home">
+                            <img src="../vista/img/logosinletras.png" alt="logo">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="lower-nav lower-nav-style4 div-cream-color">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block">
+                    <div class="main-nav collapse navbar-collapse d-flex">
+                        <a class="navbar-brand scroll" href="../index.php#home">
+                            <img src="../vista/img/logosinletras.png" alt="logo">
+                        </a>
+                        <ul class="navbar-nav right-nav d-flex  ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#about-sec">Historia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#servicios">Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Sacramentos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#pateintgallery">Capillas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="toggle-btn toggle-btn-lg d-none d-lg-block">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="broad div-cream-color">
+            <div class="close-nav"><i class="las la-times"></i></div>
+            <nav class="navbar navbar-light">
+                <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
+                    <ul class="navbar-nav text-center">
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../../admin/view/login.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#about-sec">Historia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#sacramentos">Sacramentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#pateintgallery">Capillas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#mini-blog-sec">Personal</a>
+                        </li>
 
-        <script src="js/calendarioPersonal.js"></script>
-        <?php
-            include_once 'funcionSolicitud.php'; 
-        ?>
-    </body>
+
+                        <li class="nav-item">
+                            <a class="nav-link font-Sofia-serif" href="../index.php#contact">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <a id="close_side_menu" class="close_side_menu" href="javascript:void(0);"></a>
+    </header>
+
+
+    <section id="sacramentos" class="about-sec">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area"
+                    data-wow-duration="1s" data-wow-delay=".1s">
+                    <br>
+                    <br>
+                    <span class="d-block font-Sofia-serif"> Agenda </span><br><br>
+                    <span class="d-block font-Sofia-serif">Solicitar servicio</span>
+                </div>
+            </div>
+            <!--Heading-->
+            <div class="row  padding-top-half position-relative container-info">
+                <div class="row container">
+                        <div class="content">
+                            <div class="heading-area text-center">
+                                <h3 class="heading"><span class="d-block d-block-heading font-Sofia-serif tipo-servicio"> </span>
+                                </h3>
+                            </div>
+                            <div class="row justify-content-center container-input-form">
+                                <div class="col-12 col-lg-10 text-center text-lg-left d-flex align-items-center mb-4">
+                                    <!-- Formulario para solicitar un servicio -->
+                                    <form class="row contact-form wow fadeInLeft mx-4 p-2 box box-form" id="contact-form-data" action="controllerSolicitudHora.php?action=add" method="POST">
+                                        <div class="col-12 col-lg-12 px-md-0 text-center">
+                                            <input type="text" name="nombre" placeholder="Nombre" class="form-control input-info">
+                                            <input type="email" name="userEmail" placeholder="E-mail" class="form-control input-info">
+                                            <input type="date" name="fecha" id="fecha" placeholder="01/01/2024" class="form-control input-info">
+                                            <select id="hora_solicitud" name="hora_solicitud" class="form-control">
+                                                <option value="0" class="optionhora">Seleccione hora de atención</option>
+
+                                            </select>
+                                            <select id="tipo_servicio" name="tipo_servicio" class="form-control">
+                                                <option value="0" class="option">Seleccione tipo de servicio</option>
+                                                <?php
+                                                $mydb->setQuery("SELECT * FROM  tbltiposervicio tts");
+                                                $cur = $mydb->loadResultList();
+                                                foreach ($cur as $result) {
+                                                    echo '<option value="'. $result->id_servicio . '" class="option">' . $result->tipo .'</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                            <textarea class="form-control text-area-form" name="userMessage" rows="6"
+                                                placeholder="Escríbenos tu mensaje!"></textarea>
+                                            <button class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit"><span class="fa fa-save fw-fa"></span> Guardar</button>
+                                        </div>
+                                        <br>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- End About -->
+
+
+    <!-- Start Footer -->
+    <footer class="footer padding-top-half padding-bottom-half div-cream-color">
+        <div class="container">
+            <div class="row align-items-center justify-content-center text-center our-loc">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a><i aria-hidden="true" class="las la-paper-plane"></i>parroquiachocalan@gmail.com</a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a><i aria-hidden="true" class="las la-phone"></i>+569 8449 6843</a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a><i aria-hidden="true" class="las la-map-marker"></i> Camino a Cholqui, Chocalán</a>
+                </div>
+            </div>
+            <div class="row align-items-center social-media padding-top-half">
+                <!--Social-->
+                <div class="col-12 text-center">
+                    <div class="footer-social">
+                        <ul class="list-unstyled social-icons social-icons-simple">
+                            <li><a class="facebook_bg_hvr2 wow fadeInUp"
+                                    href="https://www.facebook.com/friends/?profile_id=100009155210147&notif_id=1705949369162720&notif_t=friend_confirmed&ref=notif"><i
+                                        class="fab fa-facebook-f" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Text-->
+                    <p class="company-about fadeIn">&copy; 2024 Made by JennyP@nk <a href="javascript:void(0);"></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <
+    <!-- General js CUSTOM JS -->
+    <?php
+     include_once '../../public/linkScript.php'; 
+     ?>
+</body>
 
 </html>
-

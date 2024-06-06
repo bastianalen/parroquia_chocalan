@@ -932,9 +932,9 @@ header .broad-nav .navbar .nav-item:last-child:after {
     display: none;
 }
 
-.header-style4 .lower-nav-style4 {
+/* .header-style4 .lower-nav-style4 {
     background-color: #ffffff;
-}
+} */
 
 .header-style4 .lower-nav-style4 .navbar {
     background-color: #e1e1e1;
@@ -2000,4 +2000,13 @@ estas son las tarjetas del personal*/
     .social-media .company-about {
         margin-top: 20px;
     }
+}
+
+
+.centrar {
+    margin: auto !important;
+    text-align: center;
+}
+.padding-20-0 {
+    padding: 20px 0px !important;
 }

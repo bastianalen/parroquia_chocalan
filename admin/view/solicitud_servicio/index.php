@@ -1,0 +1,33 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="categoryPersonal.js"></script>
+
+<?php
+require_once("../../model/initialize.php");
+//checkAdmin();
+  	 if (!isset($_SESSION['user_id'])){
+      redirect(web_root."admin/view/index.php");
+     }
+
+$view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
+$header=$view;
+$titulo="Patio";
+switch ($view) {
+	case 'list' :
+		$content    = 'list.php';		
+		break;
+
+	case 'add' :
+		$content    = 'add.php';		
+		break;
+
+	case 'edit' :
+		$content    = 'edit.php';		
+		break;
+    case 'view' :
+		$content    = 'view.php';		
+		break;
+
+	default :
+		$content    = 'list.php';		
+}
+require_once ("../../theme/templates.php");

@@ -98,6 +98,10 @@
                             <li class="nav-item">
                                 <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
                             </li>
+                            <!-- Redirige a la vista del calendario -->
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-specific font-Sofia-serif" href="calendario/index.php">Calendario</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -140,6 +144,9 @@
                         <li class="nav-item">
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
                         </li>
+                        <li class="nav-item">
+                                <a class=" font-Sofia-serif" href="view/calendario/calendario.php">Calendario</a>
+                            </li>
                     </ul>
                 </div>
             </nav>
@@ -335,16 +342,6 @@
                         <span class="ex-line"></span>
                     </a>
                 </div>
-            </div>
-            <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                <a href="solicitarhora/index.php">
-                    <span class="about-icon">
-                        <i class="las la-calendar"></i>
-                    </span>
-                    <h4 class="small-heading font-Sofia-serif ">Solicitar Hora</h4>
-                    <br>
-                    <span class="ex-line"></span>
-                </a>
             </div>
         </div>
     </section>
@@ -1022,7 +1019,7 @@
                     </div>
 
                     <!--Text-->
-                    <p class="company-about fadeIn">&copy; 2024 Made by JennyP@nk <a href="javascript:void(0);"></a></p>
+                    <p class="company-about fadeIn">&copy; 2024 Made by Duoc UC <a href="javascript:void(0);"></a></p>
                 </div>
             </div>
         </div>

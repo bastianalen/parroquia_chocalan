@@ -90,7 +90,7 @@
                 <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
                     <ul class="navbar-nav text-center">
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../../admin/login.php">Login</a>
+                            <a class="nav-link font-Sofia-serif" href="../../admin/view/login.php">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link font-Sofia-serif" href="../index.php#home">Parroquia</a>
@@ -175,6 +175,16 @@
                             </ul>
                         </h4>
                     </div>
+                    <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
+                        <a href="../solicitarhora/index.php">
+                            <span class="about-icon">
+                                <i class="las la-calendar"></i>
+                            </span>
+                            <h4 class="small-heading font-Sofia-serif ">Solicitar Hora</h4>
+                            <br>
+                            <span class="ex-line"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,7 +193,7 @@
 
 
     <!-- Start Footer -->
-    <footer class="footer padding-top-half padding-bottom-half div-cream-color>
+    <footer class="footer padding-top-half padding-bottom-half div-cream-color">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center our-loc">
                 <div class="col-12 col-md-6 col-lg-3">
