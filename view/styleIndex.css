@@ -8,6 +8,7 @@
     background-size: 4000% 100%;
     position: relative;
     animation: cambiar 10s ease-in-out infinite;
+
 }
 
 @keyframes cambiar {
@@ -53,7 +54,7 @@
     background-image: url('vista/img/hola.png');
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    height: 60vh;
 }
 .background-overlay {
     position: absolute;
@@ -74,7 +75,7 @@
 }
 .subtitle{
     color: #e1e1e1 !important;
-    font-family: 'Sofia', monospace;
+    font-family: 'Sofia', serif !important;
     font-size: 65px;
 }
 .padding-20-0 {
@@ -216,5 +217,6 @@
 /* footer */
 footer{
     background-color: #e1e1e1;
+
 }
 /* Fin footer */
