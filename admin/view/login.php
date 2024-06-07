@@ -5,7 +5,7 @@
   <?php
   // login confirmation
   if (isset($_SESSION['user_id'])) {
-    redirect(web_root . "../index.php");
+    redirect(web_root . "admin/view/index.php");
   }
   ?>
 

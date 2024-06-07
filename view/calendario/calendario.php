@@ -1,7 +1,7 @@
 <?php 
-require_once("../../public/include/initialize.php");
+require_once("../../admin/model/initialize.php");
 
-$content='index.php';
+$content='home.php';
 $view = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 switch ($view) {
 	case '1' :
@@ -12,4 +12,3 @@ switch ($view) {
 	    $titulo="Panel Administrador";	
 		$content ='index2.php';		
 }
-require_once("viewsolicitarhora.php");

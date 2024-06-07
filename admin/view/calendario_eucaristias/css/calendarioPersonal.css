@@ -8,3 +8,6 @@
     margin-top: 10px;
     /* Ajusta el margen superior según sea necesario */
 }
+#filtro_tipo_calendario {
+    margin-top: 20px !important;
+}

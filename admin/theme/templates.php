@@ -39,10 +39,11 @@
     <link href="<?php echo web_root; ?>admin/view/css/ekko-lightbox.css" rel="stylesheet">
 
     <!-- Icono de la página -->
-    <link rel="icon" href="administradores/photos/logosinletras.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo web_root; ?>admin/view/img/logosinletras.png" type="image/x-icon">
 
     <!-- Select2 CSS -->
     <link rel="stylesheet" href="<?php echo web_root; ?>admin/select2/select2.min.css">
+
   </head>
 
   <?php
@@ -172,7 +173,7 @@
 
                 <?php if ($_SESSION['id_rol'] == 1) {
                   # code...
-                  ?>
+                ?>
                   <li>
                     <a href="<?php echo web_root; ?>admin/view/administradores/index.php"><i class="fa fa-user"></i> Administradores</a>
 
@@ -188,22 +189,23 @@
                       Cementerio</a>
 
                   </li>
-
+                  
                   <li>
                     <a href="<?php echo web_root; ?>admin/view/pagos_mantencion/index.php"><i class="fa fa fa-cogs"></i> Manteciones Tumbas</a>
-
+                    
                   </li>
-
+                  
                   <li>
-                    <a href="<?php echo web_root; ?>admin/view/calendario_eucaristias/calendario.php"><i class="fa fa-calendar"></i> Calendario
-                      Eucaristías</a>
-
+                    <a href="<?php echo web_root; ?>admin/view/calendario_eucaristias/calendario.php"><i class="fa fa-calendar"></i> CalendarioEucaristías</a>
                   </li>
                   <li>
                     <a href="<?php echo web_root; ?>admin/view/reporte/index.php"><i class="fa fa-print"></i> Reporte</a>
+                    </li>
+                  <li>
+                    <a href="<?php echo web_root; ?>admin/view/solicitud_servicio/index.php"><i class="fa fa-calendar"></i> Solicitud servicios</a>
 
                   </li>
-
+                        
                 <?php } ?>
 
               </ul>
