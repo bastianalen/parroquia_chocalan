@@ -1,12 +1,12 @@
 <?php
-    if (!isset($_SESSION['USERID'])){
+    if (!isset($_SESSION['user_id'])){
       redirect(web_root."admin/view/index.php");
      }
 
 
-  $categoryid = $_GET['id'];
-  $category = New Category();
-  $singlecategory = $category->single_category($categoryid);
+  $id_sector = $_GET['id'];
+  $sector = New Sector();
+  $singlesector = $sector->single_category($id_sector);
 
 ?> 
  <form class="form-horizontal span6" action="controller.php?action=edit" method="POST">
@@ -19,12 +19,12 @@
 
                   <div class="form-group">
                     <div class="col-md-8">
-                      <label class="col-md-4 control-label" for="CATEGORY">Section:</label>
+                      <label class="col-md-4 control-label" for="sector">Section:</label>
 
                       <div class="col-md-8">
-                       <input  id="CATEGID" name="CATEGID"   type="HIDDEN" value="<?php echo $singlecategory->CATEGID; ?>">
-                         <input class="form-control input-sm" id="CATEGORY" name="CATEGORY" placeholder=
-                            "Section" type="text" value="<?php echo $singlecategory->CATEGORIES; ?>">
+                       <input  id="id_sector" name="id_sector"   type="HIDDEN" value="<?php echo $singlesector->id_sector; ?>">
+                         <input class="form-control input-sm" id="sector" name="sector" placeholder=
+                            "Section" type="text" value="<?php echo $singlesector->sector; ?>">
                       </div>
                     </div>
                   </div>

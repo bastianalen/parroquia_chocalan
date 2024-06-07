@@ -1,11 +1,11 @@
 <?php
 require_once("../../model/initialize.php");
-if(!isset($_SESSION['USERID'])){
-	redirect(web_root."../view/index.php");
+if(!isset($_SESSION['user_id'])){
+	redirect(web_root."../index.php");
 }
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
- $title="Usuarios"; 
+ $titulo="Usuarios"; 
  $header=$view; 
 switch ($view) {
 	case 'list' :

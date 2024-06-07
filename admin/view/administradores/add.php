@@ -1,6 +1,6 @@
 <?php
-if (!isset($_SESSION['USERID'])) {
-  redirect(web_root . "admin/index.php");
+if (!isset($_SESSION['user_id'])) {
+  redirect(web_root . "admin/view/index.php");
 }
 
 // $autonum = New Autonumber();
@@ -29,22 +29,22 @@ if (!isset($_SESSION['USERID'])) {
                   </div> -->
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="U_NAME">Nombre y Apellido:</label>
+      <label class="col-md-4 control-label" for="nombre">Nombre y Apellido:</label>
 
       <div class="col-md-8">
         <input name="deptid" type="hidden" value="">
-        <input class="form-control input-sm" id="U_NAME" name="U_NAME" placeholder="nombre y apellido" type="text" value="">
+        <input class="form-control input-sm" id="nombre" name="nombre" placeholder="nombre y apellido" type="text" value="">
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="U_USERNAME">Correo electrónico:</label>
+      <label class="col-md-4 control-label" for="user_nom">Correo electrónico:</label>
 
       <div class="col-md-8">
         <input name="deptid" type="hidden" value="">
-        <input class="form-control input-sm" id="U_USERNAME" name="U_USERNAME" placeholder="E-mail" type="text"
+        <input class="form-control input-sm" id="user_nom" name="user_nom" placeholder="E-mail" type="text"
           value="">
       </div>
     </div>
@@ -52,22 +52,22 @@ if (!isset($_SESSION['USERID'])) {
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="U_PASS">Contraseña:</label>
+      <label class="col-md-4 control-label" for="user_contra">Contraseña:</label>
 
       <div class="col-md-8">
         <input name="deptid" type="hidden" value="">
-        <input class="form-control input-sm" id="U_PASS" name="U_PASS" placeholder="contraseña" type="Password"
+        <input class="form-control input-sm" id="user_contra" name="user_contra" placeholder="contraseña" type="Password"
           value="" required>
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="U_ROLE">Rol:</label>
+      <label class="col-md-4 control-label" for="id_rol">Rol:</label>
 
       <div class="col-md-8">
-        <select class="form-control input-sm" name="U_ROLE" id="U_ROLE">
-          <option value="Administrador">Administrador</option>
+        <select class="form-control input-sm" name="id_rol" id="id_rol">
+          <option value=1>Administrador</option>
         </select>
       </div>
     </div>

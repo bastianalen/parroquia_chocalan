@@ -1,6 +1,6 @@
 
 <?php
-     if (!isset($_SESSION['USERID'])){
+     if (!isset($_SESSION['user_id'])){
       redirect(web_root."admin/view/index.php");
      }
 
@@ -15,10 +15,10 @@
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
-                      "CATEGORY">Section:</label>
+                      "sector">Section:</label>
 
                       <div class="col-md-8">
-                         <input class="form-control input-sm" id="CATEGORY" name="CATEGORY" placeholder=
+                         <input class="form-control input-sm" id="sector" name="sector" placeholder=
                             "Section" type="text" value="">
                       </div>
                     </div>

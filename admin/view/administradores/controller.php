@@ -1,6 +1,6 @@
 <?php
 require_once("../../model/initialize.php");
-if (!isset($_SESSION['USERID'])) {
+if (!isset($_SESSION['user_id'])) {
 	redirect(web_root . "admin/administradores/index.php");
 }
 
@@ -31,23 +31,21 @@ function doInsert()
 	if (isset($_POST['save'])) {
 
 
-		if ($_POST['U_NAME'] == "" or $_POST['U_USERNAME'] == "" or $_POST['U_PASS'] == "") {
+		if ($_POST['nombre'] == "" or $_POST['user_nom'] == "" or $_POST['user_contra'] == "") {
 			$messageStats = false;
 			message("¡Todos los campos son obligatorios!", "error");
 			redirect('index.php?view=add');
 		} else {
 			$user = new User();
-			// $user->USERID 		= $_POST['user_id'];
-			$user->U_NAME = $_POST['U_NAME'];
-			$user->U_USERNAME = $_POST['U_USERNAME'];
-			$user->U_PASS = sha1($_POST['U_PASS']);
-			$user->U_ROLE = $_POST['U_ROLE'];
+			// $user->user_id 		= $_POST['user_id'];
+			$user->nombre = $_POST['nombre'];
+			$user->user_nom = $_POST['user_nom'];
+			$user->user_contra = sha1($_POST['user_contra']);
+			$user->id_rol = $_POST['id_rol'];
+			$user->email = $_POST['user_nom'];
 			$user->create();
 
-			// $autonum = New Autonumber(); 
-			// $autonum->auto_update(2);
-
-			message("¡Nuevo [" . $_POST['U_NAME'] . "] creado exitosamente!", "exito");
+			message("¡Nuevo usuario [" . $_POST['nombre'] . "] creado exitosamente!", "exito");
 			redirect("index.php");
 
 		}
@@ -60,13 +58,14 @@ function doEdit()
 	if (isset($_POST['save'])) {
 
 		$user = new User();
-		$user->U_NAME = $_POST['U_NAME'];
-		$user->U_USERNAME = $_POST['U_USERNAME'];
-		$user->U_PASS = sha1($_POST['U_PASS']);
-		$user->U_ROLE = $_POST['U_ROLE'];
-		$user->update($_POST['USERID']);
+		$user->nombre = $_POST['nombre'];
+		$user->user_nom = $_POST['user_nom'];
+		$user->user_contra = sha1($_POST['user_contra']);
+		$user->id_rol = $_POST['id_rol'];
+		$user->email = $_POST['user_nom'];
+		$user->update($_POST['user_id']);
 
-		message("[" . $_POST['U_NAME'] . "] ha sido actualizado!", "exito");
+		message("[" . $_POST['nombre'] . "] ha sido actualizado!", "exito");
 		redirect("index.php");
 	}
 }
@@ -114,8 +113,8 @@ function doupdateimage()
 
 
 			$user = new User();
-			$user->USERIMAGE = $location;
-			$user->update($_SESSION['USERID']);
+			$user->user_img = $location;
+			$user->update($_SESSION['user_id']);
 			redirect("photos/");
 
 

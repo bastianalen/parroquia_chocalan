@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['USERID'])) {
+if (!isset($_SESSION['user_id'])) {
 	redirect(web_root . "admin/view/index.php");
 }
 ?>
@@ -19,7 +19,6 @@ if (!isset($_SESSION['USERID'])) {
 				<tr>
 					<!-- <th>No.</th> -->
 					<th>
-						<!-- <input type="checkbox" name="chkall" id="chkall" onclick="return checkall('selector[]');">  -->
 						Patios
 					</th>
 					<th width="10%" >Acción</th>
@@ -27,18 +26,14 @@ if (!isset($_SESSION['USERID'])) {
 			</thead>
 			<tbody>
 				<?php
-				$mydb->setQuery("SELECT * FROM `tblcategory`");
+				$mydb->setQuery("SELECT * FROM tblsector");
 				$cur = $mydb->loadResultList();
 
 				foreach ($cur as $result) {
 					echo '<tr>';
-					// echo '<td width="5%" align="center"></td>';
-					// echo '<td>
-					//      <input type="checkbox" name="selector[]" id="selector[]" value="'.$result->CATEGID. '"/>
-					// 		' . $result->CATEGORIES.'</a></td>';
-					echo '<td>' . $result->CATEGORIES . '</td>';
-					echo '<td align="center"><a title="Edit" href="index.php?view=edit&id=' . $result->CATEGID . '" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
-				  		     <a title="Delete" href="controller.php?action=delete&id=' . $result->CATEGID . '" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
+					echo '<td>' . $result->sector . '</td>';
+					echo '<td align="center"><a title="Edit" href="index.php?view=edit&id=' . $result->id_sector . '" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
+				  		     <a title="Delete" href="controller.php?action=delete&id=' . $result->id_sector . '" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
 					// echo '<td></td>';
 					echo '</tr>';
 				}
@@ -49,7 +44,7 @@ if (!isset($_SESSION['USERID'])) {
 		<div class="btn-group">
 			<!--  <a href="index.php?view=add" class="btn btn-default">New</a> -->
 			<?php
-			if ($_SESSION['U_ROLE'] == 'Administrator') {
+			if ($_SESSION['id_rol'] == 1) {
 				// echo '<button type="submit" class="btn btn-default" name="delete"><span class="glyphicon glyphicon-trash"></span> Delete Selected</button'
 				;
 			} ?>

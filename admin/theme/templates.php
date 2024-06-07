@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title><?php echo $title; ?></title>
+    <title><?php echo $titulo; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo web_root; ?>admin/view/css/bootstrap.min.css" rel="stylesheet">
@@ -92,7 +92,7 @@
                     administradores</a>
                 </li>
             </li>
-            <?php if ($_SESSION['U_ROLE'] == 'Administrador') {
+            <?php if ($_SESSION['id_rol'] == 1) {
               # code...
               ?>
             <?php } ?>
@@ -105,7 +105,7 @@
 
           <?php
           $user = new User();
-          $singleuser = $user->single_user($_SESSION['USERID']);
+          $singleuser = $user->single_user($_SESSION['user_id']);
 
           ?>
             
@@ -113,8 +113,8 @@
               <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 Bienvenido
-                <?php echo $_SESSION['U_NAME']; ?> <img title="profile image" width="23px" height="17px"
-                  src="<?php echo web_root . 'admin/view/administradores/' . $singleuser->USERIMAGE ?>">
+                <?php echo $_SESSION['nombre']; ?> <img title="profile image" width="23px" height="17px"
+                  src="<?php echo web_root . 'admin/view/administradores/' . $singleuser->user_img ?>">
 
               </a>
               
@@ -128,7 +128,7 @@
                   <!-- IMAGEN DEL PERFIL DEL USUARIO -->
                   <a href="" data-target="#usermodal" data-toggle="modal">
                     <img title="profile image" width="70" height="80"
-                      src="<?php echo web_root . 'admin/view/administradores/' . $singleuser->USERIMAGE ?>">
+                      src="<?php echo web_root . 'admin/view/administradores/' . $singleuser->user_img ?>">
                   </a>
                 </div>
 
@@ -137,14 +137,14 @@
                   <li><a href="<?php echo web_root; ?>admin/view/administradores/"
                   target="_blank">
                       <?php //echo $_SESSION['USERID']; ?>
-                      <?php echo $_SESSION['U_NAME']; ?>
+                      <?php echo $_SESSION['nombre']; ?>
                       </a>
                   </li>
 
                 <!-- EDITAR PERFIL DEL USUARIO -->
                   <li>
-                    <a title="Edit"
-                      href="<?php echo web_root; ?>admin/view/administradores/index.php?view=edit&id=<?php echo $_SESSION['USERID']; ?>">Editar
+                    <a titulo="Edit"
+                      href="<?php echo web_root; ?>admin/view/administradores/index.php?view=edit&id=<?php echo $_SESSION['user_id']; ?>">Editar
                       mi perfil
                     </a>
                   </li>
@@ -170,7 +170,7 @@
               <ul class="nav" id="side-menu">
 
 
-                <?php if ($_SESSION['U_ROLE'] == 'Administrador') {
+                <?php if ($_SESSION['id_rol'] == 1) {
                   # code...
                   ?>
                   <li>
@@ -231,13 +231,13 @@
                       <div class="rows">
                         <div class="col-md-12">
                           <div class="rows">
-                            <img title="profile image" width="500" height="360" src="<?php echo web_root . 'admin/user/' . $singleuser->USERIMAGE ?>">
+                            <img title="profile image" width="500" height="360" src="<?php echo web_root . 'admin/user/' . $singleuser->user_img ?>">
                           </div><br />
                         </div>
                         <div class="col-md-12">
                           <div class="rows">
                             <div class="col-md-8">
-                              <input type="hidden" name="MIDNO" id="MIDNO" value="<?php echo $_SESSION['USERID']; ?>">
+                              <input type="hidden" name="MIDNO" id="MIDNO" value="<?php echo $_SESSION['user_id']; ?>">
                               <input name="MAX_FILE_SIZE" type="hidden" value="1000000"> 
                               <input id="photo" name="photo" type="file">
                             </div>
@@ -269,10 +269,10 @@
 
             <div class="col-lg-12" style="margin-top: 4%">
               <?php
-              if ($title <> 'Panel Administrador') {
+              if ($titulo <> 'Panel Administrador') {
                 echo '
-                          <p class="breadcrumb" >  <a href="' . web_root . '/admin/view/index.php" title="Panel Administrador" >Panel Administrador</a>  / 
-                              <a href="index.php" title="' . $title . '" >' . $title . '</a> 
+                          <p class="breadcrumb" >  <a href="' . web_root . '/admin/view/index.php" titulo="Panel Administrador" >Panel Administrador</a>  / 
+                              <a href="index.php" titulo="' . $titulo . '" >' . $titulo . '</a> 
                               ' . (isset($header) ? ' / ' . $header : '') . '   </p>';
               } ?>
 
@@ -301,37 +301,35 @@
       <div class="modal fade" id="usermodal" tabindex="-1">
         <!-- Código del modal -->
       </div>
-    <!-- jQuery -->
-    <script src="<?php echo web_root; ?>admin/jquery/jquery.min.js"></script>
+      <!-- jQuery -->
+      <script src="<?php echo web_root; ?>admin/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo web_root; ?>admin/js/bootstrap.min.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="<?php echo web_root; ?>admin/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo web_root; ?>admin/js/metisMenu.min.js"></script>
+      <!-- Metis Menu Plugin JavaScript -->
+      <script src="<?php echo web_root; ?>admin/js/metisMenu.min.js"></script>
 
-    <!-- DataTables JavaScript -->
-    <script src="<?php echo web_root; ?>admin/js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo web_root; ?>admin/js/dataTables.bootstrap.min.js"></script>
+      <!-- DataTables JavaScript -->
+      <script src="<?php echo web_root; ?>admin/js/jquery.dataTables.min.js"></script>
+      <script src="<?php echo web_root; ?>admin/js/dataTables.bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="<?php echo web_root; ?>js/bootstrap-datepicker.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="<?php echo web_root; ?>js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="<?php echo web_root; ?>js/bootstrap-datetimepicker.uk.js"
-      charset="UTF-8"></script>
+      <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datepicker.js" charset="UTF-8"></script>
+      <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+      <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.uk.js" charset="UTF-8"></script>
+      <script type="text/javascript" language="javascript"
+        src="<?php echo web_root; ?>admin/input-mask/jquery.inputmask.js"></script>
+      <script type="text/javascript" language="javascript"
+        src="<?php echo web_root; ?>admin/input-mask/jquery.inputmask.date.extensions.js"></script>
+      <script type="text/javascript" language="javascript"
+        src="<?php echo web_root; ?>admin/input-mask/jquery.inputmask.extensions.js"></script>
 
-    <script type="text/javascript" language="javascript"
-      src="<?php echo web_root; ?>admin/input-mask/jquery.inputmask.js"></script>
-    <script type="text/javascript" language="javascript"
-      src="<?php echo web_root; ?>admin/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script type="text/javascript" language="javascript"
-      src="<?php echo web_root; ?>admin/input-mask/jquery.inputmask.extensions.js"></script>
+      <!-- Custom Theme JavaScript -->
+      <script src="<?php echo web_root; ?>admin/js/ekko-lightbox.js"></script>
+      <script src="<?php echo web_root; ?>admin/js/sb-admin-2.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="<?php echo web_root; ?>admin/js/ekko-lightbox.js"></script>
-    <script src="<?php echo web_root; ?>admin/js/sb-admin-2.js"></script>
-
-    <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>admin/js/janobe.js"></script>
-    <script src="<?php echo web_root; ?>admin/select2/select2.full.min.js"></script>
+      <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>admin/js/janobe.js"></script>
+      <script src="<?php echo web_root; ?>admin/select2/select2.full.min.js"></script>
 
     </body>
     <footer>

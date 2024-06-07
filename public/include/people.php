@@ -1,7 +1,7 @@
 <?php
 require_once(LIB_PATH.DS.'database.php');
 class Person {
-	protected static  $tblname = "tblpeople";
+	protected static  $tblname = "tblpersonas";
 
 	function dbfields () {
 		global $mydb;
@@ -16,7 +16,7 @@ class Person {
 	function find_people($id="",$name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE PEOPLEID = {$id} OR LNAME = '{$name}'");
+			WHERE rut = {$id} OR LNAME = '{$name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
@@ -37,7 +37,7 @@ class Person {
 	function single_people($id=""){
 			global $mydb;
 			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where PEOPLEID= {$id} LIMIT 1");
+				Where rut= {$id} LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
@@ -122,7 +122,7 @@ class Person {
 		}
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE PEOPLEID=". $id;
+		$sql .= " WHERE rut =". $id;
 	  $mydb->setQuery($sql);
 	 	if(!$mydb->executeQuery()) return false; 	
 		
@@ -131,7 +131,7 @@ class Person {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE PEOPLEID=". $id;
+		  $sql .= " WHERE rut=". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  

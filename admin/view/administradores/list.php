@@ -1,5 +1,5 @@
 <?php
-	 if (!isset($_SESSION['USERID'])){
+	 if (!isset($_SESSION['user_id'])){
       redirect(web_root."../view/index.php");
      }
 
@@ -32,16 +32,16 @@
 				  		// $mydb->setQuery("SELECT * 
 								// 			FROM  `tblusers` WHERE TYPE != 'Customer'");
 				  		$mydb->setQuery("SELECT * 
-											FROM  `tbluseraccount`");
+											FROM  tblcuentauser tu INNER JOIN tblroluser tr on tu.id_rol = tr.id_rol");
 				  		$cur = $mydb->loadResultList();
 
 						foreach ($cur as $result) {
 				  		echo '<tr>';
 				  		// echo '<td width="5%" align="center"></td>';
-				  		echo '<td>' . $result->U_NAME.'</a></td>';
-				  		echo '<td>'. $result->U_USERNAME.'</td>';
-				  		echo '<td>'. $result->U_ROLE.'</td>';
-				  		If($result->USERID==$_SESSION['USERID'] || $result->U_ROLE=='MainAdministrator' || $result->U_ROLE=='Administrator') {
+				  		echo '<td>' . $result->nombre.'</a></td>';
+				  		echo '<td>'. $result->user_nom.'</td>';
+				  		echo '<td>'. $result->rol_nom.'</td>';
+				  		If($result->user_id==$_SESSION['user_id'] || $result->id_rol== 2 || $result->id_rol== 1 ) {
 				  			$active = "Disabled";
 
 				  		}else{
@@ -49,8 +49,8 @@
 
 				  		}
 
-				  		echo '<td align="center" > <a title="Editar" href="index.php?view=edit&id='.$result->USERID.'"  class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></span></a>
-				  					 <a title="Borrar" href="controller.php?action=delete&id='.$result->USERID.'" class="btn btn-danger btn-xs" ><span class="fa fa-trash-o fw-fa"></span> </a>
+				  		echo '<td align="center" > <a title="Editar" href="index.php?view=edit&id='.$result->user_id.'"  class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></span></a>
+				  					 <a title="Borrar" href="controller.php?action=delete&id='.$result->user_id.'" class="btn btn-danger btn-xs" ><span class="fa fa-trash-o fw-fa"></span> </a>
 				  					 </td>';
 				  		echo '</tr>';
 				  	} 

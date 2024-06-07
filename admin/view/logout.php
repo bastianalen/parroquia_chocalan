@@ -7,11 +7,11 @@ require_once '../model/initialize.php';
 @session_start();
 
 // 2. Unset all the session variables
-unset( $_SESSION['USERID'] );
-unset( $_SESSION['U_NAME'] );
-unset( $_SESSION['U_USERNAME'] );
-unset( $_SESSION['U_PASS'] );
-unset( $_SESSION['U_ROLE'] ); 
+unset( $_SESSION['user_id'] );
+unset( $_SESSION['nombre'] );
+unset( $_SESSION['user_nom'] );
+unset( $_SESSION['user_contra'] );
+unset( $_SESSION['id_rol'] ); 
 // 4. Destroy the session
 // session_destroy();
 redirect(web_root."admin/view/login.php?logout=1");

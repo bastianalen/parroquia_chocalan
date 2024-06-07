@@ -1,13 +1,13 @@
 <?php
 require_once("../../model/initialize.php");
 //checkAdmin();
-  	 if (!isset($_SESSION['USERID'])){
+  	 if (!isset($_SESSION['user_id'])){
       redirect(web_root."admin/view/index.php");
      }
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 $header=$view;
-$title="Patio";
+$titulo="Patio";
 switch ($view) {
 	case 'list' :
 		$content    = 'list.php';		
@@ -28,5 +28,3 @@ switch ($view) {
 		$content    = 'list.php';		
 }
 require_once ("../../theme/templates.php");
-?>
-  

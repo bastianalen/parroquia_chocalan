@@ -6,7 +6,7 @@
 //(\ for windows, / for Unix)
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'PARROQUIA_CHOCALAN');
+defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'parroquia_chocalan');
 
 defined('LIB_PATH') ? null : define ('LIB_PATH',SITE_ROOT.DS.'public'.DS.'include');
 
@@ -16,7 +16,7 @@ require_once(LIB_PATH.DS."function.php");
 require_once(LIB_PATH.DS."session.php");
 require_once(LIB_PATH.DS."accounts.php");
 //require_once(LIB_PATH.DS."autonumbers.php");
-require_once(LIB_PATH.DS."categories.php");
+require_once(LIB_PATH.DS."sector.php");
 //require_once(LIB_PATH.DS."orders.php");
 //require_once(LIB_PATH.DS."stockin.php");
 //require_once(LIB_PATH.DS."types.php");

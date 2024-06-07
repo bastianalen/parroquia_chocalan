@@ -1,5 +1,5 @@
 <?php
-    if (!isset($_SESSION['USERID'])){
+    if (!isset($_SESSION['user_id'])){
       redirect(web_root."admin/view/index.php");
      }
 

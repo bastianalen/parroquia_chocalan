@@ -1,20 +1,20 @@
 <?php
 require_once("../../model/initialize.php");
-if(!isset($_SESSION['USERID'])){
+if(!isset($_SESSION['user_id'])){
 	redirect(web_root."../view/index.php");
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <!--full calendario-->
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calendario</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <!--full calendario-->
     <link rel="stylesheet" href="css/fullcalendar.min.css">
     <script src="js/fullcalendar.min.js"></script>
     <script src="js/es.js"></script>
@@ -22,33 +22,13 @@ if(!isset($_SESSION['USERID'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="js/bootstrap-clockpicker.js"></script>
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
-
-    <style>
-        .fc th {
-            padding: 10px 0px;
-
-            background: #f2f2f2;
-        }
-
-        .fc-toolbar h2 {
-            margin-top: 10px;
-            /* Ajusta el margen superior según sea necesario */
-        }
-    </style>
 </head>
-
 <body>
-
+    
     <div class="container">
-        <!-- <div class="row">
-            <div class="col"></div>
-            <div class="col-lg-8 col-md-10 col-sm-12"> -->
-                <div id="CalendarioWeb" style="padding: 3vh;"></div>
-            <!-- </div>
-            <div class="col"></div>
-        </div> -->
+        <div id="CalendarioWeb" style="padding: 3vh;"></div>
     </div>
-
+    
     <script>
         $(document).ready(function () {
             $('#CalendarioWeb').fullCalendar({
@@ -63,62 +43,81 @@ if(!isset($_SESSION['USERID'])){
                     $('#btnAgregar').prop("disabled", false);
                     $('#btnModificar').prop("disabled", true);
                     $('#btnEliminar').prop("disabled", true);
-
+                    
                     limpiarFormulario();
                     $('#txtFecha').val(date.format());
                     $("#ModalEventos").modal();
                 },
-
-                events: 'http://localhost/parroquia_chocalan/admin/view/calendario_eucaristias/eventos.php',
-
                 
+                events: {
+                    url: 'http://localhost/parroquia_chocalan/admin/view/calendario_eucaristias/eventos.php',
+                    success: function(response) {
+                        var events = response.map(function(event) {
+                            return {
+                                id: event.id,
+                                title: event.titulo,
+                                start: event.inicio,
+                                end: event.fin,
+                                color: event.color,
+                                textColor: event.colorTexto,
+                                descripcion: event.descripcion
+                            };
+                        });
+                        return events;
+                    },
+                    error: function(response) {
+                        console.error("Error al cargar eventos:", response);
+                    }
+                },
+            
+            
                 eventClick: function (calEvent, jsEvent, view) {
                     $('#btnAgregar').prop("disabled", true);
                     $('#btnModificar').prop("disabled", false);
                     $('#btnEliminar').prop("disabled", false);
-
+                    
                     $('#tituloEvento').html(calEvent.title);
                     /*mostrar la informacion del evento en los inputs*/
                     $('#txtDescripcion').val(calEvent.descripcion);
                     $('#txtID').val(calEvent.id);
                     $('#txtTitulo').val(calEvent.title);
-                    $('#txtColor').html(calEvent.color);
-
-                    FechaHora = calEvent.start._i.split(" ");
+                    $('#txtColor').val(calEvent.color);
+                    $('#txtHora').val(calEvent.start.format('HH:mm'));
+                    
+                    FechaHora = calEvent.start.format().split("T");
                     $('#txtFecha').val(FechaHora[0]);
                     /*$('#txtHora').val(FechaHora[1]);*/
-
-
+                    
+                    
                     $("#ModalEventos").modal();
                 },
                 editable: true,
                 eventDrop: function (calEvent) {
                     $('#txtID').val(calEvent.id);
                     $('#txtTitulo').html(calEvent.title);
-                    $('#txtColor').html(calEvent.color);
+                    $('#txtColor').val(calEvent.color);
                     $('#txtDescripcion').val(calEvent.descripcion);
-
                     var fechaHora = calEvent.start.format().split("T");
                     $('#txtFecha').val(fechaHora[0]);
-                    $('#txtHora').val(fechaHora[1]);
-
+                    $('#txtHora').val(calEvent.start);
+                    
                     RecolectarDatosGUI();
                     EnviarInformacion('modificar', NuevoEvento, true);
                 }
             });
         });
-
+    
     </script>
 
-    <!-- Modal (agregar, modificar, eliminar)-->
+<!-- Modal (agregar, modificar, eliminar)-->
     <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloEvento"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tituloEvento"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -134,7 +133,7 @@ if(!isset($_SESSION['USERID'])){
                         <div class="form-group col-md-4">
                             <label>Hora del evento:</label>
                             <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" id="txtHora" value="10:30" class="form-control" />
+                                <input type="text" id="txtHora" name="inicio" value="" class="form-control" />
                             </div>
                         </div>
                     </div>
@@ -161,7 +160,6 @@ if(!isset($_SESSION['USERID'])){
 
         $('#btnAgregar').click(function () {
             RecolectarDatosGUI();
-            /*EnviarInformacion('agregar', NuevoEvento);*/
             EnviarInformacion('agregar', NuevoEvento);
 
         });
@@ -179,17 +177,20 @@ if(!isset($_SESSION['USERID'])){
         });
 
         function RecolectarDatosGUI() {
+            
             NuevoEvento = {
                 id: $('#txtID').val(),
-                title: $('#txtTitulo').val(),
-                start: $('#txtFecha').val() + " " + $('#txtHora').val(),
+                titulo: $('#txtTitulo').val(),
+                inicio: $('#txtFecha').val() + " " + $('#txtHora').val(),
                 color: $('#txtColor').val(),
                 descripcion: $('#txtDescripcion').val(),
-                textColor: "#FFFFFF",
-                end: $('#txtFecha').val() + " " + $('#txtHora').val(),
+                colorTexto: "#FFFFFF",
+                fin: $('#txtFecha').val() + " " + $('#txtHora').val(),
             };
         }
+
         function EnviarInformacion(accion, objEvento, modal) {
+
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost/parroquia_chocalan/admin/view/calendario_eucaristias/eventos.php?accion=' + accion,
@@ -203,9 +204,9 @@ if(!isset($_SESSION['USERID'])){
                     }
                 },
                 error: function () {
-                    alert("Hay un error..");
+                    alert("Error en la solicitud.");
                 }
-            });
+            },);
         }
         $('.clockpicker').clockpicker();
         function limpiarFormulario() {
@@ -215,6 +216,7 @@ if(!isset($_SESSION['USERID'])){
             $('#txtDescripcion').val();
         }
     </script>
+
 </body>
 
 </html>

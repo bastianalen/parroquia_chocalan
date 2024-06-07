@@ -4,7 +4,7 @@
   ?>
   <?php
   // login confirmation
-  if (isset($_SESSION['USERID'])) {
+  if (isset($_SESSION['user_id'])) {
     redirect(web_root . "../index.php");
   }
   ?>

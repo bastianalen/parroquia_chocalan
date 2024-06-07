@@ -1,9 +1,9 @@
 
 <?php
 require_once ("../../model/initialize.php");
- 	 if (!isset($_SESSION['USERID'])){
-      redirect(web_root."admin/view/index.php");
-     }
+if (!isset($_SESSION['user_id'])){
+ redirect(web_root."admin/view/index.php");
+}
 
 
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
@@ -22,70 +22,42 @@ switch ($action) {
 	break;
 
  
-	}
+}
    
-	function doInsert(){
-		if(isset($_POST['save'])){
-
-
-		if ( $_POST['CATEGORY'] == "" ) {
+function doInsert(){
+	if(isset($_POST['save'])){
+		
+		if ( empty($_POST['sector']) ) {
 			$messageStats = false;
 			message("All field is required!","error");
 			redirect('index.php?view=add');
 		}else{	
-			$category = New Category();
-			$category->CATEGORIES	= $_POST['CATEGORY'];
-			$category->create();
-
-			message("
-			¡Nueva Sección creada exitosamente!", "success");
+			$sector = new Sector();
+			echo "<script> console.log(' ". $_POST['sector'] ." ') </script>";
+			$sector->sector	= $_POST['sector'];
+			$sector->create();
+			message("¡Nueva Sección creada exitosamente!", "success");
 			redirect("index.php");
 			
 		}
-		}
-
 	}
+}
 
-	function doEdit(){
-		if(isset($_POST['save'])){
-
-			$category = New Category();
-			$category->CATEGORIES	= $_POST['CATEGORY'];
-			$category->update($_POST['CATEGID']);
-
-			message("¡La sección ha sido actualizada!", "success");
-			redirect("index.php");
-		}
-
+function doEdit(){
+	if(isset($_POST['save'])){
+		$sector = new Sector();
+		$sector->sector	= $_POST['sector'];
+		$sector->update($_POST['id_sector']);
+		message("¡La sección ha sido actualizada!", "success");
+		redirect("index.php");
 	}
+}
 
-
-	function doDelete(){
-		// if (isset($_POST['selector'])==''){
-		// message("Select a records first before you delete!","error");
-		// redirect('index.php');
-		// }else{
-
-			$id = $_GET['id'];
-
-			$category = New Category();
-			$category->delete($id);
-
-			message("¡Sección ya eliminada!","info");
-			redirect('index.php');
-
-		// $id = $_POST['selector'];
-		// $key = count($id);
-
-		// for($i=0;$i<$key;$i++){
-
-		// 	$category = New Category();
-		// 	$category->delete($id[$i]);
-
-		// 	message("Category already Deleted!","info");
-		// 	redirect('index.php');
-		// }
-		// }
-		
-	}
-?>
+function doDelete(){
+		$id = $_GET['id'];
+		$sector = new Sector();
+		$sector->delete($id);
+		message("¡Sección ya eliminada!","info");
+		redirect('index.php');
+	
+}

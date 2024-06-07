@@ -43,77 +43,79 @@ function doInsert()
 	if (isset($_POST['save'])) {
 
 
-		$borndate = $_POST['BORNDATE'];
-		$dieddate = $_POST['DIEDDATE'];
+		// Separación de nacimiento
+		$fecha_nacimiento = $_POST['fecha_nacimiento'];
+		$partes_fecha_nacimiento = explode("/", $fecha_nacimiento);
+		$dd_nacimiento = $partes_fecha_nacimiento[0];
+		$mm_nacimiento = $partes_fecha_nacimiento[1];
+		$yyyy_nacimiento = $partes_fecha_nacimiento[2];
+		
+		// Separación de muerte
+		$fecha_muerte = $_POST['fecha_muerte'];
+		$partes_fecha_muerte = explode("/", $fecha_muerte);
+		$dd_muerte = $partes_fecha_muerte[0];
+		$mm_muerte = $partes_fecha_muerte[1];
+		$yyyy_muerte = $partes_fecha_muerte[2];
 
-		if (isset($_FILES['ESCRITURA'])) {
-			$archivo_nombre = $_FILES['ESCRITURA']['name'];
-			$archivo_tmp = $_FILES['ESCRITURA']['tmp_name'];
-			$archivo_tipo = $_FILES['ESCRITURA']['type'];
-			$archivo_tamanio = $_FILES['ESCRITURA']['size'];
 
-			// Verificar si se cargó un archivo
-			if (!empty($archivo_nombre)) {
+		// Actualización de documentos
+		$archivo_destino_escritura = actualizarArchivo('escritura', '');
+        $archivo_destino_new_escritura = actualizarArchivo('new_escritura', '');
+		$archivo_destino_pase_sepul = actualizarArchivo('pase_sepul', '');
 
-				// Obtener la extensión del archivo
-				$archivo_extension = pathinfo($archivo_nombre, PATHINFO_EXTENSION);
-
-				// Ejemplo de uso
-				$archivo_nombre = generarCadenaAleatoria();
-				$archivo_nombre = $archivo_nombre . "." . $archivo_extension;
-
-				// Ruta donde se guardará el archivo
-				$carpeta_destino = 'archivos/';
-				// Crear una carpeta si no existe
-				if (!file_exists($carpeta_destino)) {
-					mkdir($carpeta_destino, 0777, true);
-				}
-				// Mover el archivo cargado a la carpeta de destino
-				$archivo_destino = $carpeta_destino . $archivo_nombre;
-				move_uploaded_file($archivo_tmp, $archivo_destino);
-
-			}
+		# Transforma el rut y deja solo numeros
+		if (str_contains($_POST['rut'], ".") || str_contains($_POST['rut'], "-")) {
+			$rut = str_replace(['.', '-'], '', $_POST['rut']);
+		} else {
+			$rut = $_POST['rut'];
 		}
 
+		$pnombre = $_POST['pnombre'];
+		$sector = $_POST['sector'];
+		$tipo_tumba = $_POST['tipo_tumba'];
 
-		if ($_POST['FNAME'] == "") {
-			$messageStats = false;
+		$errores = validarDatos($rut, $pnombre , $sector, $tipo_tumba);
+
+		if (!empty($errores)) {
 			message("¡Todos los campos son obligatorios!", "error");
 			redirect('index.php?view=add');
 		} else {
 
-			$sql = "SELECT * FROM `tblpeople` WHERE `GRAVENO`= '" . $_POST['GRAVENO'] . "'  AND  `CATEGORIES`='" . $_POST['CATEGORIES'] . "' AND `TIPO_TUMBA`='" . $_POST['TIPO_TUMBA'] . "'";
+			
+			echo "<script>console.log('rut:  " . $rut . " ')</script>";
+			echo "<script>console.log('sector:  " . $_POST['sector'] . " ')</script>";
+			echo "<script>console.log('tipo tumba:  " . $_POST['tipo_tumba'] . " ')</script>";
+
+			$sql = "SELECT * FROM tblpersonas WHERE rut= '" . $rut . "'";
 			$mydb->setQuery($sql);
 			$cur = $mydb->loadSingleResult();
 
-			$autonumber = new Autonumber();
-				$res = $autonumber->set_autonumber('PEOPLEID');
+			if(!empty($cur)){
+				message("¡Esta persona ya esta registrada!", "error");
 
+			}else {
 				$p = new Person();
-				$p->PEOPLEID = $res->AUTO;
-				$p->FNAME = $_POST['FNAME'];
-				$p->PROPIETARIO = $_POST['PROPIETARIO'];
-				$p->MNAME = $_POST['MNAME'];
-				$p->CATEGORIES = $_POST['CATEGORIES'];
-				$p->BORNDATE = $borndate;
-				$p->DIEDDATE = $dieddate;
-				$p->TIPO_TUMBA = $_POST['TIPO_TUMBA'];
-				$p->GRAVENO = $_POST['GRAVENO'];
-				$p->ESCRITURA = $archivo_destino;
+				$p->rut = $rut;
+				$p->nro_tumba = $_POST['nro_tumba'];
+				$p->pnombre = $_POST['pnombre'];
+				$p->id_sector = $_POST['sector'];
+				$p->tipo_tumba = $_POST['tipo_tumba'];
+				$p->propietario = $_POST['propietario'];
+				$p->caracteristicas = $_POST['caracteristicas'];
+				$p->dd_nacimiento = $dd_nacimiento;
+				$p->mm_nacimiento = $mm_nacimiento;
+				$p->yyyy_nacimiento = $yyyy_nacimiento;
+				$p->dd_muerte = $dd_muerte;
+				$p->mm_muerte = $mm_muerte;
+				$p->yyyy_muerte = $yyyy_muerte;
+				$p->escritura = $archivo_destino_escritura;
+				$p->new_escritura = $archivo_destino_new_escritura;
+				$p->pase_sepul = $archivo_destino_pase_sepul;
 				$p->create();
-				// }
-
-
-
-				$autonumber = new Autonumber();
-				$autonumber->auto_update('PEOPLEID');
-
-
-
 				message("¡Nuevo registro creado exitosamente!", "exito");
-				redirect("index.php");
-				
+			}
 
+			redirect("index.php");
 
 		}
 
@@ -127,21 +129,50 @@ function doEdit()
 
 	if (isset($_POST['save'])) {
 
-		// $borndate =  ($_POST['BORNDATE'] !='' || $_POST['BORNDATE'] !='0m/dd/yyyy') ? @date_format(date_create($_POST['BORNDATE']), "Y-m-d"): '0000-00-00';
-		// $dieddate =  ($_POST['DIEDDATE'] !='' || $_POST['DIEDDATE'] !='0m/dd/yyyy') ? @date_format(date_create($_POST['DIEDDATE']), "Y-m-d") : '0000-00-00';
-		$borndate = $_POST['BORNDATE'];
-		$dieddate = $_POST['DIEDDATE'];
+		// Separación de nacimiento
+		$fecha_nacimiento = $_POST['fecha_nacimiento'];
+		$partes_fecha_nacimiento = explode("/", $fecha_nacimiento);
+		$dd_nacimiento = $partes_fecha_nacimiento[0];
+		$mm_nacimiento = $partes_fecha_nacimiento[1];
+		$yyyy_nacimiento = $partes_fecha_nacimiento[2];
+		
+		// Separación de muerte
+		$fecha_muerte = $_POST['fecha_muerte'];
+		$partes_fecha_muerte = explode("/", $fecha_muerte);
+		$dd_muerte = $partes_fecha_muerte[0];
+		$mm_muerte = $partes_fecha_muerte[1];
+		$yyyy_muerte = $partes_fecha_muerte[2];
+
+		// Actualización de documentos
+		$archivo_destino_escritura = actualizarArchivo('escritura', 'escritura_antigua');
+        $archivo_destino_new_escritura = actualizarArchivo('new_escritura', 'new_escritura_antigua');
+		$archivo_destino_pase_sepul = actualizarArchivo('pase_sepul', 'pase_sepul_antiguo');
 
 		$p = new Person();
-		$p->FNAME = $_POST['FNAME'];
-		$p->PROPIETARIO = $_POST['PROPIETARIO'];
-		$p->MNAME = $_POST['MNAME'];
-		$p->CATEGORIES = $_POST['CATEGORIES'];
-		$p->BORNDATE = $borndate;
-		$p->DIEDDATE = $dieddate;
-		$p->GRAVENO = $_POST['GRAVENO'];
-		$p->TIPO_TUMBA = $_POST['TIPO_TUMBA'];
-		$p->update($_POST['PEOPLEID']);
+		$p->nro_tumba = $_POST['nro_tumba'];
+		$p->pnombre = $_POST['pnombre'];
+		$p->id_sector = $_POST['id_sector'];
+		$p->tipo_tumba = $_POST['tipo_tumba'];
+		$p->propietario = $_POST['propietario'];
+		$p->caracteristicas = $_POST['caracteristicas'];
+		$p->dd_nacimiento = $dd_nacimiento;
+		$p->mm_nacimiento = $mm_nacimiento;
+		$p->yyyy_nacimiento = $yyyy_nacimiento;
+		$p->dd_muerte = $dd_muerte;
+		$p->mm_muerte = $mm_muerte;
+		$p->yyyy_muerte = $yyyy_muerte;
+		// Actualización de archivos
+        if (!empty($archivo_destino_escritura)) {
+            $p->escritura = $archivo_destino_escritura;
+        }
+		if (!empty($archivo_destino_new_escritura)) {
+            $p->new_escritura = $archivo_destino_new_escritura;
+        }
+		if (!empty($archivo_destino_pase_sepul)) {
+            $p->pase_sepul = $archivo_destino_pase_sepul;
+        }
+
+		$p->update($_POST['rut']);
 
 
 		message("¡El registro ha sido actualizado!", "éxito");
@@ -178,4 +209,78 @@ function doDelete()
 }
 
 
-?>
+// Funcion para actualizar los archivos
+function actualizarArchivo($nombreCampo, $nuevoNombreCarpeta) {
+    $archivo_destino = '';
+    if (isset($_FILES[$nombreCampo])) {
+        $archivo_nombre = $_FILES[$nombreCampo]['name'];
+        $archivo_tmp = $_FILES[$nombreCampo]['tmp_name'];
+        $archivo_tipo = $_FILES[$nombreCampo]['type'];
+        $archivo_tamanio = $_FILES[$nombreCampo]['size'];
+
+        // Verificar si se cargó un archivo
+        if (!empty($archivo_nombre)) {
+            // Obtener la extensión del archivo
+            $archivo_extension = pathinfo($archivo_nombre, PATHINFO_EXTENSION);
+
+            // Generar un nuevo nombre para el archivo
+            $archivo_nombre = generarCadenaAleatoria() . "." . $archivo_extension;
+
+            // Ruta donde se guardará el archivo
+            $carpeta_destino = 'archivos/';
+            // Crear una carpeta si no existe
+            if (!file_exists($carpeta_destino)) {
+                mkdir($carpeta_destino, 0777, true);
+            }
+
+			if ($nuevoNombreCarpeta !== "") {
+				// Mover el archivo antiguo a otra carpeta archivo_antiguo
+				$person = new Person();
+				$s = $person->single_people($_POST['rut']);
+				$archivo_antiguo = $s->$nombreCampo;
+				
+				if (!empty($archivo_antiguo) && file_exists($archivo_antiguo)) {
+					$carpeta_antiguos = 'archivos_antiguos_' . $nombreCampo . '/';
+					if (!file_exists($carpeta_antiguos)) {
+						mkdir($carpeta_antiguos, 0777, true);
+					}
+					$nombre_archivo_antiguo = $carpeta_antiguos . $s->pnombre . '_' . time() . '.' . pathinfo($archivo_antiguo, PATHINFO_EXTENSION);
+					rename($archivo_antiguo, $nombre_archivo_antiguo);
+				}
+			}
+
+            // Mover el archivo cargado a la carpeta de destino
+            $archivo_destino = $carpeta_destino . $archivo_nombre;
+            move_uploaded_file($archivo_tmp, $archivo_destino);
+        }
+    }
+    return $archivo_destino;
+}
+
+# Funcion para validar datos
+function validarDatos($rut, $pnombre, $sector, $tipo_tumba) {
+    $errores = [];
+
+    // Validar Rut (no vacío)
+    if (empty($rut)) {
+        $errores[] = "El Rut no puede estar vacío.";
+    }
+
+    // Validar Fallecido (no vacío)
+    if (empty($pnombre)) {
+        $errores[] = "El campo 'Fallecido' no puede estar vacío.";
+    }
+
+    // Validar Patio (distinto de 0)
+    if ($sector == 0) {
+        $errores[] = "Debe seleccionar un patio válido.";
+    }
+
+    // Validar Tipo Tumba (distinto de 0)
+    if ($tipo_tumba == 0) {
+        $errores[] = "Debe seleccionar un tipo de tumba válido.";
+    }
+
+    // Retornar errores (si los hay)
+    return $errores;
+}

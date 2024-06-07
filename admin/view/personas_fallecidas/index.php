@@ -2,14 +2,14 @@
 require_once("../../model/initialize.php");
 //checkAdmin();
 	# code...
-if(!isset($_SESSION['USERID'])){
+if(!isset($_SESSION['user_id'])){
 	redirect(web_root."admin/view/index.php");
 }
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 
 	$header=$view;
-	$title="Fallecidos"; 
+	$titulo="Fallecidos"; 
 	switch ($view) {
 
 	case 'list' :
@@ -31,12 +31,10 @@ $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
   
 
   	default :
-	$title="Fallecidos";
+	$titulo="Fallecidos";
 		$content    = 'list.php';
 	}
   
 
 require_once ("../../theme/templates.php");
 
-?>
-  

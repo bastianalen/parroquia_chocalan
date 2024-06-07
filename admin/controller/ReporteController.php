@@ -3,14 +3,14 @@ require_once("../model/initialize.php");
 
 class ReporteController {
     public function index() {
-        if (!isset($_SESSION['USERID'])) {
+        if (!isset($_SESSION['user_id'])) {
             redirect(web_root . "../view/reporte/index.php");
         }
 
-        $section = isset($_POST['SECTION']) ? $_POST['SECTION'] : "";
+        $sector = isset($_POST['sector']) ? $_POST['sector'] : "";
 
         $reporteModel = new ReporteModel();
-        $reporte = $reporteModel->getReporte($section);
+        $reporte = $reporteModel->getReporte($sector);
 
         $this->view($reporte);
     }

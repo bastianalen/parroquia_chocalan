@@ -16,7 +16,7 @@ require_once(LIB_PATH.DS."function.php");
 require_once(LIB_PATH.DS."session.php");
 require_once(LIB_PATH.DS."accounts.php");
 //require_once(LIB_PATH.DS."autonumbers.php");
-require_once(LIB_PATH.DS."categories.php");
+require_once(LIB_PATH.DS."sector.php");
 //require_once(LIB_PATH.DS."orders.php");
 //require_once(LIB_PATH.DS."stockin.php");
 //require_once(LIB_PATH.DS."types.php");
@@ -30,4 +30,3 @@ require_once(LIB_PATH.DS."people.php");
 
 
 //require_once(LIB_PATH.DS."database.php");
-?>
