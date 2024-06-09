@@ -264,10 +264,11 @@ table {
     page-break-after: avoid;
   }
   .navbar {
-    display: none;
+    display: right;
   }
- .sidebar {
-    position: absolute;
+ .sidebar { 
+
+    position: relative;
     top: 0; bottom: 0; right: 0;
 }
   .table td,
@@ -304,7 +305,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -349,9 +350,15 @@ img {
 }
 
 .img-responsive {
-  display: block;
+  
   height: auto;
+  display: block;
+  margin: 0 auto;
   max-width: 100%;
+}
+.login-image {
+  display: block;
+  margin: 0 auto;
 }
 
 .img-rounded {
@@ -466,7 +473,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }

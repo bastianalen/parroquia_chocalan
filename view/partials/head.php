@@ -11,6 +11,8 @@
 
     <!-- General links-->
     <?php include_once '../../public/link.php'; ?>
+    <!-- General links-->
+    <?php include_once '../../public/links.php'; ?>
     <!-- Personal link -->
-    <link rel="stylesheet" href="../vista/info.css">
+    <link rel="stylesheet" href="../../public/vista/info.css">
 </head>

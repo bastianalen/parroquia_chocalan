@@ -8,9 +8,9 @@ $(document).ready(function () {
             // Se realiza una petición AJAX para obtener las horas de atención tomadas de la fecha seleccionada
             // Se llama a la consulta find_solicitud en el archivo solicitud.php y se envia la fecha seleccionada
             $.ajax({
-                url: '../../public/include/solicitud.php',
+                url: '../../model/solicitud.php',
                 type: 'POST',
-                data: { find_solicitud: '', fecha: fechaSeleccionada },
+                data: { find_solicitud: '', fecha: fechaSeleccionada, id_solicitud: 0 },
                 dataType: 'json', // Esperamos recibir JSON como respuesta
                 success: function (response) {
                     // Se obtiene la respuesta y se valida la recepcion de datos de la base de datos
@@ -26,7 +26,7 @@ $(document).ready(function () {
                         });
                         console.log(options)
                         $.ajax({
-                            url: '../../public/include/solicitud.php',
+                            url: '../../model/solicitud.php',
                             type: 'POST',
                             data: { find_solicitud_horas: '', id_horas: options },
                             dataType: 'html', // Esperamos recibir HTML como respuesta
@@ -41,7 +41,7 @@ $(document).ready(function () {
                     } else {
                         // No habia ninguna solicitud para la fecha seleccionada (Todas las horas disponibles)
                         $.ajax({
-                            url: '../../public/include/solicitud.php',
+                            url: '../../model/solicitud.php',
                             type: 'POST',
                             data: { find_solicitud_horas: '', fecha: fechaSeleccionada },
                             dataType: 'html', // Esperamos recibir HTML como respuesta

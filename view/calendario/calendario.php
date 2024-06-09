@@ -1,5 +1,5 @@
 <?php 
-require_once("../../admin/model/initialize.php");
+require_once("../../controller/initialize.php");
 
 $content='home.php';
 $view = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
