@@ -38,6 +38,14 @@ class Persona {
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
+	function find_propietario($id="",$name=""){
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
+			WHERE rut = {$id} OR propietario = '{$name}'");
+		$cur = $mydb->executeQuery();
+		$row_count = $mydb->num_rows($cur);
+		return $row_count;
+	}
 	function find_persona_sector($id_sector=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
@@ -47,7 +55,7 @@ class Persona {
 		
 		if (!$cur) {
 			// Manejo de errores
-			error_log("Error executing query: " . $mydb->error);
+			error_log("Error executing query: " . $mydb->error_msg);
 			return false;
 		}
 
