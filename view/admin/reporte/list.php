@@ -12,6 +12,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
 			<div class="col-sm-2">
 				<label>Patio:</label>
 				<select class="form-control" name="sector" id="sector" style="width: 100%;">
+					<option value="0">Seleccionar un sector</option>;
 					<?php
 
 					$sectores = new Sector();
@@ -46,7 +47,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
 				<?php echo isset($_POST['TYPES']) ? $_POST['TYPES'] : ""; ?>
 			</div>
 			<div style="text-align: center;font-size: 12px;">
-				<?php echo isset($_POST['sector']) ? "Patio:  " . $_POST['sector'] : ""; ?>
+				<p name="id_sector"><?php echo isset($_POST['sector']) ? "Patio:  " . $_POST['sector'] : ""; ?></p>
 			</div>
 			<form class="" method="POST" action="printreport.php" target="_blank">
 				<div style="margin: 0px 0px 15px 0px">

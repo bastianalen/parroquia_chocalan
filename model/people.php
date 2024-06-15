@@ -47,12 +47,13 @@ class Persona {
 		return $row_count;
 	}
 	function find_persona_sector($id_sector=""){
+		echo "<script> console.log(".json_encode($id_sector).")</script>";
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
 			WHERE id_sector = {$id_sector} ");
 
 		$cur = $mydb->executeQuery();
-		
+		echo "<script> console.log(".json_encode($cur).")</script>";
 		if (!$cur) {
 			// Manejo de errores
 			error_log("Error executing query: " . $mydb->error_msg);

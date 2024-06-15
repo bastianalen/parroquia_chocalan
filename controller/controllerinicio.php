@@ -25,7 +25,6 @@ function enviarCorreo() {
                 $nombre = $result['propietario'];
                 $rut = $result['rut'];
                 $correo = $result['correo'];
-                $rol = $result['rol'];
             } else {
                 // Mostrar error si la consulta falla
                 // echo "Error: " . $sqlselect . "<br>" . $conn->error;
@@ -36,10 +35,11 @@ function enviarCorreo() {
         }
                 
                 
-        $mensaje = 'Gracias ' . $nombre . ' por comunicarte con nosotros, ya recibimos tu mensaje y te contactaremos pronto.';
+        $mensaje = 'Gracias ' . $nombre . ' por comunicarte con nosotros.';
+        $mensaje .= 'Tu mensaje a sido enviado y te contactaremos lo antes posible.'. "\r\n";
+        $mensaje .= 'El mensaje enviado es el siguiente:.';
         $mensaje .= ' "' . $mensaje_personal . '" '. "\r\n" ;
-        $mensaje .= ' Apellido: "' . $apellido . '" ' . "\r\n" .' Contraseña: "' . $contrasenna . '" ' . "\r\n" .' Correo: "' . $correo . '" ' . "\r\n" .' Rol: "' . $rol . '" ';
-        $mensaje .= "\r\n \r\n" . "<img src='./images/logo/Logo.jpg' alt='Logo Jobbys.cl'>";
+        $mensaje .= "\r\n \r\n" . "<img src='../public/img/Logo.png' alt='Logo Parroquia Chocalan'>";
         
         // Encabezado MIME para un mensaje HTML
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
@@ -51,12 +51,12 @@ function enviarCorreo() {
         mail($para, $titulo, $mensaje, $cabeceras);
         
         // Muestra la alerta y redirige con JavaScript
-        echo '<script> alert("Tu correo ha sido enviado y almacenado en la base de datos correctamente. Pronto te contactaremos para ayudarte.");  ';
-        echo 'window.location.href = "index.html"; </script> ';
+        echo '<script> alert("Tu correo ha sido enviado correctamente. Pronto te contactaremos para ayudarte.");  ';
+        echo 'window.location.href = "../index.html"; </script> ';
         
         // Cierra la conexión a la base de datos
         $conn->close();
             
     }
 }
-                // *************************************************************************************************
+// *************************************************************************************************

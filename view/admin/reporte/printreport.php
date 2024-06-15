@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
           <?php echo isset($_POST['tipo_tumba']) ? "Cementerio Parroquial " . $_POST['tipo_tumba'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
-          <?php echo isset($_POST['sector']) ? "Patio :" . $_POST['sector'] : ""; ?>
+          <?php echo isset($_POST['sector']) ? "Patio :" . $_POST['sector'] : "1"; ?>
         </div>
         <br>
         <br>
@@ -60,26 +60,28 @@ if (!isset($_SESSION['user_id'])) {
             <thead>
               <tr>
                 <th>Tumba</th>
-                <th>Fallecido</td>
-                <th>Fecha Nacimiento</th>
-                <th>Fecha Defunción</th>
-                <th>Patio</th>
-                <th>Tipo Tumba</th>
-                <th>Propietario</th>
-                <th>Caracteristicas</th>
-                <th>Escritura</th>
+								<th>Fallecido</td>
+								<th>Fecha Nacimiento</th>
+								<th>Fecha Defunción</th>
+								<th>Patio</th>
+								<th>Tipo Tumba</th>
+								<th>Propietario</th>
+								<th>Caracteristicas</th>
+								<th>Escritura</th>
               </tr>
             </thead>
 
             <tbody>
               <?php
               $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-              $sector = isset($_POST['sector']) ? $_POST['sector'] : "";
+              $id_sector = isset($_POST['id_sector']) ? $_POST['id_sector'] : "1";
 
+              echo "<script> console.log(".json_encode($id_sector).")</script>";
+              // echo "<script> console.log(".json_encode($_POST['sector']).")</script>";
               $persona = new Persona();
-							$personaResultado = $persona->find_persona_sector($sector);
+							$personaResultado = $persona->find_persona_sector($id_sector);
 
-              foreach ($cur as $result) {
+              foreach ($personaResultado as $result) {
 
                 $fecha_nacimiento = $result['dd_nacimiento'] . "/" . $result['mm_nacimiento'] . "/" . $result['yyyy_nacimiento'];
 								$fecha_muerte = $result['dd_muerte'] . "/" . $result['mm_muerte'] . "/" . $result['yyyy_muerte'];
