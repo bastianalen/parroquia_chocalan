@@ -31,6 +31,10 @@
     <!-- Style Sheet -->
     <link href="public/vista/css/line-awesome.min.css" rel="stylesheet">
     <link href="public/vista/css/style.css" rel="stylesheet">
+     <!-- logo de transbank -->
+     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+     <!-- CSS DONACIONES -->
+    <link href="public/css/cssdonaciones.css" rel="stylesheet">
 
     <!-- Personal link -->
     <link rel="stylesheet" href="styleIndex.css">
@@ -909,6 +913,46 @@
             <br><br>
         </div>
     </section>
+
+
+
+     <!--  --------------------------------------------------------------------  -->
+    <!--  --------------------------------------------------------------------  -->
+
+    <!-- Ultimo codigo para redireccionar a seccion de donaciones -->
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <div class="text-center">
+                    <h3>Donaciones para nuestra parroquia</h3>
+                    <br>
+                    <p class="parrafo">Tu donacion es fundamental para el funcionamiento de 
+                        nuestra paroquia  y llevar a cabo proyectos de la 
+                        comunidad. Cada aporte, por pequeño que sea, marca la diferencia
+                        y constribuye a fortalecer nuestra labor diaria.
+                        Agradecemos de todo corazon tu apoyo y generosidad. 
+                        Juntos podemos seguir constribuyendo una comunidad mas unidad y solidaria
+                        <br>
+                        <br>
+                        ¡Gracias por ser parte de nuestra familia parroquial!
+                    </p>
+                    <a href="view/donaciones/donaciones.php" target="_blank">
+                    <br>
+                     <button class="btn btn-primary">ir a donar </button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+            <img src="public/img/logodonaciones.jpg" class="imagen" alt="imagen a la derecha">
+            <h1 class="text-4xl font-bold text-pink-700">Transbank<span class="text-sm font-thin">Web pay parroquia chocalan</span> </h1>
+        </div>
+    </div>     
+    
+    
+    <!--  --------------------------------------------------------------------  -->
+    <!--  --------------------------------------------------------------------  -->
+    
 
     <section class="contact-sec position-relative" id="contact2">
         <div class="heading-area text-center">
