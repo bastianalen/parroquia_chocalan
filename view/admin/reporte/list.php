@@ -128,7 +128,7 @@ $result = $stmt->get_result();
 							<?php
 
 							$tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-							$sector = isset($_POST['sector']) ? $_POST['sector'] : "";
+							$sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
 
 							$persona = new Persona();
 							$personaResultado = $persona->find_persona_sector($sector);
