@@ -78,7 +78,7 @@ if (!isset($_SESSION['user_id'])) {
 
               $persona = new Persona();
 							$personaResultado = $persona->find_persona_sector($sector);
-            
+
               foreach ($cur as $result) {
 
                 $fecha_nacimiento = $result['dd_nacimiento'] . "/" . $result['mm_nacimiento'] . "/" . $result['yyyy_nacimiento'];

@@ -1,14 +1,16 @@
 <?php
-require_once("../../../controller/initialize.php");
 
+require_once("../../../controller/initialize.php");
+//checkAdmin();
+	# code...
 if(!isset($_SESSION['user_id'])){
-	redirect(web_root."admin/view/index.php");
+	redirect(web_root."view/admin/index.php");
 }
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 
 	$header=$view;
-	$titulo="pagos_mantencion"; 
+	$titulo="Pagos Mantencion"; 
 	switch ($view) {
 
 	case 'list' :
@@ -33,7 +35,6 @@ $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 	$titulo="Pagos Mantencion";
 		$content    = 'list.php';
 	}
-  
 
 require_once ("../theme/templates.php");
 

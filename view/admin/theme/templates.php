@@ -318,7 +318,7 @@
 
       <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datepicker.js" charset="UTF-8"></script>
       <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-      <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.uk.js" charset="UTF-8"></script>
+   
       <script type="text/javascript" language="javascript"
         src="<?php echo web_root; ?>public/input-mask/jquery.inputmask.js"></script>
       <script type="text/javascript" language="javascript"

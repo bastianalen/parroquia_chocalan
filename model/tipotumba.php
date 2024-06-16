@@ -29,7 +29,7 @@ class TipoTumba {
 
 		return $result;
 	}
-	function find_tumba($id="",$name=""){
+	function find_tumba($id="",$name=""){ 
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." WHERE id_tipo_tumba = {$id} OR tipo = '{$name}'");
 		$cur = $mydb->executeQuery();

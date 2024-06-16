@@ -1,21 +1,8 @@
 <?php
 
-function generarCadenaAleatoria($longitud = 20)
-{
-	$caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	$cadena = '';
-	for ($i = 0; $i < $longitud; $i++) {
-		$indice = rand(0, strlen($caracteres) - 1);
-		$cadena .= $caracteres[$indice];
-	}	
-	return $cadena;	
-}
-
-// Definir la función message 
-if (!function_exists('message')) {
-    function message($text) {
-        echo $text;
-    }
+require_once ("initialize.php");
+if (!isset($_SESSION['user_id'])){
+ redirect(web_root."view/admin/index.php");
 }
 
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
@@ -32,139 +19,158 @@ switch ($action) {
 	case 'delete':
 		doDelete();
 		break;
-    case 'view' : 
-        $content    = 'view.php';
-        break;
+   
 }
 
-// CONEXION A LA BASE DE DATOS PARROQUIA_CHOCALAN
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "parroquia_chocalan";
+// // CONEXION A LA BASE DE DATOS PARROQUIA_CHOCALAN
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "parroquia_chocalan";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+// if ($conn->connect_error) {
+//     die("Conexión fallida: " . $conn->connect_error);
+// }
 
-// OBTENER RESULTADOS DE LA BUSQUEDA FILTRAR POR N_REGISTRO,NOMBRE,RUT,N_TUMBA,PATIO
-// AQUI CON ISSET DEFINO LA VARIABLE PARA LUEGO LLAMAR LA FUNCION EN ESTE CASO QUERY CONTIENE LA CONSULTA
-$query = isset($_GET['query']) ? $_GET['query'] : '';
+// // OBTENER RESULTADOS DE LA BUSQUEDA FILTRAR POR N_REGISTRO,NOMBRE,RUT,N_TUMBA,PATIO
+// // AQUI CON ISSET DEFINO LA VARIABLE PARA LUEGO LLAMAR LA FUNCION EN ESTE CASO QUERY CONTIENE LA CONSULTA
+// $query = isset($_GET['query']) ? $_GET['query'] : '';
 
-// BUSCADOR  DEFINIR O FILTRAR CONSULTA A LA TABLA list.php POR LOS SIGUIENTES DATOS A BUSCAR
-$sql = "SELECT N_REGISTRO, RUT, N_TUMBA, PATIO, PROPIETARIO, FECHA_PAGO, MONTO, ESTADO_PAGO
-        FROM tblpagosmantencion 
-        WHERE PROPIETARIO LIKE ? OR RUT LIKE ? OR N_TUMBA LIKE ? OR PATIO LIKE ? OR FECHA_PAGO LIKE?";
-$stmt = $conn->prepare($sql);
-$search = "%$query%";
-$stmt->bind_param("sssss", $search, $search, $search, $search, $search);
-$stmt->execute();
-$result = $stmt->get_result();
-
-
+// // BUSCADOR  DEFINIR O FILTRAR CONSULTA A LA TABLA list.php POR LOS SIGUIENTES DATOS A BUSCAR
+// $sql = "SELECT N_REGISTRO, RUT, N_TUMBA, PATIO, PROPIETARIO, FECHA_PAGO, MONTO, ESTADO_PAGO
+//         FROM tblpagosmantencion 
+//         WHERE N_REGISTRO LIKE ? OR PROPIETARIO LIKE ? OR RUT LIKE ? OR N_TUMBA LIKE ? OR PATIO LIKE ? OR FECHA_PAGO LIKE?";
+// $stmt = $conn->prepare($sql);
+// $search = "%$query%";
+// $stmt->bind_param("ssssss", $search, $search, $search, $search, $search, $search);
+// $stmt->execute();
+// $result = $stmt->get_result();
 
 
-// FUNCION PARA CONECTAR A LA BASE DE DATOS
-function connectDB() {
-    $servername = "localhost"; // Cambia esto a tu configuración
-    $username = "root"; // Cambia esto a tu configuración
-    $password = ""; // Cambia esto a tu configuración
-    $dbname = "parroquia_chocalan"; // Cambia esto a tu configuración
 
-    // Crear conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// function connectDB() {
+//     $servername = "localhost"; // Cambia esto a tu configuración
+//     $username = "root"; // Cambia esto a tu configuración
+//     $password = ""; // Cambia esto a tu configuración
+//     $dbname = "parroquia_chocalan"; // Cambia esto a tu configuración
 
-    // Verificar conexión
-    if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
-    }
+//     // Crear conexión
+//     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    return $conn;
-}
+//     // Verificar conexión
+//     if ($conn->connect_error) {
+//         die("Conexión fallida: " . $conn->connect_error);
+//     }
 
+//     return $conn;
+// }
 
 // FUNCION PARA INSERTAR DATOS A LA BASE DE DATOS *ADD.PHP*
-function doInsert() {
-    // Conectar a la base de datos
-    $conn = connectDB();
+// function doInsert() {
+//     // Verificar si todos los campos están llenos
+//     if (empty($_POST['RUT']) || empty($_POST['N_TUMBA']) || empty($_POST['PATIO']) || empty($_POST['PROPIETARIO']) || empty($_POST['FECHA_PAGO']) || empty($_POST['MONTO']) || empty($_POST['ESTADO_PAGO'])) {
+//         $messageStats = false;
+//         message("Debes llenar todos los datos", "error");
+//         redirect('../view/admin/pagos_mantencion/index.php?view=add');
+//     } else {
+//         // Conectar a la base de datos
+//         $conn = connectDB();
 
-	$RUT = $_POST['RUT'];
-    $N_TUMBA = $_POST['N_TUMBA'];
-    $PATIO = $_POST['PATIO'];
-    $PROPIETARIO = $_POST['PROPIETARIO'];
-    $FECHA_PAGO = $_POST['FECHA_PAGO'];
-    $MONTO = $_POST['MONTO'];
-    $ESTADO_PAGO = $_POST['ESTADO_PAGO'];
+//         $RUT = $_POST['RUT'];
+//         $N_TUMBA = $_POST['N_TUMBA'];
+//         $PATIO = $_POST['PATIO'];
+//         $PROPIETARIO = $_POST['PROPIETARIO'];
+//         $FECHA_PAGO = $_POST['FECHA_PAGO'];
+//         $MONTO = $_POST['MONTO'];
+//         $ESTADO_PAGO = $_POST['ESTADO_PAGO'];
 
-	// EN ESTE CODIGO DEFINIREMOS LOS CAMPOS DEL FORMULARIO ADD Y SEAN OBLIGATORIOS DE RELLENAR
-	if ($RUT === '' || $N_TUMBA === '' || $PATIO === '' || $PROPIETARIO === ''|| $FECHA_PAGO === '' || $MONTO === '' || $ESTADO_PAGO === '') {
-        message('Todos los campos son obligatorios.');
-        return;
-    }
+//         // Preparar la consulta SQL para insertar los datos
+//         $sql = "INSERT INTO tblpagosmantencion (RUT, N_TUMBA, PATIO, PROPIETARIO, FECHA_PAGO, MONTO, ESTADO_PAGO) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+//         $stmt = $conn->prepare($sql);
+//         $stmt->bind_param("sssssss", $RUT, $N_TUMBA, $PATIO, $PROPIETARIO, $FECHA_PAGO, $MONTO, $ESTADO_PAGO);
 
-	// ADD INSERTAR INSERT INTO A LA TABLA TBLPAGOSMANTENCION
-    // Crear la consulta de inserción
-    $sql = "INSERT INTO tblpagosmantencion ( RUT,  N_TUMBA, PATIO, PROPIETARIO, FECHA_PAGO, MONTO, ESTADO_PAGO ) VALUES ( '$RUT', '$N_TUMBA','$PATIO', '$PROPIETARIO', '$FECHA_PAGO', '$MONTO', '$ESTADO_PAGO')";
+//         if ($stmt->execute()) {
+//             message("¡Nuevo registro creado exitosamente!", "success");
+//             redirect("../view/admin/pagos_mantencion/index.php");
+//         } else {
+//             message("Error al insertar los datos: " . $stmt->error, "error");
+//             redirect('../view/admin/pagos_mantencion/index.php?view=add');
+//         }
 
-    // Ejecutar la consulta
-    if ($conn->query($sql) === TRUE) {
-        message("Nuevo registro creado exitosamente");
-    } else {
-        message("Error: " . $sql . "<br>" . $conn->error);
-    }
+//         // Cerrar la conexión
+//         $stmt->close();
+//         $conn->close();
+//     }
 
-    // Cerrar la conexión
-    $conn->close();
-}
 
-function getRecordById($N_REGISTRO) {
-    $db = connectDB();
-    $sql = "SELECT * FROM tblpagosmantencion WHERE N_REGISTRO = '$N_REGISTRO'";
-    $result = $db->query($sql);
-    $db->close();
-    return $result->fetch_assoc();
-}
-
-function updateRecord($data) {
-    $db = connectDB();
     
-    $N_REGISTRO = $data['N_REGISTRO'];
-    $RUT = $data['RUT'];
-    $N_TUMBA = $data['N_TUMBA'];
-    $PATIO = $data['PATIO'];
-    $PROPIETARIO = $data['PROPIETARIO'];
-    $FECHA_PAGO = $data['FECHA_PAGO'];
-    $MONTO = $data['MONTO'];
-    $ESTADO_PAGO = $data['ESTADO_PAGO'];
-    
-    $sql = "UPDATE tblpagosmantencion SET 
-            RUT='$RUT', 
-            N_TUMBA='$N_TUMBA', 
-            PATIO='$PATIO', 
-            PROPIETARIO='$PROPIETARIO', 
-            FECHA_PAGO='$FECHA_PAGO', 
-            MONTO='$MONTO', 
-            ESTADO_PAGO='$ESTADO_PAGO' 
-            WHERE N_REGISTRO='$N_REGISTRO'";
-    
-    $db->query($sql);
-    $db->close();	
+//     return;
+// }
+
+
+function doInsert(){
+	echo"<script>console.log('kjaskjsajksakj')</script>";
+	if(isset($_POST['save'])){
+		
+		
+			$pagosmantencion = new PagosMantencion();
+			// echo "<script> console.log(' ". $_POST['pagosmantencion'] ." ') </script>";
+			
+			$pagosmantencion->rut	= $_POST['rut'];
+			$pagosmantencion->propietario	= $_POST['propietario'];
+			$pagosmantencion->n_tumba	= $_POST['n_tumba'];
+			$pagosmantencion->patio	= $_POST['patio'];
+			$pagosmantencion->fecha_pago	= $_POST['fecha_pago'];
+			$pagosmantencion->monto	= $_POST['monto'];
+			$pagosmantencion->estado_pago	= $_POST['estado_pago'];
+			// echo"<script>console.log(".json_encode($pagosmantencion) .")</script>";
+			$pagosmantencion->create();
+			// echo"<script>console.log(".json_encode($_POST['n_registro']) .")</script>";
+			message("¡Nueva Sección creada exitosamente!", "success");
+			redirect("../view/admin/pagos_mantencion/index.php");
+			
+		
+	}
 }
 
-function deleteRecord($N_REGISTRO) {
-    $db = connectDB();
-    $sql = "DELETE FROM tblpagosmantencion WHERE N_REGISTRO = ?";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param("i", $N_REGISTRO);
-    $stmt->execute();
-    $stmt->close();
-    $db->close();
+function doEdit(){
+	if(isset($_POST['update'])){
+		$pagosmantencion = new PagosMantencion();
+		$pagosmantencion->rut	= $_POST['rut'];
+		$pagosmantencion->propietario	= $_POST['propietario'];
+		$pagosmantencion->n_tumba	= $_POST['n_tumba'];
+		$pagosmantencion->patio	= $_POST['patio'];
+		$pagosmantencion->fecha_pago	= $_POST['fecha_pago'];
+		$pagosmantencion->monto	= $_POST['monto'];
+		$pagosmantencion->estado_pago	= $_POST['estado_pago'];
+		// echo"<script>console.log(".json_encode($pagosmantencion) .")</script>";
+		$pagosmantencion->update($_POST['n_registro']);
+		// echo"<script>console.log(".json_encode($_POST['n_registro']) .")</script>";
+		message("¡Seccion actualizada!", "success");
+		redirect("../view/admin/pagos_mantencion/index.php");
+	}
 }
 
+function doDelete(){
+		$n_registro = $_GET['n_registro'];
+		$pagosmantencion = new PagosMantencion();
+		$pagosmantencion->delete($n_registro);
+		message("¡Pago eliminado!","info");
+		redirect('../view/admin/pagos_mantencion/index.php');
+	
+}
 
 ?>
+
+
+
+
+
+
+
 
 
 

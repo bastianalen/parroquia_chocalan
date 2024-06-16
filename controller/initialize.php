@@ -24,3 +24,4 @@ require_once(LIB_PATH_MODEL.DS."calendario.php");
 require_once(LIB_PATH_MODEL.DS."tipotumba.php");
 require_once(LIB_PATH_MODEL.DS."tipocalendario.php");
 require_once(LIB_PATH_MODEL.DS."roluser.php");
+require_once(LIB_PATH_MODEL.DS."pagosmantencion.php");
