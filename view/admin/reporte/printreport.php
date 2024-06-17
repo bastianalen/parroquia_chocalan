@@ -37,7 +37,7 @@ if (!isset($_SESSION['user_id'])) {
         <br>
         <br>
         <div class="logo" style="position: absolute; top: 2px; left: 100px; z-index: 999;">
-          <img src="../../public/img/logo49.png" alt="logo" width="100px">
+          <img src="../../../public/img/logo49.png" alt="logo" width="100px">
         </div>
         <div style="text-align: center;font-size: 20px">Parroquia Santa Rosa de Lima, Chocalán</div>
         <div style="text-align: center;font-size: 12px;">
@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
           <?php echo isset($_POST['tipo_tumba']) ? "Cementerio Parroquial " . $_POST['tipo_tumba'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
-          <?php echo isset($_POST['sector']) ? "Patio :" . $_POST['sector'] : ""; ?>
+          <?php echo isset($_POST['sector']) ? "Patio :" . $_POST['sector'] : "1"; ?>
         </div>
         <br>
         <br>
@@ -74,12 +74,13 @@ if (!isset($_SESSION['user_id'])) {
             <tbody>
               <?php
               $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-              $sector = isset($_POST['sector']) ? $_POST['sector'] : "";
+              $id_sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
 
               $persona = new Persona();
-							$personaResultado = $persona->find_persona_sector($sector);
+							$personaResultado = $persona->find_persona_sector($id_sector);
 
-              foreach ($cur as $result) {
+              echo "<script>console.log(".json_encode($personaResultado).")</script>";
+              foreach ($personaResultado as $result) {
 
                 $fecha_nacimiento = $result['dd_nacimiento'] . "/" . $result['mm_nacimiento'] . "/" . $result['yyyy_nacimiento'];
 								$fecha_muerte = $result['dd_muerte'] . "/" . $result['mm_muerte'] . "/" . $result['yyyy_muerte'];

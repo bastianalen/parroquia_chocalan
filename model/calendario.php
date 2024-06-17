@@ -1,36 +1,53 @@
 <?php
+// Llama al controlador inizializador
 require_once(__DIR__ ."/../controller/initialize.php");
+// Llama a la conexion de la base de datos
 require_once(LIB_PATH_MODEL.DS.'database.php');
 
+// Crea la clase Eventos
 class Eventos {
 
+	// Almacena el nombre de la tabla
 	protected static  $tblname = "tblcaleneucaristia";
+
+	// Almacena las relaciones que posee la tabla principal "tblcaleneucaristia"
 	protected static  $innertbl = "tce INNER JOIN tbltiposervicio tts ON tce.tipo_Servicio = tts.id_servicio 
 									INNER JOIN tbltipocalendario ttc ON tce.tipo_calendario = ttc.id_tipo";
 
+	// 
 	function dbfields () {
 		global $mydb;
 		return $mydb->getfieldsononetable(self::$tblname);
 
 	}
+
+	// funcion que obtiene todos los datos en de la tabla
 	function list_of_eventos(){
+		// Conecta la base de datos
 		global $mydb;
+		// Almacena la consulta de la funcion
 		$mydb->setQuery("SELECT * FROM " . self::$tblname);
+		// Almacena los resultados de la consulta
 		$cur = $mydb->executeQuery();
 
+		// Valida que se obtengan datos
 		if (!$cur) {
 			// Manejo de errores
 			error_log("Error executing query: " . $mydb->error);
 			return false;
 		}
 
+		// Crea una variable que almacenará en arreglo los datos
 		$result = [];
+		// Recorre la variable $cur y almacena los datos en la varible tipo array creada
 		while ($row = $cur->fetch_assoc()) {
 			$result[] = $row;
 		}
 
+		// Devuelve los datos obtenidos
 		return $result;
 	}
+	
 	function find_eventos($id="",$name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname. self::$innertbl." WHERE id = {$id} OR titulo = '{$name}'");

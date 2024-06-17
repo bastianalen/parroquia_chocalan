@@ -87,6 +87,27 @@ class Persona {
 
 		return $result;
 	}
+
+	function find_persona_tumba_sector($nro_tumba="",$id_sector=0){
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
+			WHERE nro_tumba = {$nro_tumba} and id_sector = {$id_sector}");
+
+		$cur = $mydb->executeQuery();
+		
+		if (!$cur) {
+			// Manejo de errores
+			error_log("Error executing query: " . $mydb->error_msg);
+			return false;
+		}
+
+		$result = [];
+		while ($row = $cur->fetch_assoc()) {
+			$result[] = $row;
+		}
+
+		return $result;
+	}
  
 	function find_all_people($name=""){
 		global $mydb;

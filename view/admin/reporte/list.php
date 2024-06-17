@@ -1,8 +1,29 @@
 <?php
 
+// Llama al controllador de la vista y valida que el usuario tenga la cuenta ingresada
 require_once "../../../controller/controllerpersonafallecida.php";
 if (!isset($_SESSION['id_rol']) == 1) {
     redirect(web_root . "view/admin/index.php");
+}
+
+// Obtiene los datos que se utilizaran mas adelante (tipo_tumba,id_sector,nro_tumba)
+$tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
+$sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
+$nro_tumba = isset($_POST['nro_tumba']) ? $_POST['nro_tumba'] : "";
+
+// Inicializa la clase Persona
+$persona = new Persona();
+
+// Encuentra los datos de las personas segun los datos que se ingresen en los filtros
+if (!empty($nro_tumba) and !empty($sector)){
+    $personaResultado = $persona->find_persona_tumba_sector($nro_tumba,$sector);
+    $id_sector = $sector;
+}else if (!empty($nro_tumba)) {
+    $personaResultado = $persona->find_persona_tumba($nro_tumba);
+    $id_sector = $personaResultado[0]['id_sector'];
+} else {
+    $personaResultado = $persona->find_persona_sector($sector);
+    $id_sector = $sector;
 }
 ?>
 
@@ -16,10 +37,11 @@ if (!isset($_SESSION['id_rol']) == 1) {
                 <label>Patio:</label>
                 <select class="form-control" name="sector" id="sector" style="width: 100%;">
                     <?php
-
+                    // Inicializa la clase Sector y llama a la consulta listofsector del model
                     $sectores = new Sector();
                     $sector = $sectores->listofsector();
 
+                    // Recorre los resultados obtenidos y crea opciones para el select
                     foreach ($sector as $result) {
                         echo '<option value="' . $result['id_sector'] . '">' . $result['sector'] . '</option>';
                     }
@@ -45,7 +67,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
 
             <div style="text-align: center; font-size: 30px;">Lista de Personas Fallecidas</div>
             <div style="text-align: center; font-size: 12px;">
-                <?php echo isset($_POST['TYPES']) ? $_POST['TYPES'] : ""; ?>
+                <p name="id_sector"><?php echo isset($_POST['TYPES']) ? $_POST['TYPES'] : ""; ?></p>
             </div>
             <div style="text-align: center; font-size: 20px;">
                 <?php echo isset($_POST['sector']) ? "Patio:  " . $_POST['sector'] : ""; ?>
@@ -55,7 +77,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
                     <input type="hidden" name="tipo_tumba"
                         value="<?php echo isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : ''; ?>">
                     <input type="hidden" name="sector"
-                        value="<?php echo isset($_POST['sector']) ? $_POST['sector'] : ''; ?>">
+                        value="<?php echo  $id_sector ?>">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> imprimir</button>
                 </div>
                 <div class="">
@@ -80,17 +102,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
 
                             <?php
 
-                            $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-                            $sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
-                            $nro_tumba = isset($_POST['nro_tumba']) ? $_POST['nro_tumba'] : "";
-
-                            $persona = new Persona();
-                            if (!empty($nro_tumba)) {
-                                $personaResultado = $persona->find_persona_tumba($nro_tumba);
-                            } else {
-                                $personaResultado = $persona->find_persona_sector($sector);
-                            }
-
+                            // Recorre los resultados obtenidos y almacenados en la variable $personaResultado e inserta filas en la tabla con los datos obtenidos
                             foreach ($personaResultado as $result) {
 
                                 $fecha_nacimiento = $result['dd_nacimiento'] . "/" . $result['mm_nacimiento'] . "/" . $result['yyyy_nacimiento'];

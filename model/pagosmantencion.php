@@ -36,6 +36,25 @@ class PagosMantencion {
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
+	
+	function find_pagosmantenciones($where=""){
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." WHERE n_registro Like '%{$where}%' or rut Like '%{$where}%' or propietario Like '%{$where}%' or n_tumba Like '%{$where}%' or patio Like '%{$where}%' or fecha_pago Like '%{$where}%' or monto Like '%{$where}%' or estado_pago Like '%{$where}%'");
+		$cur = $mydb->executeQuery();
+		
+		if (!$cur) {
+			// Manejo de errores
+			error_log("Error executing query: " . $mydb->error);
+			return false;
+		}
+
+		$result = [];
+		while ($row = $cur->fetch_assoc()) {
+			$result[] = $row;
+		}
+
+		return $result;
+	}
 	 
 	function single_pagosmantencion($id=""){
 		global $mydb;

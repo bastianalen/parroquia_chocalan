@@ -10,6 +10,16 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
+$pago_mantencion = isset($_POST['pago_mantencion']) ? $_POST['pago_mantencion'] : "";
+
+// Inicializa la clase Persona
+$pagosmantencion = new PagosMantencion();
+if (!empty($pago_mantencion)){
+    $pagosmantenciones = $pagosmantencion->find_pagosmantenciones($pago_mantencion);
+} else {
+    $pagosmantenciones = $pagosmantencion->listofpagosmantencion();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +32,9 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <div class="container mt-5">
-        <form action="index.php" method="GET" class="form-inline justify-content-center">
+        <form action="index.php" method="post" class="form-inline justify-content-center">
             <div class="form-group">
-                <input type="text" name="query" class="form-control mr-2" placeholder="Buscar aquí...">
+                <input type="text" name="pago_mantencion" class="form-control mr-2" placeholder="Buscar aquí...">
             </div>
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
@@ -58,9 +68,7 @@ if (!isset($_SESSION['user_id'])) {
                 </thead>
                 <tbody>
                     <?php 
-                    $pagosmantencion = new PagosMantencion;
-                    $pagosmantenciones=$pagosmantencion->listofpagosmantencion();
-
+                    
                     foreach ($pagosmantenciones as $result) {
                        
                         echo '<tr>';

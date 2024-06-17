@@ -2,7 +2,9 @@
 <html lang="en">
 
 <!-- Incluye el head -->
-<?php include_once '../partials/head.php'; ?>
+<?php 
+include_once("../partials/headCalendario.php");
+?>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
     
@@ -64,27 +66,23 @@
                         </h4>
 
                     </div>
-                    <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                        <a href="../solicitarhora/index.php">
-                            <span class="about-icon">
-                                <i class="las la-calendar"></i>
-                            </span>
-                            <h4 class="small-heading font-Sofia-serif ">Solicitar Hora</h4>
-                            <br>
-                            <span class="ex-line"></span>
-                        </a>
+                    <div data-spy="scroll" data-target=".navbar" data-offset="90">
+                        
+
+                            <div class="container container-calendario">
+                                <div id="CalendarioWeb" style="padding: 3vh;"></div>
+                            </div>
+
                     </div>
                 </div>
     </section>
 
 
     <!-- Incluye footer -->
-    <?php include_once '../partials/footer.php'; ?>
+    <?php include_once '../partials/footer.php'; 
+    include_once("../../public/linkCalendarios.php");?>
+    <script src="funcionescalendarioseguidores.js"></script>
     
-    <!-- General js CUSTOM JS -->
-    <?php
-     include_once '../../public/linkScript.php'; 
-     ?>
 </body>
 
 </html>

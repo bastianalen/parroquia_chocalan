@@ -1,3 +1,6 @@
+<?php 
+include_once("public/vendor/contact-mailer.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1015,10 +1018,16 @@
                 <form class="row contact-form wow fadeInLeft mx-4 p-2 box box-form" id="contact-form-data">
                     <div>
                         <div class="col-12 col-lg-12 px-md-0 text-center">
+
                             <input type="text" name="userName" placeholder="Nombre" class="form-control input-info">
+
                             <input type="email" name="userEmail" placeholder="E-mail" class="form-control input-info">
+
+                            <input type="text" name="userPhone" placeholder="56 9 8449 6843" class="form-control input-info">
+
                             <textarea class="form-control text-area-form" name="userMessage" rows="6"
                                 placeholder="Escríbenos tu mensaje!"></textarea>
+                                
                             <a href="javascript:void(0);"
                                 class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font">enviar</a>
                         </div>
@@ -1091,6 +1100,9 @@
     <script src="public/vendor/js/contact_us.js"></script>
     <script src="public/vista/js/script.js"></script>
     
+    <!-- Sweet alert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Funciones -->
     <script src="funcionesIndex.js"></script>
 </body>
