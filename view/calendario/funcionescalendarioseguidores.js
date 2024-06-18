@@ -26,6 +26,17 @@ $(document).ready(function () {
             error: function(response) {
                 console.error("Error al cargar eventos:", response);
             }
+        },
+        
+        eventRender: function(event, element) {
+            var startTime = event.start.format('HH:mm');
+            element.html(
+                '<div class="fc-content">' +
+                '<span class="fc-time">' + startTime + '</span><br/>' +
+                    '<span class="fc-title">' + event.title + '</span><br/>' +
+                    '<span class="fc-description">' + event.descripcion + '</span>' +
+                '</div>'
+            );
         }
     });
 });

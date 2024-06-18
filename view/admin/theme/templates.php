@@ -191,12 +191,12 @@
                   </li>
                   
                   <li>
-                    <a href="<?php echo web_root; ?>view/admin/pagos_mantencion/index.php"><i class="fa fa fa-cogs"></i> Manteciones Tumbas</a>
+                    <a href="<?php echo web_root; ?>view/admin/pagos_mantencion/index.php"><i class="fa fa fa-cogs"></i> Mantenciones De Tumbas</a>
                     
                   </li>
                   
                   <li>
-                    <a href="<?php echo web_root; ?>view/admin/calendario_eucaristias/calendario.php"><i class="fa fa-calendar"></i> CalendarioEucaristías</a>
+                    <a href="<?php echo web_root; ?>view/admin/calendario_eucaristias/calendario.php"><i class="fa fa-calendar"></i> Calendario Eucaristías</a>
                   </li>
                   <li>
                     <a href="<?php echo web_root; ?>view/admin/solicitud_servicio/index.php"><i class="fa fa-calendar"></i> Solicitud servicios</a>
@@ -318,7 +318,7 @@
 
       <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datepicker.js" charset="UTF-8"></script>
       <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-      <script type="text/javascript" src="<?php echo web_root; ?>public/js/bootstrap-datetimepicker.uk.js" charset="UTF-8"></script>
+   
       <script type="text/javascript" language="javascript"
         src="<?php echo web_root; ?>public/input-mask/jquery.inputmask.js"></script>
       <script type="text/javascript" language="javascript"

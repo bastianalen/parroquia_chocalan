@@ -1,5 +1,6 @@
 <?php
 require_once(LIB_PATH.DS."config.php");
+require_once(LIB_PATH.DS."conexion.php");
 
 class Database {
     var $sql_string = '';
@@ -136,4 +137,3 @@ class Database {
 }
 
 $mydb = new Database();
-?>
