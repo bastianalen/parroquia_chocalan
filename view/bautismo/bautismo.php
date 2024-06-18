@@ -5,7 +5,7 @@
 <?php include_once '../partials/head.php'; ?>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
-    
+
     <!-- Incluye el header -->
     <?php include_once '../partials/loader.php'; ?>
     <!-- Incluye el header -->
@@ -32,7 +32,7 @@
                             <img src="../../public/vista/img/bautismo.png" class="img-fluid" alt="Imagen 2">
                         </div>
                         <div class="col-md-8 text-justify">
-                            <h4>
+                            <h5>
                                 El sacramento del Bautismo marca el inicio de la vida en la fe, representando una puerta
                                 de
                                 entrada
@@ -46,7 +46,12 @@
                                 misión
                                 de
                                 Cristo y recibimos la promesa de la Vida Eterna.
-                                <br><br>
+
+                            </h5>
+                        </div>
+                        <div class="col-md-12 text-justify">
+                            <h5>
+
                                 <span class="underline">Procedimiento para solicitar el
                                     Bautismo:</span>
                                 <br><br>
@@ -55,10 +60,7 @@
                                     (tutores
                                     legales).
                                 </li>
-                            </h4>
-                        </div>
-                        <div class="col-md-12 text-justify">
-                            <h4>
+                                <br>
                                 <li>&#8226; Presentar el Certificado de Nacimiento del niño que será bautizado.</li>
                                 <br>
                                 <li>&#8226; Certificado de confirmación de los padrinos, debidamente casados por la
@@ -74,36 +76,36 @@
                                     con
                                     su
                                     certificado de bautismo.</li>
-                                    <br>
-                                </h4>
-                            </div>
-                            <!-- Pseudo-elemento para superposición de imagen de fondo semitransparente -->
-                            <div class="background-overlay"></div>
-                            <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                                <a href="../solicitarhora/index.php">
-                                    <span class="about-icon">
-                                        <i class="las la-calendar"></i>
-                                    </span>
-                                    <h4 class="small-heading font-Sofia-serif ">Solicitar Hora</h4>
-                                    <br>
-                                    <span class="ex-line"></span>
-                                </a>
-                            </div>
+                                <br>
+                            </h5>
+                        </div>
+                        <!-- Pseudo-elemento para superposición de imagen de fondo semitransparente -->
+                        <div class="background-overlay"></div>
+                        <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
+                            <a href="../solicitarhora/index.php" style="text-decoration: none;">
+                                <span class="about-icon">
+                                    <i class="las la-calendar"></i>
+                                </span>
+                                <h4 class="small-heading font-Sofia-serif ">Solicitar Hora</h4>
+                                <br>
+                                <span class="ex-line"></span>
+                            </a>
                         </div>
                     </div>
+                </div>
             </div>
     </section>
-    
+
     <!-- End About -->
-    
-    
+
+
     <!-- Incluye footer -->
     <?php include_once '../partials/footer.php'; ?>
-    
+
     <!-- General js CUSTOM JS -->
     <?php
-     include_once '../../public/linkScript.php'; 
-     ?>
+    include_once '../../public/linkScript.php';
+    ?>
 </body>
 
 </html>

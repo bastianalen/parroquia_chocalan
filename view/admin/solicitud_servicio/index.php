@@ -9,7 +9,7 @@ require_once("../../../controller/initialize.php");
 
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 $header=$view;
-$titulo="Patio";
+$titulo="Solicitud Servicio";
 switch ($view) {
 	case 'list' :
 		$content    = 'list.php';		

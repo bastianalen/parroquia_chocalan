@@ -29,42 +29,31 @@
                         <img src="../../public/vista/img/velatorio.png" class="img-fluid" alt="Imagen 2">
                     </div>
                     <div class="col-md-8 text-justify">
-                        <h4>
+                        <h5>
                             Nuestro velatorio es un lugar de encuentro, donde las lágrimas encuentran consuelo en la
                             oración y el amor fraterno de nuestra comunidad parroquial. Aquí, en este sagrado recinto,
                             les ofrecemos un ambiente sereno y acogedor, donde puedan reflexionar sobre el legado de
                             amor y bondad dejado por sus seres queridos.
                             <br>
-                            Además, nuestro equipo pastoral está disponible en todo momento para ofrecer apoyo 
-                            espiritual, consuelo y palabras de aliento, fortaleciendo así su fe y confianza en el amor 
-                            infinito de Dios.
-                            <br>
                             Nos comprometemos a acompañarles en este difícil momento, recordándoles que la luz de la fé
                             y la esperanza brilla eternamente en el corazón de aquellos que han partido, guiándoles
                             hacia la paz y el consuelo que solo Dios puede brindar.
                             </ul>
-                        </h3>
+                        </h5>
                     </div>
                     <div class="col-md-12 text-justify">
-                        <h4>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minima optio 
-                            quasi odio nam. Aperiam eaque, fugit cupiditate, distinctio suscipit expedita 
-                            optio, soluta perspiciatis quia rerum iure. Quam, laboriosam. Dicta.
-                            <br>
-                            <br>
+                        <h5>
                             <span class="underline">Procedimientos para acceder a velatorio:</span>
                             <br><br>
                             <ul>
-                                <li>&#8226; Inscribirse en la oficina parroquial, idealmente en el mes de febrero, con
-                                    su
-                                    certificado de bautismo.
+                                <li>&#8226; Rellenar formulario de solicitud de servicio.
                                 </li>
                             </ul>
-                        </h4>
+                        </h5>
 
                     </div>
                     <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                        <a href="../solicitarhora/index.php">
+                        <a href="../solicitarhora/index.php" style="text-decoration: none;">
                             <span class="about-icon">
                                 <i class="las la-calendar"></i>
                             </span>

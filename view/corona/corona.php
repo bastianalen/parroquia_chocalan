@@ -5,7 +5,7 @@
 <?php include_once '../partials/head.php'; ?>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
-    
+
     <!-- Incluye el header -->
     <?php include_once '../partials/loader.php'; ?>
     <!-- Incluye el header -->
@@ -19,7 +19,8 @@
                     data-wow-duration="1s" data-wow-delay=".1s">
                     <br>
                     <br>
-                    <h3 class="heading text-center"> </h3> <span class="d-block font-Sofia-serif"> Corona de Caridad</span>
+                    <h3 class="heading text-center"> </h3> <span class="d-block font-Sofia-serif"> Corona de
+                        Caridad</span>
                 </div>
             </div>
             <!--Heading-->
@@ -29,44 +30,27 @@
                         <img src="../../public/vista/img/corona.png" class="img-fluid" alt="Imagen 2">
                     </div>
                     <div class="col-md-8 text-justify">
-                        <h3>
-                            Con profundo cariño y devoción, nuestra parroquia se complace en ofrecer a nuestra amada
-                            comunidad el servicio
-                            de coronas de caridad. Estas coronas, cuidadosamente elaboradas con esmero y dedicación,
-                            representan mucho más
-                            que simples arreglos florales. Son un símbolo poderoso de solidaridad y consuelo, una
-                            expresión tangible de
-                            amor y apoyo en tiempos de duelo y aflicción.
-                            <br>
-                            Cada corona de caridad que ofrecemos es un acto de generosidad
-                            y compasión, un gesto de amor fraterno que va más allá de las palabras y llega directamente
-                            al corazón de quienes la reciben. En cada pétalo y en cada detalle, se refleja el amor
-                            incondicional de Dios y la conexión profunda entre nuestra comunidad parroquial y aquellos
-                            que están en duelo.
-                            <br>
-                            Ofrecemos estas coronas de caridad como un recordatorio de que nunca
-                        </h3>
+                        <h5>
+                            Con cariño y devoción, nuestra parroquia ofrece a nuestra amada comunidad el servicio de
+                            coronas de caridad. Cada corona es un gesto de generosidad y compasión que refleja el amor
+                            incondicional de Dios y la conexión profunda entre nosotros y aquellos que están en duelo.
+                            Estas coronas son un recordatorio de que nunca están solos en su dolor. Encuentren consuelo
+                            y esperanza en el amor eterno de Dios y en el apoyo de su comunidad de fe.
+                        </h5>
                     </div>
                     <div class="col-md-12 text-justify">
-                        <h3>
-                            están
-                            solos en su dolor. Que en medio de la tristeza y la pérdida, puedan encontrar consuelo y
-                            esperanza en el amor eterno de Dios y en el apoyo inquebrantable de su comunidad de fé.
-                            <br>
-                            <br>
+                        <h5>
                             <span class="underline">Procedimientos para enviar una corona de caridad:</span>
                             <br><br>
                             <ul>
-                                <li>&#8226; Inscribirse en la oficina parroquial, idealmente en el mes de febrero, con
-                                    su
-                                    certificado de bautismo.</li>
+                                <li>&#8226; Rellenar formulario de solicitud de servicio.</li>
                                 <br>
                             </ul>
-                        </h3>
+                        </h5>
 
                     </div>
                     <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                        <a href="../solicitarhora/index.php">
+                        <a href="../solicitarhora/index.php" style="text-decoration: none;">
                             <span class="about-icon">
                                 <i class="las la-calendar"></i>
                             </span>
@@ -83,11 +67,11 @@
 
     <!-- Incluye footer -->
     <?php include_once '../partials/footer.php'; ?>
-    
+
     <!-- General js CUSTOM JS -->
     <?php
-     include_once '../../public/linkScript.php'; 
-     ?>
+    include_once '../../public/linkScript.php';
+    ?>
 </body>
 
 </html>
