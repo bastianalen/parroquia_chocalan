@@ -55,15 +55,15 @@ if (!empty($pago_mantencion)){
             <table id="dash-table" class="table table-striped table-bordered table-hover" style="font-size: 12px" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>nºregistro</th>
-                        <th>rut</th>
-                        <th>nºtumba</th>
-                        <th>patio</th>
-                        <th>propietario</th>
-                        <th>fecha pago</th>
-                        <th>monto</th>
-                        <th>estado pago</th>
-                        <th>accion</th>
+                    <!--<th>nºregistro</th> -->
+                        <th>Propietario</th>
+                        <th>Rut Propietario</th>
+                        <th>Tumba</th>
+                        <th>Patio</th>
+                        <th>Fecha Pago</th>
+                        <th>Monto</th>
+                        <th>Estado Pago</th>
+                        <th>acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,11 +73,12 @@ if (!empty($pago_mantencion)){
                        
                         echo '<tr>';
                        
-                        echo '<td>' . $result['n_registro']. '</td>';
+                        //echo '<td>' . $result['n_registro']. '</td>';
+                        echo '<td>' . $result['propietario'] . '</td>';
                         echo '<td>' . $result['rut']. '</td>';
                         echo '<td>' . $result['n_tumba'] . '</td>';
                         echo '<td>' . $result['patio'] . '</td>';
-                        echo '<td>' . $result['propietario'] . '</td>';
+                        
                         echo '<td>' . $result['fecha_pago'] . '</td>';
                         echo '<td>' . $result['monto'] . '</td>';
                         echo '<td>' . $result['estado_pago'] . '</td>';

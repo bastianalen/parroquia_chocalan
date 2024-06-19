@@ -60,14 +60,14 @@ if (!isset($_SESSION['user_id'])) {
             <thead>
               <tr>
                 <th>Tumba</th>
-                <th>Fallecido</td>
-                <th>Fecha Nacimiento</th>
-                <th>Fecha Defunción</th>
-                <th>Patio</th>
-                <th>Tipo Tumba</th>
-                <th>Propietario</th>
-                <th>Caracteristicas</th>
-                <th>Escritura</th>
+								<th>Fallecido</td>
+								<th>Fecha Nacimiento</th>
+								<th>Fecha Defunción</th>
+								<th>Patio</th>
+								<th>Tipo Tumba</th>
+								<th>Propietario</th>
+								<th>Caracteristicas</th>
+								<th>Escritura</th>
               </tr>
             </thead>
 
@@ -76,6 +76,8 @@ if (!isset($_SESSION['user_id'])) {
               $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
               $id_sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
 
+              echo "<script> console.log(".json_encode($id_sector).")</script>";
+              // echo "<script> console.log(".json_encode($_POST['sector']).")</script>";
               $persona = new Persona();
 							$personaResultado = $persona->find_persona_sector($id_sector);
 

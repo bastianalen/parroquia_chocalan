@@ -31,7 +31,6 @@ $tipo_servicios = $tiposervicio->listoftiposervicio();
                     data-wow-duration="1s" data-wow-delay=".1s">
                     <br>
                     <br>
-                    <span class="d-block font-Sofia-serif"> Agenda </span><br><br>
                     <span class="d-block font-Sofia-serif">Solicitar servicio</span>
                 </div>
             </div>

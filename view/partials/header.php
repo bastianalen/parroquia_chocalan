@@ -40,10 +40,19 @@
                             <a class="nav-link font-Sofia-serif" href="../../index.php#pateintgallery">Capillas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="../../index.php#mini-blog-sec">Personal</a>
+                            <a class="nav-link font-Sofia-serif" href="../../index.php#personal">Personal</a>
+                        </li>
+                        <!-- se agrega el apartado de donaciones donde se implementara pagos por api de webpay -->
+                        <li class="nav-item">
+                            <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
+                        </li>
+                        <!-- Redirige a la vista del calendario -->
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-specific font-Sofia-serif"
+                                href="view/calendario/index.php">Calendario</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-Sofia-serif" href="contact">Contacto</a>
+                            <a class="nav-link font-Sofia-serif" href="../../index.php#contact">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -55,34 +64,43 @@
             <span></span>
         </div>
     </div>
-    <div class="broad div-cream-color">
+    <div class="broad div-crem-color">
         <div class="close-nav"><i class="las la-times"></i></div>
         <nav class="navbar navbar-light">
             <div class="main-nav collapse navbar-collapse d-flex justify-content-center align-items-center">
                 <ul class="navbar-nav text-center">
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../admin/login.php">Login</a>
+                        <a class="nav-link nav-link-specific font-Sofia-serif"
+                            href="../admin/login.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#home">Parroquia</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#home">Parroquia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#about-sec">Historia</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#about-sec">Historia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#sacramentos">Servicios</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#servicios">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#sacramentos">Sacramentos</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif"
+                            href="parroquiachocalan/index.php#sacramentos">Sacramentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#pateintgallery">Capillas</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif"
+                            href="parroquiachocalan/index.php#patientgallery">Capillas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#mini-blog-sec">Personal</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#personal">Personal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-Sofia-serif" href="../../index.php#contact">Contacto</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php">Donaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  nav-link-specific font-Sofia-serif" href="../admin/calendario_eucaristias/calendario.php">Calendario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#contact">Contacto</a>
                     </li>
                 </ul>
             </div>

@@ -199,12 +199,12 @@
                     <a href="<?php echo web_root; ?>view/admin/calendario_eucaristias/calendario.php"><i class="fa fa-calendar"></i> Calendario Eucaristías</a>
                   </li>
                   <li>
-                    <a href="<?php echo web_root; ?>view/admin/reporte/index.php"><i class="fa fa-print"></i> Reportes</a>
-                    </li>
-                  <li>
                     <a href="<?php echo web_root; ?>view/admin/solicitud_servicio/index.php"><i class="fa fa-calendar"></i> Solicitud servicios</a>
-
-                  </li>
+                    
+                    </li>
+                    <li>
+                      <a href="<?php echo web_root; ?>view/admin/reporte/index.php"><i class="fa fa-print"></i> Reporte</a>
+                      </li>
                         
                 <?php } ?>
 
