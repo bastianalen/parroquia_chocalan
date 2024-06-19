@@ -18,7 +18,7 @@ class Database {
     }
     
     public function open_connection() {
-        $this->conn = mysqli_connect(server, user, pass);
+        $this->conn = mysqli_connect(server, user, pass,database_name,3306);
         if (!$this->conn) {
             throw new mysqli_sql_exception("Problem in database connection! Contact administrator!");
         } else {
