@@ -25,31 +25,7 @@ if (!isset($_SESSION['id_rol']) == 1) {
     </div>
 </form>
 <?php
-// CONEXION A LA BASE DE DATOS PARROQUIA_CHOCALAN
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "parroquia_chocalan";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// OBTENER RESULTADOS DE LA BUSQUEDA FILTRAR POR N_REGISTRO,NOMBRE,RUT,N_TUMBA,PATIO
-// AQUI CON ISSET DEFINO LA VARIABLE PARA LUEGO LLAMAR LA FUNCION EN ESTE CASO QUERY CONTIENE LA CONSULTA
-$query = isset($_GET['query']) ? $_GET['query'] : '';
-
-// BUSCADOR  DEFINIR O FILTRAR CONSULTA A LA TABLA list.php POR LOS SIGUIENTES DATOS A BUSCAR
-$sql = "SELECT 	rut, nro_tumba, pnombre, id_sector, tipo_tumba, propietario, caracteristicas, escritura, pase_sepul, new_escritura, dd_nacimiento, mm_muerte, yyyy_muerte
-      	FROM tblpersonas 
-        WHERE nro_tumba LIKE ? ";
-$stmt = $conn->prepare($sql);
-$search = "%$query%";
-$stmt->bind_param("s", $search);
-$stmt->execute();
-$result = $stmt->get_result();
 
 ?>
 
