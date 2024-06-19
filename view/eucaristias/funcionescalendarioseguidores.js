@@ -3,7 +3,7 @@ $(document).ready(function () {
         header: {
             left: 'today,prev,next',
             center: 'title',
-            right: 'month, basicWeek, basicDay, agendaWeek, agendaDay'
+            right: 'month, basicWeek'
         },
         
         events: {

@@ -4,96 +4,64 @@
 if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "admin/view/index.php");
 }
+$sector = new Sector();
 
-
+echo "<script>console.log('pagomantencion2: " . $_GET['sector'] . "')</script>";
+$sectores = $sector->single_sector($_GET['sector']);
+$anio = new Anio();
+$anios = $anio->list_of_anio();
 ?>
-<form class="form-horizontal span6" action="../../../controller/controllerpagosmantencion.php?action=add" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal span6" action="../../../controller/controllerpagosmantencion.php?action=add" method="POST">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Nuevo pago mantencion</h1>
+      <h1 class="page-header">Agregar Nuevo Pago Mantención</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="RUT">RUT :</label>
+      <label class="col-md-4 control-label" for="n_tumba">Tumba:</label>
 
       <div class="col-md-8">
-        <input class="form-control input-sm" id="RUT" name="RUT" placeholder="RUT"
-          type="text" value="">
+        <!--<input class="form-control input-sm" id="n_tumba" name="n_tumba" placeholder="número tumba"
+          type="number" value="">-->
+        <p name="n_tumba"><?php echo $_GET['n_tumba']; ?></p>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="N_TUMBA">N_TUMBA :</label>
+      <label class="col-md-4 control-label" for="sector">Sector:</label>
 
       <div class="col-md-8">
-        <input class="form-control input-sm" id="N_TUMBA" name="N_TUMBA" placeholder="N_TUMBA"
-          type="number" value="">
+        <p name="sector"><?php echo $sectores->sector; ?></p>
       </div>
     </div>
   </div>
+
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="PATIO">PATIO :</label>
+      <label class="col-md-4 control-label" for="anio">Año de Pago:</label>
 
       <div class="col-md-8">
-        <input class="form-control input-sm" id="PATIO" name="PATIO" placeholder="PATIO"
-          type="text" value="">
+        <select name="anio" id="anio">
+          <?php
+            
+          foreach ($anios as $result) {
+
+            echo '<option value='.$result["id_anio"].'>'.$result["anio"].'</option>';
+            
+          }
+          ?>
+        </select>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="PROPIETARIO">PROPIETARIO :</label>
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="PROPIETARIO" name="PROPIETARIO" placeholder="PROPIETARIO"
-          type="text" value="">
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="FECHA PAGO">FECHA PAGO :</label>
-
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="FECHA_PAGO" name="FECHA_PAGO" placeholder="FECHA PAGO"
-          type="year" value="">
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="MONTO">MONTO :</label>
-
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="MONTO" name="MONTO" placeholder="MONTO"
-          type="number" value="">
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="ESTADO_PAGO">ESTADO DE PAGO :</label>
-
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="ESTADO_PAGO" name="ESTADO_PAGO" placeholder="ESTADO DE PAGO"
-          type="text" value="">
-      </div>
-    </div>
-  </div>
-
-  
-  
   <div class="form-group">
     <div class="col-md-8">
       <label class="col-md-4 control-label" for="idno"></label>

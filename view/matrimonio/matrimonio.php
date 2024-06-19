@@ -5,7 +5,7 @@
 <?php include_once '../partials/head.php'; ?>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
-    
+
     <!-- Incluye el header -->
     <?php include_once '../partials/loader.php'; ?>
     <!-- Incluye el header -->
@@ -29,7 +29,7 @@
                         <img src="../../public/vista/img/matrimonio.jpg" class="img-fluid" alt="Imagen 2">
                     </div>
                     <div class="col-md-8 text-justify">
-                        <h4>
+                        <h5>
                             El sacramento del Matrimonio significa la unión de Cristo con la Iglesia. Los esposos
                             cristianos
                             tienen una misión y una gracia propia de su estado para vivir santamente la vida de esposos
@@ -39,21 +39,21 @@
                             hacer un proceso previo en la parroquia del domicilio de uno de ellos. Luego, pueden
                             celebrar la
                             ceremonia en la misma o en otra a su elección.
-                            <br><br>
-                            <span class="underline">Procedimiento para solicitar el Matrimonio:</span>
-                            <br><br>
-
-                            <li>&#8226; Inscribirse en la oficina parroquial, llenando el formulario "Información
-                                Matrimonial" con aproximadamente 6 meses de anticipación.</li><br>
-                            <li>&#8226; Traer sus certificados de bautismo actualizados; se piden en las
-
-                        </h3>
+                        </h5>
                     </div>
                     <div class="col-md-12 text-justify">
-                        <h4>
-                            parroquias
-                            donde
-                            fueron bautizados.
+                        <h5>
+                            <span class="underline">Procedimiento para solicitar el Matrimonio:</span>
+                            <br><br>
+                            <li>&#8226; Rellenar formulario de solicitud de servicio.
+                            </li><br>
+                            <li>&#8226; Rellenando el formulario "Información
+                                Matrimonial" con aproximadamente 6 meses de anticipación que se le entregará en la parroquia.
+                            </li><br>
+                            <li>&#8226; Traer sus certificados de bautismo actualizados; se piden en las
+                                parroquias
+                                donde
+                                fueron bautizados.
                             </li><br>
                             <li>&#8226; Asistir a encuentros con un matrimonio de la parroquia, para conversar y
                                 compartir
@@ -91,10 +91,10 @@
                                 más
                                 apropiada y respetuosa.
                             </li>
-                        </h3>
+                        </h5>
                     </div>
                     <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                        <a href="../solicitarhora/index.php">
+                        <a href="../solicitarhora/index.php" style="text-decoration: none;">
                             <span class="about-icon">
                                 <i class="las la-calendar"></i>
                             </span>
@@ -111,11 +111,11 @@
 
     <!-- Incluye footer -->
     <?php include_once '../partials/footer.php'; ?>
-    
+
     <!-- General js CUSTOM JS -->
     <?php
-     include_once '../../public/linkScript.php'; 
-     ?>
+    include_once '../../public/linkScript.php';
+    ?>
 </body>
 
 </html>

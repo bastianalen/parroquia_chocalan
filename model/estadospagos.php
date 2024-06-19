@@ -1,22 +1,21 @@
 <?php
 require_once(__DIR__ ."/../controller/initialize.php");
 require_once(LIB_PATH_MODEL.DS.'database.php');
-class Persona {
-	protected static  $tblname = "tblpersonas";
-	protected static  $innertbl = " tper 
-									INNER JOIN tblsector tsec ON tper.id_sector = tsec.id_sector 
-									INNER JOIN tbltipotumba ttptum ON tper.tipo_tumba = ttptum.id_tipo_tumba ";
+
+class EstadoPago {
+
+	protected static  $tblname = "tblestadospagos";
 
 	function dbfields () {
 		global $mydb;
 		return $mydb->getfieldsononetable(self::$tblname);
 
 	}
-	function listofpeople(){
+	function list_of_estado_pago(){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl);
+		$mydb->setQuery("SELECT * FROM ".self::$tblname);
 		$cur = $mydb->executeQuery();
-
+		
 		if (!$cur) {
 			// Manejo de errores
 			error_log("Error executing query: " . $mydb->error);
@@ -30,104 +29,21 @@ class Persona {
 
 		return $result;
 	}
-	function find_people($id="",$name=""){
+	function find_estado_pago($id="",$name=""){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE rut = {$id} OR pnombre = '{$name}'");
-		$cur = $mydb->executeQuery();
-		$row_count = $mydb->num_rows($cur);
-		return $row_count;
-	}
-	function find_propietario($id="",$name=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE rut = {$id} OR propietario = '{$name}'");
-		$cur = $mydb->executeQuery();
-		$row_count = $mydb->num_rows($cur);
-		return $row_count;
-	}
-	function find_persona_sector($id_sector=""){
-		echo "<script> console.log(".json_encode($id_sector).")</script>";
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE id_sector = {$id_sector} ");
-
-		$cur = $mydb->executeQuery();
-		echo "<script> console.log(".json_encode($cur).")</script>";
-		if (!$cur) {
-			// Manejo de errores
-			error_log("Error executing query: " . $mydb->error_msg);
-			return false;
-		}
-
-		$result = [];
-		while ($row = $cur->fetch_assoc()) {
-			$result[] = $row;
-		}
-
-		return $result;
-	}
-
-	function find_persona_tumba($nro_tumba=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE nro_tumba = {$nro_tumba} ");
-
-		$cur = $mydb->executeQuery();
-		
-		if (!$cur) {
-			// Manejo de errores
-			error_log("Error executing query: " . $mydb->error_msg);
-			return false;
-		}
-
-		$result = [];
-		while ($row = $cur->fetch_assoc()) {
-			$result[] = $row;
-		}
-
-		return $result;
-	}
-
-	function find_persona_tumba_sector($nro_tumba="",$id_sector=0){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE nro_tumba = {$nro_tumba} and id_sector = {$id_sector}");
-
-		$cur = $mydb->executeQuery();
-		
-		if (!$cur) {
-			// Manejo de errores
-			error_log("Error executing query: " . $mydb->error_msg);
-			return false;
-		}
-
-		$result = [];
-		while ($row = $cur->fetch_assoc()) {
-			$result[] = $row;
-		}
-
-		return $result;
-	}
- 
-	function find_all_people($name=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE pnombre = '{$name}'");
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." WHERE id_estado_pago = {$id} OR estado_pago = '{$name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
 	 
+	function single_estado_pago($id=""){
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." where id_estado_pago = {$id} LIMIT 1");
+		$cur = $mydb->loadSingleResult();
+		return $cur;
+	}
 	
-	 
-	function single_people($id=""){
-			global $mydb;
-			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where rut = {$id} LIMIT 1");
-			$cur = $mydb->loadSingleResult();
-			return $cur;
-	}
 	/*---Instantiation of Object dynamically---*/
 	static function instantiate($record) {
 		$object = new self;
@@ -186,7 +102,7 @@ class Persona {
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
 		$sql .= "')";
-	echo $mydb->setQuery($sql);
+		echo $mydb->setQuery($sql);
 	
 	 if($mydb->executeQuery()) {
 	    $this->id = $mydb->insert_id();
@@ -205,7 +121,7 @@ class Persona {
 		}
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE rut=". $id;
+		$sql .= " WHERE id_estado_pago =". $id;
 	  $mydb->setQuery($sql);
 	 	if(!$mydb->executeQuery()) return false; 	
 		
@@ -214,7 +130,7 @@ class Persona {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE rut=". $id;
+		  $sql .= " WHERE id_estado_pago =". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  
@@ -224,4 +140,3 @@ class Persona {
 
 
 }
-?>

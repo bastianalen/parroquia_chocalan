@@ -25,18 +25,18 @@
             <!--Heading-->
             <div class="row padding-top-half container-info">
                 <div class="col-md-4 mb-4">
-                    <img src="../../public/vista/img/bendicion.jpg" class="img-fluid" alt="Imagen 2">
+                    <img src="../../public/vista/img/uncion.png" class="img-fluid" alt="Imagen 2">
                 </div>
                 <div class="col-md-8 text-justify">
-                    <h4>
+                    <h5>
                         El sacramento de la unción de los enfermos  es un rito en el que un sacerdote o un obispo unge con aceite a una persona enferma,
                         mayor o en riesgo de morir. Este gesto representa la ayuda especial que Dios brinda al enfermo para darle fuerzas y 
                         consuelo durante su enfermedad, preparándolo para encontrarse con Dios. 
                         La Iglesia enseña que Jesucristo instituyó este sacramento en beneficio de todo el pueblo fiel.  
-                    </h4>
+                    </h5>
                 </div>
                 <div class="col-md-12 text-justify">
-                    <h4>
+                    <h5>
                         <span class="underline">Procedimiento para solicitar la Unción de los Enfermos:</span>
                         <br><br>
                         <ul>
@@ -44,10 +44,10 @@
                             <li>&#8226; Solo el sacerdote o el obispo están autorizados para administrar este sacramento.</li><br>
                             <li>&#8226; El párroco puede administrar la unción a los enfermos graves, ya sea en la iglesia o en su hogar.</li><br>
                         </ul>
-                    </h4>
+                    </h5>
                 </div>
                 <div class="col-md-2 mb-4 about-media wow fadeInUp padding-20-0 center centrar">
-                    <a href="../solicitarhora/index.php">
+                    <a href="../solicitarhora/index.php" style="text-decoration: none;">
                         <span class="about-icon">
                             <i class="las la-calendar"></i>
                         </span>

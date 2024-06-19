@@ -14,11 +14,6 @@ function generarCadenaAleatoria($longitud = 20)
 }
 
 
-
-
-
-
-
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
 
 switch ($action) {

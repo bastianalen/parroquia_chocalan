@@ -1,133 +1,112 @@
 <?php
 
-include "../../../controller/controllerpagosmantencion.php";
- 
-// Comprobar si la sesión ya está iniciada
-
+include '../../../controller/controllerpagosmantencion.php';
+// require_once("../../../controller/initialize.php");
 
 if (!isset($_SESSION['user_id'])) {
-   header("Location: index.php");
-   exit();
+    redirect(web_root . "view/admin/index.php");
 }
 
-?>  
+$n_registro = $_GET['n_registro'];
+$pagosmantencion = new PagosMantencion();
+$pagomantencion = $pagosmantencion->single_pagosmantencion($n_registro);
 
-<form class="form-horizontal span6" action="../../../controller/controllerpagosmantencion.php?action=index" method="POST" enctype="multipart/form-data">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Editar Datos</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-  </div>
+echo "<script>console.log('pagomantencion2: " . json_encode($pagomantencion) . "')</script>";
+echo "<script>console.log('pagomantencion: " . $pagomantencion->n_tumba . "')</script>";
 
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="RUT">RUT :</label>
+$pago = new Pagos();
+$pagos = $pago->find_pagos_tumba_sector($pagomantencion->n_tumba, $pagomantencion->patio);
+$pagos_count = $pago->count_find_pagos_tumba_sector($pagomantencion->n_tumba, $pagomantencion->patio);
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="RUT" name="RUT" placeholder="RUT"
-          type="text" value="<?=$datos->RUT?>">
+echo "<script>console.log('pagos: " . json_encode($pagos) . "')</script>";
+$sector = new Sector();
 
-      </div>
-    </div>
-  </div>
+$sectores = $sector->single_sector($pagomantencion->patio);
+echo "<script>console.log('sector: " . json_encode($sectores->sector) . "')</script>";
+?>
 
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="N_TUMBA">N_TUMBA :</label>
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="N_TUMBA" name="N_TUMBA" placeholder="N_TUMBA"
-          type="number"value="<?php echo $record['N_TUMBA']; ?>">
-      </div>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="PATIO">PATIO :</label>
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="PATIO" name="PATIO" placeholder="PATIO"
-          type="text" value="<?php echo $record['PATIO']; ?>">
-      </div>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="PROPIETARIO">PROPIETARIO :</label>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Mantenciones</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="PROPIETARIO" name="PROPIETARIO" placeholder="PROPIETARIO"
-          type="text" value="<?php echo $record['PROPIETARIO']; ?>">
+<body>
 
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="FECHA PAGO">FECHA PAGO :</label>
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="FECHA_PAGO" name="FECHA_PAGO" placeholder="AÑO"
-          type="year" value="<?php echo $record['FECHA_PAGO']; ?>">
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="MONTO">MONTO :</label>
 
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="MONTO" name="MONTO" placeholder="MONTO"
-          type="number" value="<?php echo $record['MONTO']; ?>">
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="ESTADO_PAGO">ESTADO DE PAGO :</label>
-
-      <div class="col-md-8">
-        <input class="form-control input-sm" id="ESTADO_PAGO" name="ESTADO_PAGO" placeholder="ESTADO DE PAGO"
-          type="text" value="<?php echo $record['ESTADO_PAGO']; ?>">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="col-md-4 control-label" for="idno"></label>
-
-      <div class="col-md-8">
-        <button class="btn  btn-primary btn-sm" name="update" type="submit"><span class="fa fa-save fw-fa"></span>
-          Actualizar</button>
-        <a href="index.php" class="btn btn-info"><span
-            class="fa fa-arrow-circle-left fw-fa"></span>&nbsp;<strong>Atrás</strong></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="rows">
-      <div class="col-md-6">
-        <label class="col-md-6 control-label" for="otherperson"></label>
-
-        <div class="col-md-6">
-
+    <form class="form-horizontal" action="../../../controller/controllerpagosmantencion.php?action=edit" method="POST">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Editar Mantención</h1>
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
-      </div>
+        <div class="table-responsive">
+            <table id="dash-table" class="table table-striped table-bordered table-hover" style="font-size: 12px"
+                cellspacing="0">
+                <thead>
+                    <tr>
+                        <!--<th>nºregistro</th> -->
+                        <th>Patio</th>
+                        <th>Tumba</th>
+                        <?php
 
-      <div class="col-md-6" align="right">
+                        foreach ($pagos as $result) {
+
+                            echo '<td>' . $result['id_anio'] . '</td>';
+
+                        }
+                        ?>
 
 
-      </div>
 
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    echo '<tr>';
+
+                    echo '<td>' . $sectores->sector . '</td>';
+                    echo '<td>' . $pagomantencion->n_tumba . '</td>';
+                    foreach ($pagos as $result) {
+
+                        echo '<td>Pagado</td>';
+
+                    }
+                    //echo '<td align="center" > <a title="Editar" href="index.php?view=edit&n_registro=' . $result['n_registro'] . '"  class="btn btn-primary btn-xs ">  <span class="fa fa-edit fw-fa"></span></a>					
+                    //<a title="Editar" href="../../../controller/controllerpagosmantencion.php?action=delete&n_registro=' . $result['n_registro'] . '"  class="btn btn-danger btn-xs">  <span class="fa fa-trash fw-fa"></span></a>					
+                    //
+                    //</td>';
+                    echo '</tr>';
+                    ?>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-md-4 control-label">
+                <a href="index.php?view=add&sector=<?php echo $pagomantencion->patio; ?>&n_tumba=<?php echo $pagomantencion->n_tumba; ?>"
+                    class="btn btn-primary btn-xs">
+                    <i class="fa fa-plus-circle fw-fa"></i> Añadir año pagado
+                </a>
+
+                <a href="index.php" class="btn btn-info">Atrás</a>
+            </div>
+        </div>
+    </form>
     </div>
-  </div>
-  
-</form>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
