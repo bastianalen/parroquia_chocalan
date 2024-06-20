@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once(LIB_PATH.DS."config.php");
 require_once(LIB_PATH.DS."conexion.php");
 
@@ -10,7 +14,7 @@ class Database {
     public $last_query;
     private $magic_quotes_active;
     private $real_escape_string_exists;
-    
+
     function __construct() {
         $this->open_connection();
         $this->magic_quotes_active = function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc();
@@ -30,9 +34,9 @@ class Database {
     }
     
     function setQuery($sql='') {
-        $this->sql_string=$sql;
+        $this->sql_string = $sql;
     }
-    
+
     function executeQuery() {
         try {
             $result = mysqli_query($this->conn, $this->sql_string);
@@ -42,22 +46,22 @@ class Database {
             $this->confirm_query($result);
             return $result;
         } catch (mysqli_sql_exception $e) {
-            echo 'Error executing query: ' . $e->getMessage();
+            echo 'Error ejecutando la consulta: ' . $e->getMessage();
         }
-    } 
-    
+    }
+
     private function confirm_query($result) {
-        if(!$result){
+        if (!$result) {
             $this->error_no = mysqli_errno($this->conn);
             $this->error_msg = mysqli_error($this->conn);
-            return false;                
+            return false;
         }
         return $result;
-    } 
-    
-    function loadResultList( $key='' ) {
+    }
+
+    function loadResultList($key='') {
         $cur = $this->executeQuery();
-        
+
         $array = array();
         while ($row = mysqli_fetch_object($cur)) {
             if ($key) {
@@ -66,37 +70,35 @@ class Database {
                 $array[] = $row;
             }
         }
-        mysqli_free_result( $cur );
+        mysqli_free_result($cur);
         return $array;
     }
-    
+
     function loadSingleResult() {
         $cur = $this->executeQuery();
-            
+
         while ($row = mysqli_fetch_object($cur)) {
-        return $data = $row;
+            return $row;
         }
         mysqli_free_result($cur);
-        //return $data;
     }
-    
+
     function getFieldsOnOneTable($tbl_name) {
-    
         $this->setQuery("DESC ".$tbl_name);
         $rows = $this->loadResultList();
-        
+
         $f = array();
-        for ( $x=0; $x<count($rows); $x++ ) {
+        for ($x = 0; $x < count($rows); $x++) {
             $f[] = $rows[$x]->Field;
         }
-        
+
         return $f;
-    }   
+    }
 
     public function fetch_array($result) {
         return mysqli_fetch_array($result);
     }
-    //gets the number or rows    
+
     public function num_rows($result_set) {
         if ($result_set) {
             return mysqli_num_rows($result_set);
@@ -104,36 +106,32 @@ class Database {
             return 0;
         }
     }
-  
+
     public function insert_id() {
-        // get the last id inserted over the current db connection
         return mysqli_insert_id($this->conn);
     }
-  
+
     public function affected_rows() {
         return mysqli_affected_rows($this->conn);
     }
-    
-     public function escape_value( $value ) {
-        if( $this->real_escape_string_exists ) { // PHP v4.3.0 or higher
-            // undo any magic quote effects so mysql_real_escape_string can do the work
-            if($this->magic_quotes_active) { $value = stripslashes($value); }
-            $value = mysqli_real_escape_string($this->conn,$value);
-        } else { // before PHP v4.3.0
-            // if magic quotes aren't already on then add slashes manually
-            if( !$this->magic_quotes_active ) { $value = addslashes($value); }
-            // if magic quotes are active, then the slashes already exist
+
+    public function escape_value($value) {
+        if ($this->real_escape_string_exists) {
+            if ($this->magic_quotes_active) { $value = stripslashes($value); }
+            $value = mysqli_real_escape_string($this->conn, $value);
+        } else {
+            if (!$this->magic_quotes_active) { $value = addslashes($value); }
         }
         return $value;
     }
-    
+
     public function close_connection() {
-        if(isset($this->conn)) {
+        if (isset($this->conn)) {
             mysqli_close($this->conn);
             unset($this->conn);
         }
     }
-    
 }
 
 $mydb = new Database();
+?>

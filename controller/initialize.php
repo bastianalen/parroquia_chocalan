@@ -1,12 +1,13 @@
 <?php
-//define the core paths
-//Define them as absolute peths to make sure that require_once works as expected
+// HOST
+// defined('SITE_ROOT') ? null : define('SITE_ROOT', '/home3/cpa101887/public_html');
+// FIN HOST
+//  Local
+defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'parroquia_chocalan');
+// Fin local
 
-//DIRECTORY_SEPARATOR is a PHP Pre-defined constants:
-//(\ for windows, / for Unix)
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'parroquia_chocalan');
 
 defined('LIB_PATH') ? null : define ('LIB_PATH',SITE_ROOT.DS.'controller');
 defined('LIB_PATH_MODEL') ? null : define ('LIB_PATH_MODEL',SITE_ROOT.DS.'model');
