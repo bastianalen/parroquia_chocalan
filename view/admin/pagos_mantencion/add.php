@@ -4,15 +4,14 @@
 if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "admin/view/index.php");
 }
-$id_sector = $_GET['sector'];
-$n_tumba_add = $_GET['n_tumba'];
+$id_persona = $_GET['id_persona'];
 $anios_pagados = $_GET['anios'];
 
-$sector = new Sector();
-$sectores = $sector->single_sector($id_sector);
 $anio = new Anio();
 $anios = $anio->list_of_anio();
 
+$persona = new Persona();
+$datos_persona = $persona->single_people_id($id_persona);
 ?>
 <form class="form-horizontal span6" action="../../../controller/controllerpagosmantencion.php?action=add" method="post">
   <div class="row">
@@ -21,29 +20,39 @@ $anios = $anio->list_of_anio();
     </div>
     <!-- /.col-lg-12 -->
   </div>
-
+  <input type="hidden" name="id_persona" id="id_persona" value="<?php echo $id_persona ?>">
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="n_tumba">Tumba:</label>
+      <label class="col-md-4 control-label" for="propietario">Propietario:</label>
 
       <div class="col-md-8">
         <!--<input class="form-control input-sm" id="n_tumba" name="n_tumba" placeholder="número tumba"
           type="number" value="">-->
-        <p name="n_tumba"><?php echo $n_tumba_add ?></p>
+        <p><span name="propietario" id="propietario"><?php echo $datos_persona->propietario ?></span></p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-8">
+      <label class="col-md-4 control-label" for="pnombre">Difunto:</label>
+
+      <div class="col-md-8">
+        <!--<input class="form-control input-sm" id="n_tumba" name="n_tumba" placeholder="número tumba"
+          type="number" value="">-->
+        <p><span name="pnombre" id="pnombre"><?php echo $datos_persona->pnombre ?></span></p>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="id_sector">Sector:</label>
+      <label class="col-md-4 control-label" for="monto">Monto:</label>
 
       <div class="col-md-8">
-        <p name="id_sector"><?php echo $sectores->sector; ?></p>
+        <input type="number" name="monto" id="monto">
       </div>
     </div>
   </div>
-
 
   <div class="form-group">
     <div class="col-md-8">
@@ -51,23 +60,7 @@ $anios = $anio->list_of_anio();
 
       <div class="col-md-8">
         <select name="anio" id="anio">
-          <?php
-          foreach ($anios as $anio) {
-            echo "<script>console.log('pasgos: ".$anios_pagados."')</script>";
-            echo "<script>console.log('pasgos: ".json_decode($anios_pagados, true)."')</script>";
-            foreach ($anios_pagados as $result) {
 
-              if ($anio == $result) {
-                echo '<option value='.$anio["id_anio"].'>'.$anio["anio"].' Pagado</option>';
-              } 
-              else {
-                echo '<option value='.$anio["id_anio"].'>'.$anio["anio"].'</option>';
-              }
-            }
-          }
-
-          
-          ?>
         </select>
       </div>
     </div>

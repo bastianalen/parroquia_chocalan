@@ -37,4 +37,5 @@ $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 	}
 
 require_once ("../theme/templates.php");
-
+?>
+<script src="pagosmantencion.js"></script>

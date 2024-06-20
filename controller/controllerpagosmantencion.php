@@ -26,21 +26,24 @@ function doInsert()
 {
 	// global $mydb;
 	if (isset($_POST['save'])) {
+		$fecha_actual = date('Y-m-d');
 		
+		$pagomantencion = new PagoMantencion();
 		
-		$pagos = new Pagos();
+		$pagomantencion->id_anio = $_POST['anio'];
+		$pagomantencion->id_persona = $_POST['id_persona'];
+		$pagomantencion->fecha_pago = $fecha_actual;
+		$pagomantencion->monto = $_POST['monto'];
+		$pagomantencion->estado = 2;
 		
-		$pagos->sector = $_POST['id_sector'];
-		$pagos->id_anio = $_POST['anio'];
-		$pagos->n_tumba = $_POST['n_tumba'];
-		
-		echo "<script>console.log('1: ".$_POST['id_sector']."')</script>";
-		echo "<script>console.log('2: ".$_POST['anio']."')</script>";
-		echo "<script>console.log('3: ".$_POST['n_tumba']."')</script>";
-		echo "<script>console.log('4: ".json_encode($pagos)."')</script>";
-		// $pagos->create();
+		// echo "<script>console.log('2: ".$_POST['anio']."')</script>";
+		// echo "<script>console.log('2: ".$_POST['id_persona']."')</script>";
+		// echo "<script>console.log('2: ".$fecha_actual."')</script>";
+		// echo "<script>console.log('2: ".$_POST['monto']."')</script>";
+		// echo "<script>console.log('4: ".json_encode($pagomantencion)."')</script>";
+		$pagomantencion->create();
 		message("¡Nueva Sección creada exitosamente!", "success");
-		//redirect("../view/admin/pagos_mantencion/index.php");
+		redirect("../view/admin/pagos_mantencion/index.php");
 
 	}
 }
@@ -48,13 +51,15 @@ function doInsert()
 function doEdit()
 {
 	if (isset($_POST['update'])) {
-		$pagos = new Pagos();
+		$pagomantencion = new PagoMantencion();
 
-		$pagos->sector = $_POST['sector'];
-		$pagos->id_anio = $_POST['id_anio'];
-		$pagos->n_tumba = $_POST['n_tumba'];
+		$pagomantencion->id_anio = $_POST['anio'];
+		$pagomantencion->id_persona = $_POST['id_persona'];
+		$pagomantencion->fecha_pago = $_POST['fecha_pago'];
+		$pagomantencion->monto = $_POST['monto'];
+		$pagomantencion->estado = 2;
 
-		$pagos->update($_POST['id_pago']);
+		$pagomantencion->update($_POST['id_pago']);
 		message("¡Seccion actualizada!", "success");
 		redirect("../view/admin/pagos_mantencion/index.php");
 	}
@@ -63,8 +68,8 @@ function doEdit()
 function doDelete()
 {
 	$id_pago = $_GET['id_pago'];
-	$pagos = new Pagos();
-	$pagos->delete($id_pago);
+	$pagomantencion = new PagoMantencion();
+	$pagomantencion->delete($id_pago);
 	message("¡Pago eliminado!", "info");
 	redirect('../view/admin/pagos_mantencion/index.php');
 

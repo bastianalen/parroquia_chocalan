@@ -74,7 +74,6 @@ if (!isset($_SESSION['user_id'])) {
               <?php
               $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
               $id_sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
-
               echo "<script> console.log(".json_encode($id_sector).")</script>";
               // echo "<script> console.log(".json_encode($_POST['sector']).")</script>";
               $persona = new Persona();
@@ -83,16 +82,16 @@ if (!isset($_SESSION['user_id'])) {
               echo "<script>console.log(".json_encode($personaResultado).")</script>";
               foreach ($personaResultado as $result) {
 
-                $fecha_nacimiento = $result['dd_nacimiento'] . "/" . $result['mm_nacimiento'] . "/" . $result['yyyy_nacimiento'];
-								$fecha_muerte = $result['dd_muerte'] . "/" . $result['mm_muerte'] . "/" . $result['yyyy_muerte'];
+                $fecha_nacimiento = (isset($result['dd_nacimiento']) && $result['dd_nacimiento'] !== '0' ? $result['dd_nacimiento'] : '--') . "/" . (isset($result['mm_nacimiento']) && $result['mm_nacimiento'] !== '0' ? $result['mm_nacimiento'] : '--') . "/" . (isset($result['yyyy_nacimiento']) && $result['yyyy_nacimiento'] !== '0' ? $result['yyyy_nacimiento'] : '----');
+                                $fecha_muerte = (isset($result['dd_muerte']) && $result['dd_muerte'] !== '0' ? $result['dd_muerte'] : '--') . "/" . (isset($result['mm_muerte']) && $result['mm_muerte'] !== '0' ? $result['mm_muerte'] : '--') . "/" . (isset($result['yyyy_muerte']) && $result['yyyy_muerte'] !== '0' ? $result['yyyy_muerte'] : '----');
 
                 echo '<tr>';
 								echo '<td width="8%" align="center">' . $result['nro_tumba'] . '</td>';
 								echo '<td> ' . $result['pnombre'] . '</td>';
 								echo '<td>' . $fecha_nacimiento . '</td>';
 								echo '<td>' . $fecha_muerte . '</td>';
-								echo '<td>' . $result['id_sector'] . '</td>';
-								echo '<td>' . $result['tipo_tumba'] . '</td>';
+								echo '<td>' . $result['sector'] . '</td>';
+								echo '<td>' . $result['tipo'] . '</td>';
 								echo '<td>' . $result['propietario'] . '</td>';
 								echo '<td>' . $result['caracteristicas'] . '</td>';
 								echo '</tr>';
