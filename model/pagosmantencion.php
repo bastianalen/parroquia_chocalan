@@ -5,6 +5,11 @@ require_once(LIB_PATH_MODEL.DS.'database.php');
 class PagosMantencion {
 
 	protected static  $tblname = "tblpagosmantencion";
+	protected static  $tblinner = " pm
+								INNER JOIN tblsector s on pm.patio=s.id_sector 
+								INNER JOIN tblpersonas per ON pm.n_tumba=per.nro_tumba
+								INNER JOIN tbltipotumba tt ON per.tipo_tumba=tt.id_tipo_tumba
+								";
 
 	function dbfields () {
 		global $mydb;
@@ -13,7 +18,7 @@ class PagosMantencion {
 	}
 	function listofpagosmantencion(){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname);
+		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$tblinner);
 		$cur = $mydb->executeQuery();
 		
 		if (!$cur) {
@@ -31,7 +36,7 @@ class PagosMantencion {
 	}
 	function find_pagosmantencion($id="",$name=""){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." WHERE n_registro = {$id} OR propietario = '{$name}'");
+		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$tblinner." WHERE pm.n_registro = {$id} OR pm.propietario = '{$name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
@@ -39,7 +44,7 @@ class PagosMantencion {
 	
 	function find_pagosmantenciones($where=""){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." WHERE n_registro Like '%{$where}%' or rut Like '%{$where}%' or propietario Like '%{$where}%' or n_tumba Like '%{$where}%' or patio Like '%{$where}%' or fecha_pago Like '%{$where}%' or monto Like '%{$where}%' or estado_pago Like '%{$where}%'");
+		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$tblinner." WHERE pm.n_registro Like '%{$where}%' or pm.rut Like '%{$where}%' or pm.propietario Like '%{$where}%' or pm.n_tumba Like '%{$where}%' or pm.patio Like '%{$where}%' or pm.fecha_pago Like '%{$where}%' or pm.monto Like '%{$where}%' or pm.estado_pago Like '%{$where}%'");
 		$cur = $mydb->executeQuery();
 		
 		if (!$cur) {

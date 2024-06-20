@@ -1,4 +1,5 @@
 <?php
+defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 // HOST
 // defined('SITE_ROOT') ? null : define('SITE_ROOT', '/home3/cpa101887/public_html');
 // FIN HOST
@@ -6,7 +7,6 @@
 defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'parroquia_chocalan');
 // Fin local
 
-defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 
 defined('LIB_PATH') ? null : define ('LIB_PATH',SITE_ROOT.DS.'controller');

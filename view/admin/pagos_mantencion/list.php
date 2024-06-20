@@ -56,6 +56,7 @@ if (!empty($pago_mantencion)){
                         <th>Propietario</th>
                         <th>Rut Propietario</th>
                         <th>Tumba</th>
+                        <th>Tipo Tumba</th>
                         <th>Patio</th>
                         <th>Fecha Pago</th>
                         <th>Monto</th>
@@ -74,7 +75,8 @@ if (!empty($pago_mantencion)){
                         echo '<td>' . $result['propietario'] . '</td>';
                         echo '<td>' . $result['rut']. '</td>';
                         echo '<td>' . $result['n_tumba'] . '</td>';
-                        echo '<td>' . $result['patio'] . '</td>';
+                        echo '<td>' . $result['tipo'] . '</td>';
+                        echo '<td>' . $result['sector'] . '</td>';
                         
                         echo '<td>' . $result['fecha_pago'] . '</td>';
                         echo '<td>' . $result['monto'] . '</td>';
