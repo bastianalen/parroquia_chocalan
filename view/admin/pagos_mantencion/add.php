@@ -5,7 +5,9 @@ if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "admin/view/index.php");
 }
 $id_persona = $_GET['id_persona'];
-$anios_pagados = $_GET['anios'];
+if (!empty($_GET['anios'])) {
+    $anios_pagados = $_GET['anios'];
+}
 
 $anio = new Anio();
 $anios = $anio->list_of_anio();

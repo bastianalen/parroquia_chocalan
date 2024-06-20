@@ -64,7 +64,7 @@ class PagoMantencion {
 
 	function find_pagos_persona($id=""){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$tblinner." WHERE pm.id_persona = {$id} ORDER BY pm.id_anio ASC");
+		$mydb->setQuery("SELECT DISTINCT * FROM ".self::$tblname.self::$tblinner." WHERE pm.id_persona = {$id} ORDER BY pm.id_anio ASC");
 		$cur = $mydb->executeQuery();
 		
 		if (!$cur) {
@@ -77,7 +77,6 @@ class PagoMantencion {
 		while ($row = $cur->fetch_assoc()) {
 			$result[] = $row;
 		}
-		echo "<script>console.log(".json_encode($result).")</script>";
 
 		return $result;
 	}
