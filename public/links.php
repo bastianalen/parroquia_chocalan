@@ -11,3 +11,7 @@
 <script src="../../public/js/bootstrap-clockpicker.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="../../public/css/bootstrap-clockpicker.css">
+
+<!-- Sweet alert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

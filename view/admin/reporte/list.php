@@ -1,28 +1,31 @@
 <?php
-
 // Llama al controllador de la vista y valida que el usuario tenga la cuenta ingresada
 require_once "../../../controller/controllerpersonafallecida.php";
 if (!isset($_SESSION['id_rol']) == 1) {
     redirect(web_root . "view/admin/index.php");
 }
-
 // Obtiene los datos que se utilizaran mas adelante (tipo_tumba,id_sector,nro_tumba)
 $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
-$sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
+$sector = isset($_POST['sector']) ? $_POST['sector'] : "0";
 $nro_tumba = isset($_POST['nro_tumba']) ? $_POST['nro_tumba'] : "";
 
 // Inicializa la clase Persona
 $persona = new Persona();
 
 // Encuentra los datos de las personas segun los datos que se ingresen en los filtros
-if (!empty($nro_tumba) and !empty($sector)){
+if (!empty($nro_tumba) and $sector != 0){
     $personaResultado = $persona->find_persona_tumba_sector($nro_tumba,$sector);
     $id_sector = $sector;
-}else if (!empty($nro_tumba)) {
+
+}else if (!empty($nro_tumba) and $sector == 0) {
     $personaResultado = $persona->find_persona_tumba($nro_tumba);
     $id_sector = $personaResultado[0]['id_sector'];
-} else {
+
+} else if ($sector != 0){
     $personaResultado = $persona->find_persona_sector($sector);
+    $id_sector = $sector;
+} else {
+    $personaResultado = $persona->listofpeople();
     $id_sector = $sector;
 }
 ?>
@@ -36,6 +39,7 @@ if (!empty($nro_tumba) and !empty($sector)){
             <div class="col-sm-6">
                 <label>Patio:</label>
                 <select class="form-control" name="sector" id="sector" style="width: 100%;">
+                    <option value="0">Seleccionar un patio</option>
                     <?php
                     // Inicializa la clase Sector y llama a la consulta listofsector del model
                     $sectores = new Sector();
@@ -94,7 +98,6 @@ if (!empty($nro_tumba) and !empty($sector)){
                                 <th>Tipo Tumba</th>
                                 <th>Propietario</th>
                                 <th>Caracteristicas</th>
-                                <th>Escritura</th>
                             </tr>
                         </thead>
 
@@ -105,19 +108,18 @@ if (!empty($nro_tumba) and !empty($sector)){
                             // Recorre los resultados obtenidos y almacenados en la variable $personaResultado e inserta filas en la tabla con los datos obtenidos
                             foreach ($personaResultado as $result) {
 
-                                $fecha_nacimiento = $result['dd_nacimiento'] . "/" . $result['mm_nacimiento'] . "/" . $result['yyyy_nacimiento'];
-                                $fecha_muerte = $result['dd_muerte'] . "/" . $result['mm_muerte'] . "/" . $result['yyyy_muerte'];
+                                $fecha_nacimiento = (isset($result['dd_nacimiento']) && $result['dd_nacimiento'] !== '0' ? $result['dd_nacimiento'] : '--') . "/" . (isset($result['mm_nacimiento']) && $result['mm_nacimiento'] !== '0' ? $result['mm_nacimiento'] : '--') . "/" . (isset($result['yyyy_nacimiento']) && $result['yyyy_nacimiento'] !== '0' ? $result['yyyy_nacimiento'] : '----');
+                                $fecha_muerte = (isset($result['dd_muerte']) && $result['dd_muerte'] !== '0' ? $result['dd_muerte'] : '--') . "/" . (isset($result['mm_muerte']) && $result['mm_muerte'] !== '0' ? $result['mm_muerte'] : '--') . "/" . (isset($result['yyyy_muerte']) && $result['yyyy_muerte'] !== '0' ? $result['yyyy_muerte'] : '----');
 
                                 echo '<tr>';
-                                echo '<td width="8%" align="center">' . $result['nro_tumba'] . '</td>';
-                                echo '<td> ' . $result['pnombre'] . '</td>';
+                                echo '<td width="8%" align="center">' . (isset($result['nro_tumba']) ? $result['nro_tumba'] : '--') . '</td>';
+                                echo '<td>' . (isset($result['pnombre']) ? $result['pnombre'] : '--') . '</td>';
                                 echo '<td>' . $fecha_nacimiento . '</td>';
                                 echo '<td>' . $fecha_muerte . '</td>';
-                                echo '<td>' . $result['id_sector'] . '</td>';
-                                echo '<td>' . $result['tipo_tumba'] . '</td>';
-                                echo '<td>' . $result['propietario'] . '</td>';
-                                echo '<td>' . $result['caracteristicas'] . '</td>';
-                                echo '<td>' . $result['escritura'] . '</td>';
+                                echo '<td>' . (isset($result['sector']) ? $result['sector'] : '--') . '</td>';
+                                echo '<td>' . (isset($result['tipo']) ? $result['tipo'] : '--') . '</td>';
+                                echo '<td>' . (isset($result['propietario']) ? $result['propietario'] : '--') . '</td>';
+                                echo '<td>' . (isset($result['caracteristicas']) ? $result['caracteristicas'] : '--') . '</td>';
                                 echo '</tr>';
                             }
                             ?>

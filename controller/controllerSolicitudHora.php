@@ -36,6 +36,7 @@ function doInsert()
 			$solicitud->hora_solicitud = $_POST['hora_solicitud'];
 			$solicitud->tipo_servicio = $_POST['tipo_servicio'];
 			$solicitud->comentario = $_POST['userMessage'];
+			$solicitud->estado = $_POST['estado_solicitud'];
 			$solicitud->create();
 			message("¡Nueva solicitud de [" . $_POST['nombre'] . "] enviada con exito!", "exito");
 			redirect("../view/solicitarhora/index.php");

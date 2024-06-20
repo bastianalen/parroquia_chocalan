@@ -47,13 +47,11 @@ class Persona {
 		return $row_count;
 	}
 	function find_persona_sector($id_sector=""){
-		echo "<script> console.log(".json_encode($id_sector).")</script>";
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE id_sector = {$id_sector} ");
+		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
+			WHERE tper.id_sector = {$id_sector} ");
 
 		$cur = $mydb->executeQuery();
-		echo "<script> console.log(".json_encode($cur).")</script>";
 		if (!$cur) {
 			// Manejo de errores
 			error_log("Error executing query: " . $mydb->error_msg);
@@ -70,8 +68,8 @@ class Persona {
 
 	function find_persona_tumba($nro_tumba=""){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE nro_tumba = {$nro_tumba} ");
+		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
+			WHERE tper.nro_tumba = {$nro_tumba} ");
 
 		$cur = $mydb->executeQuery();
 		
@@ -91,8 +89,8 @@ class Persona {
 
 	function find_persona_tumba_sector($nro_tumba="",$id_sector=0){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE nro_tumba = {$nro_tumba} and id_sector = {$id_sector}");
+		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
+			WHERE tper.nro_tumba = {$nro_tumba} and tper.id_sector = {$id_sector}");
 
 		$cur = $mydb->executeQuery();
 		

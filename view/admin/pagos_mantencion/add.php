@@ -4,14 +4,17 @@
 if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "admin/view/index.php");
 }
-$sector = new Sector();
+$id_sector = $_GET['sector'];
+$n_tumba_add = $_GET['n_tumba'];
+$anios_pagados = $_GET['anios'];
 
-echo "<script>console.log('pagomantencion2: " . $_GET['sector'] . "')</script>";
-$sectores = $sector->single_sector($_GET['sector']);
+$sector = new Sector();
+$sectores = $sector->single_sector($id_sector);
 $anio = new Anio();
 $anios = $anio->list_of_anio();
+
 ?>
-<form class="form-horizontal span6" action="../../../controller/controllerpagosmantencion.php?action=add" method="POST">
+<form class="form-horizontal span6" action="../../../controller/controllerpagosmantencion.php?action=add" method="post">
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Agregar Nuevo Pago Mantención</h1>
@@ -26,17 +29,17 @@ $anios = $anio->list_of_anio();
       <div class="col-md-8">
         <!--<input class="form-control input-sm" id="n_tumba" name="n_tumba" placeholder="número tumba"
           type="number" value="">-->
-        <p name="n_tumba"><?php echo $_GET['n_tumba']; ?></p>
+        <p name="n_tumba"><?php echo $n_tumba_add ?></p>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="sector">Sector:</label>
+      <label class="col-md-4 control-label" for="id_sector">Sector:</label>
 
       <div class="col-md-8">
-        <p name="sector"><?php echo $sectores->sector; ?></p>
+        <p name="id_sector"><?php echo $sectores->sector; ?></p>
       </div>
     </div>
   </div>
@@ -49,12 +52,21 @@ $anios = $anio->list_of_anio();
       <div class="col-md-8">
         <select name="anio" id="anio">
           <?php
-            
-          foreach ($anios as $result) {
+          foreach ($anios as $anio) {
+            echo "<script>console.log('pasgos: ".$anios_pagados."')</script>";
+            echo "<script>console.log('pasgos: ".json_decode($anios_pagados, true)."')</script>";
+            foreach ($anios_pagados as $result) {
 
-            echo '<option value='.$result["id_anio"].'>'.$result["anio"].'</option>';
-            
+              if ($anio == $result) {
+                echo '<option value='.$anio["id_anio"].'>'.$anio["anio"].' Pagado</option>';
+              } 
+              else {
+                echo '<option value='.$anio["id_anio"].'>'.$anio["anio"].'</option>';
+              }
+            }
           }
+
+          
           ?>
         </select>
       </div>

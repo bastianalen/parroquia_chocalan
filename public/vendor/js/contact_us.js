@@ -27,14 +27,13 @@ $(".contact_btn").on('click', function () {
 
         var accessURL;
         if(secondLevelLocation){
-            accessURL="../public/vendor/contact-mailer.php";
+            accessURL="../../public/vendor/contact-mailer.php";
         }else{
             accessURL="public/vendor/contact-mailer.php";
         }
         //data to be sent to server
         $.ajax({
             type: 'POST',
-            // url: 'vendor/contact-mailer.php',
             url: accessURL,
             data: str,
             dataType: 'json',
@@ -73,7 +72,7 @@ $(".contact_btn").on('click', function () {
                 }
             },
             error: function () {
-                alert("Failer");
+                alert("Mensaje de error para envio de correo! verifica los datos ingresados");
             }
         });
 
@@ -136,7 +135,6 @@ $(".modal_contact_btn").on('click', function () {
         //data to be sent to server
         $.ajax({
             type : 'POST',
-            // url : 'vendor/contact-mailer.php',
             url : accessURL,
             data : str,
             dataType: 'json',
@@ -173,11 +171,9 @@ $(".modal_contact_btn").on('click', function () {
                         $(".modal_contact_btn i").addClass('d-none');
                     }
                 }
-                // $("#quote_result").hide().html(output).slideDown();
-                // $(".modal_contact_btn i").addClass('d-none');
             },
             error: function () {
-                alert("Failer");
+                alert("A ocurrido un error con el envio del correo, verifica los datos ingresados");
             }
         });
 

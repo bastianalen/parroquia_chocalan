@@ -73,15 +73,16 @@ echo "<script>console.log('sector: " . json_encode($sectores->sector) . "')</scr
                 <tbody>
                     <?php
 
+                    $anios_pagados = [];
                     echo '<tr>';
-
                     echo '<td>' . $sectores->sector . '</td>';
                     echo '<td>' . $pagomantencion->n_tumba . '</td>';
                     foreach ($pagos as $result) {
-
+                        echo "<script>console.log('pasgos: ".json_encode($result['id_anio'])."')</script>";
                         echo '<td>Pagado</td>';
-
+                        $anios_pagados[] = $result['id_anio'];
                     }
+                    echo "<script>console.log('pasgos: ".json_encode($anios_pagados)."')</script>";
                     //echo '<td align="center" > <a title="Editar" href="index.php?view=edit&n_registro=' . $result['n_registro'] . '"  class="btn btn-primary btn-xs ">  <span class="fa fa-edit fw-fa"></span></a>					
                     //<a title="Editar" href="../../../controller/controllerpagosmantencion.php?action=delete&n_registro=' . $result['n_registro'] . '"  class="btn btn-danger btn-xs">  <span class="fa fa-trash fw-fa"></span></a>					
                     //
@@ -95,10 +96,13 @@ echo "<script>console.log('sector: " . json_encode($sectores->sector) . "')</scr
 
         <div class="mb-3 row">
             <div class="col-md-4 control-label">
-                <a href="index.php?view=add&sector=<?php echo $pagomantencion->patio; ?>&n_tumba=<?php echo $pagomantencion->n_tumba; ?>"
-                    class="btn btn-primary btn-xs">
-                    <i class="fa fa-plus-circle fw-fa"></i> Añadir año pagado
-                </a>
+                <?php
+                
+                echo '<a title="Añadir" href="index.php?view=add&sector=' . $pagomantencion->patio . '&n_tumba=' . $pagomantencion->n_tumba . '&anios=' . urlencode(json_encode($anios_pagados)) . '" class="btn btn-primary btn-xs">
+                        <i class="fa fa-plus-circle fw-fa"></i> Añadir año pagado
+                    </a>';
+                
+                ?>
 
                 <a href="index.php" class="btn btn-info">Atrás</a>
             </div>

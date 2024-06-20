@@ -283,7 +283,7 @@ if ($_POST) {
         $mail->Port       = 465;                                    // TCP port to connect to
 
         //Recipients
-        $mail->setFrom($your_email,'Parroquia Santa Rosa de Lima Chocal&oacute;n');
+        $mail->setFrom($your_email,'Parroquia Santa Rosa de Lima Chocalan');
         $mail->addAddress($user_Email, $user_Name);     // Add a recipient
         $mail->addReplyTo($your_old, 'Administrador@');
 
@@ -291,7 +291,7 @@ if ($_POST) {
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Nuevo contacto de consulta desde tu sitio web';
         $mail->Body  = "<h4 style='text-align: center;padding: 25px 15px;background-color: #0c6c9e;color: #FFFFFF;font-size:16px;width:90%;border-radius: 10px;'>Hola! Tienes una nueva respuesta desde el sitio web parroquiachocalan.cl.</h4><br><br>";
-        $mail->Body .= "<img src='https://parroquiachocalan.cl/public/img/logo.png' alt='Logo' class='img-load' style='width: 60%;'><br>";
+        $mail->Body .= "<img src='https://parroquiachocalan.cl/public/img/logito.png' alt='Logo' class='img-load' style='width: 250px;'><br>";
 
 
         $mail->Body .= "<h3>Tu informaci&oacute;n: </h3><br>";

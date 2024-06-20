@@ -47,13 +47,19 @@ $tipo_servicios = $tiposervicio->listoftiposervicio();
                                     <!-- Formulario para solicitar un servicio -->
                                     <form class="row contact-form wow fadeInLeft mx-4 p-2 box box-form" id="contact-form-data" action="../../controller/controllerSolicitudHora.php?action=add" method="POST">
                                         <div class="col-12 col-lg-12 px-md-0 text-center">
-                                            <input type="text" name="nombre" placeholder="Nombre" class="form-control input-info">
+                                            <input type="text" name="userName" placeholder="Nombre" class="form-control input-info">
+                                            
                                             <input type="email" name="userEmail" placeholder="E-mail" class="form-control input-info">
+                                            
                                             <input type="date" name="fecha" id="fecha" placeholder="01/01/2024" class="form-control input-info">
+                                            
+                                            <input type="text" name="userPhone" id="userPhone" placeholder="+569 12345678" class="form-control input-info">
+
                                             <select id="hora_solicitud" name="hora_solicitud" class="form-control">
                                                 <option value="0" class="optionhora">Seleccione hora de atención</option>
 
                                             </select>
+
                                             <select id="tipo_servicio" name="tipo_servicio" class="form-control">
                                                 <option value="0" class="option">Seleccione tipo de servicio</option>
                                                 <?php
@@ -62,9 +68,16 @@ $tipo_servicios = $tiposervicio->listoftiposervicio();
                                                 }
                                                 ?>
                                             </select>
+
+                                            <input type="hidden" name="estado_solicitud" value=1>
+
                                             <textarea class="form-control text-area-form" name="userMessage" rows="6"
                                                 placeholder="Escríbenos tu mensaje!"></textarea>
-                                            <button class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit"><span class="fa fa-save fw-fa"></span> Guardar</button>
+                                            <a href="javascript:void(0);" class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit">
+                                                <span class="fa fa-save fw-fa"></span> 
+                                                Guardar
+                                            </a>
+                                            <!-- <button class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit"><span class="fa fa-save fw-fa"></span> Guardar</button> -->
                                         </div>
                                         <br>
                                     </form>

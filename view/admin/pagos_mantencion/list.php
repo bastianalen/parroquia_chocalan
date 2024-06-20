@@ -43,9 +43,6 @@ if (!empty($pago_mantencion)){
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Pagos Mantención
-                <a href="index.php?view=add" class="btn btn-primary btn-xs">
-                    <i class="fa fa-plus-circle fw-fa"></i> Nuevo
-                </a>
             </h1>
         </div>
     </div>

@@ -67,7 +67,6 @@ if (!isset($_SESSION['user_id'])) {
 								<th>Tipo Tumba</th>
 								<th>Propietario</th>
 								<th>Caracteristicas</th>
-								<th>Escritura</th>
               </tr>
             </thead>
 
@@ -96,9 +95,6 @@ if (!isset($_SESSION['user_id'])) {
 								echo '<td>' . $result['tipo_tumba'] . '</td>';
 								echo '<td>' . $result['propietario'] . '</td>';
 								echo '<td>' . $result['caracteristicas'] . '</td>';
-								echo '<td>' . $result['escritura'] . '</td>';
-								echo '<td>' . $result['new_escritura'] . '</td>';
-								echo '<td>' . $result['pase_sepul'] . '</td>';
 								echo '</tr>';
               }
               ?>

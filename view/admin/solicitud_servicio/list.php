@@ -7,8 +7,7 @@ $solicitudes = $solicitud->list_of_solicitud();
 ?>
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Lista de Solicitudes para Servicios <a href="index.php?view=add" class="btn btn-primary btn-xs  "> <i
-					class="fa fa-plus-circle fw-fa"></i> Nuevo</a> </h1>
+		<h1 class="page-header">Lista de Solicitudes para Servicios</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
