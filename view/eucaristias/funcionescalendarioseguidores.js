@@ -7,7 +7,7 @@ $(document).ready(function () {
         },
         
         events: {
-            url: 'http://localhost/parroquia_chocalan/controller/eventoscalendarioseguidor.php',
+            url: '../../controller/eventoscalendarioseguidor.php',
             success: function(response) {
                 var events = response.map(function(event) {
                     return {
