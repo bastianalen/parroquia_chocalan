@@ -51,11 +51,7 @@ class Solicitud {
 	
 	function single_solicitud($id=""){
 			global $mydb;
-			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				ts INNER JOIN tblestadosolicitud tes ON ts.estado = tes.id_estado 
-				INNER JOIN tblhorasolicitud ths ON ts.hora_solicitud = ths.id_hora 
-				INNER JOIN tbltiposervicio tts ON ts.tipo_servicio = tts.id_servicio 
-				Where id_solicitud= '{$id}' LIMIT 1");
+			$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." Where id_solicitud= '{$id}' LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
@@ -148,16 +144,14 @@ class Solicitud {
 
 	public function delete($id=0) {
 		global $mydb;
-		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE id_solicitud=". $id;
-		  $sql .= " LIMIT 1 ";
-		  $mydb->setQuery($sql);
+			$sql = "DELETE FROM ".self::$tblname;
+			$sql .= " WHERE id_solicitud=". $id;
+			$sql .= " LIMIT 1 ";
+			$mydb->setQuery($sql);
 		  
 			if(!$mydb->executeQuery()) return false; 	
 	
 	}	
-
-
 }
 
 // Manejo de solicitudes AJAX
@@ -176,11 +170,12 @@ if (isset($_POST['find_solicitud'])) {
 
 // Manejo de solicitudes AJAX
 if (isset($_POST['find_solicitud_horas'])) {
+	if (!empty($_POST['id_horas'])) {
+		$hora_array = explode(",",$_POST['id_horas']);
+	} else {
+		$hora_array = array();
+	}
 
-    $hora_array = explode(",",$_POST['id_horas']);
-    foreach ($cur2 as $result2) {
-        $hora_array .= $result2->id_hora;
-    }
     $mydb->setQuery("SELECT * FROM tblhorasolicitud");
     $cur = $mydb->loadResultList();
     foreach ($cur as $result) {

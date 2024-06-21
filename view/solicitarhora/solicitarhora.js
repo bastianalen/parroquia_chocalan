@@ -46,6 +46,7 @@ $(document).ready(function () {
                             data: { find_solicitud_horas: '', fecha: fechaSeleccionada },
                             dataType: 'html', // Esperamos recibir HTML como respuesta
                             success: function (response) {
+                                console.log(response);
                                 $('#hora_solicitud').html(response);
                             },
                             error: function (e) {

@@ -12,13 +12,20 @@ if (!isset($_SESSION['user_id'])) {
 }
 $pago_mantencion = isset($_POST['pago_mantencion']) ? $_POST['pago_mantencion'] : "";
 
-// Inicializa la clase Persona
-$pagosmantencion = new PagosMantencion();
+$pagomantencion = new PagoMantencion();
 if (!empty($pago_mantencion)){
-    $pagosmantenciones = $pagosmantencion->find_pagosmantenciones($pago_mantencion);
+    $pagomantenciones = $pagomantencion->find_pagomantenciones($pago_mantencion);
 } else {
-    $pagosmantenciones = $pagosmantencion->listofpagosmantencion();
+    $pagomantenciones = $pagomantencion->listofpagomantencion_distinct();
 }
+
+$persona = new Persona();
+
+$sector = new Sector();
+
+$tipotumba = new TipoTumba();
+
+
 
 ?>
 
@@ -55,34 +62,34 @@ if (!empty($pago_mantencion)){
                     <!--<th>nºregistro</th> -->
                         <th>Propietario</th>
                         <th>Rut Propietario</th>
+                        <th>Difunto</th>
                         <th>Tumba</th>
-                        <th>Patio</th>
-                        <th>Fecha Pago</th>
-                        <th>Monto</th>
-                        <th>Estado Pago</th>
+                        <th>Tipo Tumba</th>
+                        <th>Sector</th>
                         <th>acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                     
-                    foreach ($pagosmantenciones as $result) {
-                       
+                    echo "<script>console.log(".json_encode($pagomantenciones).")</script>";
+                    foreach ($pagomantenciones as $result) {
                         echo '<tr>';
-                       
-                        //echo '<td>' . $result['n_registro']. '</td>';
-                        echo '<td>' . $result['propietario'] . '</td>';
-                        echo '<td>' . $result['rut']. '</td>';
-                        echo '<td>' . $result['n_tumba'] . '</td>';
-                        echo '<td>' . $result['patio'] . '</td>';
                         
-                        echo '<td>' . $result['fecha_pago'] . '</td>';
-                        echo '<td>' . $result['monto'] . '</td>';
-                        echo '<td>' . $result['estado_pago'] . '</td>';
+                        $persona_r = $persona->single_people_id($result['id_persona']);
+                        echo '<td>' . $persona_r->propietario . '</td>';
+                        echo '<td>' . $persona_r->rut. '</td>';
+                        echo '<td>' . $persona_r->pnombre . '</td>';
+                        echo '<td>' . $persona_r->nro_tumba . '</td>';
+
+                        $tipotumba_r = $tipotumba->single_tumba($persona_r->tipo_tumba);
+                        echo '<td>' . $tipotumba_r->tipo . '</td>';
+
+                        $sector_r = $sector->single_sector($persona_r->id_sector);
+                        echo '<td>' . $sector_r->sector . '</td>';
                        
-                        echo '<td align="center" > <a title="Editar" href="index.php?view=edit&n_registro=' . $result['n_registro'] . '"  class="btn btn-primary btn-xs ">  <span class="fa fa-edit fw-fa"></span></a>					
-                        <a title="Editar" href="../../../controller/controllerpagosmantencion.php?action=delete&n_registro=' . $result['n_registro'] . '"  class="btn btn-danger btn-xs">  <span class="fa fa-trash fw-fa"></span></a>					
-                        
+                        echo '<td align="center" > <a title="Detalles" href="index.php?view=edit&id_persona=' . $result['id_persona'] . '"  class="btn btn-primary btn-xs ">  <span class="fa fa-edit fw-fa"></span></a>					
+                        <a title="Editar" href="../../../controller/controllerpagosmantencion.php?action=delete&id_persona=' . $result['id_persona'] . '"  class="btn btn-danger btn-xs">  <span class="fa fa-trash fw-fa"></span></a>
                          </td>';
                         echo '</tr>';
                     }

@@ -2,9 +2,9 @@
 if (!isset($_SESSION['user_id'])) {
   redirect(web_root . "view/admin/index.php");
 }
-$rut = $_GET['id'];
+$id_persona = $_GET['id'];
 $person = new Persona();
-$p = $person->single_people($rut);
+$p = $person->single_people_id($id_persona);
 ?>
 <div class="row">
   <div class="col-lg-12">

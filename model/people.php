@@ -38,6 +38,24 @@ class Persona {
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
+	function find_people_id($id="",$name=""){
+		global $mydb;
+		$sql= "SELECT * FROM ".self::$tblname." 
+		WHERE 1=1";
+		if ($id !== "") {
+			$sql .= " AND id_persona = '{$id}'";
+		}
+		if ($name !== "") {
+			$sql .= " AND pnombre = '{$name}'";
+		}
+		$mydb->setQuery($sql);
+		$cur = $mydb->executeQuery();
+		$results= [];
+		while ($row = $cur->fetch_assoc()) {
+			$results[] = $row;
+		}
+		return $results;
+	}
 	function find_propietario($id="",$name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
@@ -48,9 +66,13 @@ class Persona {
 	}
 	function find_persona_sector($id_sector=""){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
-			WHERE tper.id_sector = {$id_sector} ");
+		$sql = "SELECT * FROM ".self::$tblname.self::$innertbl." 
+			WHERE 1=1";
+		if ($id_sector != 0) {
+            $sql.= " AND tper.id_sector = {$id_sector} ";
+        }
 
+		$mydb->setQuery($sql);
 		$cur = $mydb->executeQuery();
 		if (!$cur) {
 			// Manejo de errores
@@ -126,6 +148,14 @@ class Persona {
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
+
+	function single_people_id($id=""){
+		global $mydb;
+		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
+			Where id_persona = {$id} LIMIT 1");
+		$cur = $mydb->loadSingleResult();
+		return $cur;
+}
 	/*---Instantiation of Object dynamically---*/
 	static function instantiate($record) {
 		$object = new self;
@@ -212,7 +242,7 @@ class Persona {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE rut=". $id;
+		  $sql .= " WHERE id_persona=". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  
