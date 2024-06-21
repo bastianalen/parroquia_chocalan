@@ -1,13 +1,15 @@
 <?php
 if (!isset($_SESSION['user_id'])) {
 	redirect(web_root . "view/admin/index.php");
-}
+}$persona = new Persona();
+$personas = $persona->listofpeople();
 ?>
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Lista de Fallecidos <a href="index.php?view=add" class="btn btn-primary btn-xs  "> <i
-					class="fa fa-plus-circle fw-fa"></i> Nuevo</a> </h1>
+		<h1 class="page-header">Lista de Fallecidos 
+			<a href="index.php?view=add" class="btn btn-primary btn-xs  "> <i class="fa fa-plus-circle fw-fa"></i> Nuevo</a>  
+		</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
@@ -36,8 +38,7 @@ if (!isset($_SESSION['user_id'])) {
 			<tbody>
 				<?php
 
-				$persona = new Persona();
-				$personas = $persona->listofpeople();
+				
 				// funcion para validar precencia de datos
 				function format_date_component($component) {
 					return ($component == "" || $component == 0) ? "--" : $component;
@@ -57,9 +58,9 @@ if (!isset($_SESSION['user_id'])) {
 					$fecha_nacimiento = $dd_nacimiento . "/" . $mm_nacimiento . "/" . $yyyy_nacimiento;
 					$fecha_muerte = $dd_muerte . "/" . $mm_muerte . "/" . $yyyy_muerte;
 					echo '<tr>';
-					echo '<td width="1%" align="center"><input type="checkbox" name="selector[]" id="selector[]" value="' . $result['rut'] . '"/>';
+					echo '<td width="1%" align="center"><input type="checkbox" name="selector[]" id="selector[]" value="' . $result['id_persona'] . '"/>';
 					echo '<td width="1%" align="center">' . $result['nro_tumba'] . '</td>';
-					echo '<td><a title="edit" href="' . web_root . 'view/admin/personas_fallecidas/index.php?view=edit&id=' . $result['rut'] . '"><i class="fa fa-pencil "></i>' . $result['pnombre'] . '</a></td>';
+					echo '<td>'. $result["pnombre"] .'</td>';
 					echo '<td>' . $fecha_nacimiento . '</td>';
 					echo '<td>' . $fecha_muerte . '</td>';
 					echo '<td>' . $result['sector'] . '</td>';
@@ -110,9 +111,10 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-					echo '<td align="center" > <a title="Editar" href="index.php?view=edit&id=' . $result['rut'] . '"  class="btn btn-primary btn-xs ' . $active . '">  <span class="fa fa-edit fw-fa"></span></a>					
+					echo '<td align="center" > <a title="Editar" href="index.php?view=edit&id=' . $result['id_persona'] . '"  class="btn btn-primary btn-xs ' . $active . '">  <span class="fa fa-edit fw-fa"></span></a>					
 					<button type="submit" class="btn btn-danger btn-xs" name="delete"><i class="fa fa-trash fw-fa"></i>
 					</button>
+					<a href="../pagos_mantencion/index.php?view=add&id_persona=' . $result['id_persona'] . '" class="btn btn-primary btn-xs  "> <i class="fa fa-money fw-fa"></i> Pagar</a>
                      </td>';
 					echo '</tr>';
 				}

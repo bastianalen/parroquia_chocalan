@@ -32,7 +32,7 @@ function cargarCalendario(tipo_calendario) {
         },  
         
         events: {
-            url: 'http://localhost/parroquia_chocalan/controller/eventoscalendarioadmin.php',
+            url: '../../../controller/eventoscalendarioadmin.php',
             type: 'POST',
             data: function() {
                 return {
@@ -135,19 +135,16 @@ var NuevoEvento;
 $('#btnAgregar').click(function () {
     RecolectarDatosGUI();
     EnviarInformacion('agregar', NuevoEvento);
-
 });
 $('#btnEliminar').click(function () {
     RecolectarDatosGUI();
     /*EnviarInformacion('agregar', NuevoEvento);*/
     EnviarInformacion('eliminar', NuevoEvento);
-
 });
 $('#btnModificar').click(function () {
     RecolectarDatosGUI();
     /*EnviarInformacion('agregar', NuevoEvento);*/
     EnviarInformacion('modificar', NuevoEvento);
-
 });
 
 function RecolectarDatosGUI() {
@@ -165,28 +162,36 @@ function RecolectarDatosGUI() {
     };
 }
 
-function EnviarInformacion(accion, objEvento, modal) {
+function EnviarInformacion(accion, objEvento, modal = false) {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost/parroquia_chocalan/controller/eventoscalendarioadmin.php?accion=' + accion,
+        url: '../../../controller/eventoscalendarioadmin.php?accion=' + accion,
         data: objEvento,
-        success: function (msg) {
-            if (msg) {
-                $('#CalendarioWeb').fullCalendar('refetchEvents');
-                if (!modal) {
-                    $("#ModalEventos").modal('toggle');
+        success: function (response) {
+            try {
+                console.log(response);
+                let msg = JSON.parse(response);
+                console.log(msg);
+                if (msg) {
+                    $('#CalendarioWeb').fullCalendar('refetchEvents');
+                    if (!modal) {
+                        $("#ModalEventos").modal('toggle');
+                    }
                 }
+            } catch (e) {
+                console.error("Error parsing response:", response);
+                alert("Error: Invalid server response.");
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            console.log('Error details:', {
+            console.error('Error details:', {
                 jqXHR: jqXHR,
                 textStatus: textStatus,
                 errorThrown: errorThrown
             });
             alert("Error en la solicitud enviar informacion.");
         }
-    },);
+    });
 }
 $('.clockpicker').clockpicker();
 function limpiarFormulario() {
@@ -195,4 +200,3 @@ function limpiarFormulario() {
     $('#txtColor').html();
     $('#txtDescripcion').val();
 }
-

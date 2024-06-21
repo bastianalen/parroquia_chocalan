@@ -11,7 +11,7 @@ class Eventos {
 	protected static  $tblname = "tblcaleneucaristia";
 
 	// Almacena las relaciones que posee la tabla principal "tblcaleneucaristia"
-	protected static  $innertbl = "tce INNER JOIN tbltiposervicio tts ON tce.tipo_Servicio = tts.id_servicio 
+	protected static  $innertbl = " tce INNER JOIN tbltiposervicio tts ON tce.tipo_Servicio = tts.id_servicio 
 									INNER JOIN tbltipocalendario ttc ON tce.tipo_calendario = ttc.id_tipo";
 
 	// 
@@ -27,6 +27,32 @@ class Eventos {
 		global $mydb;
 		// Almacena la consulta de la funcion
 		$mydb->setQuery("SELECT * FROM " . self::$tblname);
+		// Almacena los resultados de la consulta
+		$cur = $mydb->executeQuery();
+
+		// Valida que se obtengan datos
+		if (!$cur) {
+			// Manejo de errores
+			error_log("Error executing query: " . $mydb->error);
+			return false;
+		}
+
+		// Crea una variable que almacenará en arreglo los datos
+		$result = [];
+		// Recorre la variable $cur y almacena los datos en la varible tipo array creada
+		while ($row = $cur->fetch_assoc()) {
+			$result[] = $row;
+		}
+
+		// Devuelve los datos obtenidos
+		return $result;
+	}
+
+	function list_of_eventos_tipo($tipo_calendario=""){
+		// Conecta la base de datos
+		global $mydb;
+		// Almacena la consulta de la funcion
+		$mydb->setQuery("SELECT * FROM " . self::$tblname. self::$innertbl." WHERE tce.tipo_calendario = {$tipo_calendario}");
 		// Almacena los resultados de la consulta
 		$cur = $mydb->executeQuery();
 
@@ -129,9 +155,9 @@ class Eventos {
 	  }
 	}
 
-	public function update($id=0) {
+	public function update($data,$id=0) {
 	  global $mydb;
-		$attributes = $this->sanitized_attributes();
+		$attributes = $this->sanitized_attributes($data);
 		$attribute_pairs = array();
 		foreach($attributes as $key => $value) {
 		  $attribute_pairs[] = "{$key}='{$value}'";
@@ -139,19 +165,28 @@ class Eventos {
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
 		$sql .= " WHERE id =". $id;
-	  $mydb->setQuery($sql);
-	 	if(!$mydb->executeQuery()) return false; 	
+        echo $mydb->setQuery($sql);
+    	
+    	if($mydb->executeQuery()) {
+    	    return true;
+    	} else {
+    	    return false;
+    	} 	
 		
 	}
 
 	public function delete($id=0) {
 		global $mydb;
-		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE id =". $id;
-		  $sql .= " LIMIT 1 ";
-		  $mydb->setQuery($sql);
-		  
-			if(!$mydb->executeQuery()) return false; 	
+		$sql = "DELETE FROM ".self::$tblname;
+		$sql .= " WHERE id =". $id;
+		$sql .= " LIMIT 1 ";
+		echo $mydb->setQuery($sql);
+	
+	 if($mydb->executeQuery()) {
+	    return true;
+	  } else {
+	    return false;
+	  } 	
 	
 	}	
 	
