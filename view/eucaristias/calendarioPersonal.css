@@ -1,0 +1,29 @@
+.fc th {
+    padding: 10px 0px;
+
+    background: #f2f2f2;
+}
+
+.fc-toolbar h2 {
+    margin-top: 10px;
+    /* Ajusta el margen superior según sea necesario */
+}
+.container-calendario {
+    padding-top: 100px !important;
+}
+table{
+    margin-bottom: 0 !important;
+} 
+.fc-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Asegura que el contenido se ajuste verticalmente */
+    overflow: hidden; /* Oculta el desbordamiento para mantener el diseño */
+    padding: 10px; /* Espaciado interno para un mejor aspecto visual */
+}
+
+.fc-description {
+    overflow: hidden; /* Oculta cualquier texto que desborde */
+    text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto es demasiado largo */
+    white-space: normal; /* Permite que el texto se envuelva automáticamente */
+}

@@ -1,0 +1,23 @@
+.container{
+    display: block;
+}
+
+.content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.container-input-form{
+    width: 100%;
+}
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-control{
+    margin: 5px;
+}

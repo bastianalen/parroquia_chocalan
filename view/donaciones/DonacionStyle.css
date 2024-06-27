@@ -1,0 +1,38 @@
+body
+.donation-form {
+    
+    padding: 50px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 150px;
+    
+}
+
+.donation-form label {
+    font-weight: bold;
+    margin-top: 50px
+}
+
+.donation-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    
+}
+
+.donation-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.donation-form button:hover {
+    background-color: #0056b3;
+}
