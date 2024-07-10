@@ -15,10 +15,11 @@ if (isset($_POST['btnLogin'])) {
     $res = $user::userAuthentication($email, $h_upass);
     // echo "<script>console.log('id_rol: " .$_SESSION['id_rol'] . "');</script>";
     if ($res == true) {
-      message("Has iniciado sesión como " . $_SESSION['id_rol'] . ".", "success");
-      if ($_SESSION['id_rol'] == 1) {
+      message("Has iniciado sesión como " . $_SESSION['nombre'] . ".", "success");
+      if ($_SESSION['id_rol'] == 1 or $_SESSION['id_rol'] == 2) {
         redirect(web_root . "view/admin/index.php");
       } else {
+        message("¡La cuenta no posee los permisos para ingresar! Por favor contacte al Administrador.", "error");
         redirect(web_root . "view/admin/login.php");
       }
     } else {

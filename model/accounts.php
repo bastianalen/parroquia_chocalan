@@ -6,17 +6,17 @@ class User {
 	protected static  $innertbl = " tcu INNER JOIN tblroluser tru ON tcu.id_rol = tru.id_rol ";
 	
 	function dbfields () {
-		global $mydb;
-		return $mydb->getfieldsononetable(self::$tblname);
+		global $mydb_user;
+		return $mydb_user->getfieldsononetable(self::$tblname);
 	}
 	function listofuser(){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl);
-		$cur = $mydb->executeQuery();
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl);
+		$cur = $mydb_user->executeQuery();
 
 		if (!$cur) {
 			// Manejo de errores
-			error_log("Error executing query: " . $mydb->error);
+			error_log("Error executing query: " . $mydb_user->error);
 			return false;
 		}
 
@@ -29,23 +29,23 @@ class User {
 	}
  
 	function find_user($id="",$user_name=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
 			WHERE user_id = {$id} OR user_nom = '{$user_name}'");
-		$cur = $mydb->executeQuery();
-		$row_count = $mydb->num_rows($cur);
+		$cur = $mydb_user->executeQuery();
+		$row_count = $mydb_user->num_rows($cur);
 		return $row_count;
 	}
 	static function userAuthentication($user_nom,$user_contra){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM tblcuentauser WHERE user_nom = '". $user_nom ."' and user_contra = '". $user_contra ."'");
-		$cur = $mydb->executeQuery();
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM tblcuentauser WHERE user_nom = '". $user_nom ."' and user_contra = '". $user_contra ."'");
+		$cur = $mydb_user->executeQuery();
 		if($cur==false){
 			die(mysql_error());
 		}
-		$row_count = $mydb->num_rows($cur);//get the number of count
+		$row_count = $mydb_user->num_rows($cur);//get the number of count
 		 if ($row_count == 1){
-		 $user_found = $mydb->loadSingleResult();
+		 $user_found = $mydb_user->loadSingleResult();
 		 	$_SESSION['user_id']   		= $user_found->user_id;
 		 	$_SESSION['nombre']      	= $user_found->nombre;
 		 	$_SESSION['user_nom'] 	= $user_found->user_nom;
@@ -57,18 +57,18 @@ class User {
 		 }
 	}
 	function single_user($id=""){
-			global $mydb;
-			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
+			global $mydb_user;
+			$mydb_user->setQuery("SELECT * FROM ".self::$tblname." 
 				Where user_id= '{$id}' LIMIT 1");
-			$cur = $mydb->loadSingleResult();
+			$cur = $mydb_user->loadSingleResult();
 			return $cur;
 	}
 
 	function single_user_rol($id_rol=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM ".self::$tblname." 
 			Where id_rol= '{$id_rol}' LIMIT 1");
-		$cur = $mydb->loadSingleResult();
+		$cur = $mydb_user->loadSingleResult();
 		return $cur;
 	}
 	/*---Instantiation of Object dynamically---*/
@@ -93,7 +93,7 @@ class User {
 
 	protected function attributes() { 
 		// return an array of attribute names and their values
-	  global $mydb;
+	  global $mydb_user;
 	  $attributes = array();
 	  foreach($this->dbfields() as $field) {
 	    if(property_exists($this, $field)) {
@@ -104,12 +104,12 @@ class User {
 	}
 	
 	protected function sanitized_attributes() {
-	  global $mydb;
+	  global $mydb_user;
 	  $clean_attributes = array();
 	  // sanitize the values before submitting
 	  // Note: does not alter the actual value of each attribute
 	  foreach($this->attributes() as $key => $value){
-	    $clean_attributes[$key] = $mydb->escape_value($value);
+	    $clean_attributes[$key] = $mydb_user->escape_value($value);
 	  }
 	  return $clean_attributes;
 	}
@@ -122,7 +122,7 @@ class User {
 	}
 	
 	public function create() {
-		global $mydb;
+		global $mydb_user;
 		// Don't forget your SQL syntax and good habits:
 		// - INSERT INTO table (key, key) VALUES ('value', 'value')
 		// - single-quotes around all values
@@ -133,10 +133,10 @@ class User {
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
 		$sql .= "')";
-	echo $mydb->setQuery($sql);
+	echo $mydb_user->setQuery($sql);
 	
-	 if($mydb->executeQuery()) {
-	    $this->id = $mydb->insert_id();
+	 if($mydb_user->executeQuery()) {
+	    $this->id = $mydb_user->insert_id();
 	    return true;
 	  } else {
 	    return false;
@@ -144,7 +144,7 @@ class User {
 	}
 
 	public function update($id=0) {
-	  global $mydb;
+	  global $mydb_user;
 		$attributes = $this->sanitized_attributes();
 		$attribute_pairs = array();
 		foreach($attributes as $key => $value) {
@@ -153,19 +153,19 @@ class User {
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
 		$sql .= " WHERE user_id=". $id;
-	  $mydb->setQuery($sql);
-	 	if(!$mydb->executeQuery()) return false; 	
+	  $mydb_user->setQuery($sql);
+	 	if(!$mydb_user->executeQuery()) return false; 	
 		
 	}
 
 	public function delete($id=0) {
-		global $mydb;
+		global $mydb_user;
 		  $sql = "DELETE FROM ".self::$tblname;
 		  $sql .= " WHERE user_id=". $id;
 		  $sql .= " LIMIT 1 ";
-		  $mydb->setQuery($sql);
+		  $mydb_user->setQuery($sql);
 		  
-			if(!$mydb->executeQuery()) return false; 	
+			if(!$mydb_user->executeQuery()) return false; 	
 	
 	}	
 

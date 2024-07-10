@@ -114,7 +114,7 @@
               <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 Bienvenido
-                <?php echo $_SESSION['nombre']; ?> <img title="profile image" width="23px" height="17px"
+                <?php echo $_SESSION['nombre']; ?> <img title="profile image" width="25px" height="25px"
                   src="<?php echo web_root . 'view/admin/administradores/' . $singleuser->user_img ?>">
 
               </a>

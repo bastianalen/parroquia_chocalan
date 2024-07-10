@@ -7,18 +7,18 @@ class RolUser {
 	protected static  $tblname = "tblroluser";
 
 	function dbfields () {
-		global $mydb;
-		return $mydb->getfieldsononetable(self::$tblname);
+		global $mydb_user;
+		return $mydb_user->getfieldsononetable(self::$tblname);
 
 	}
 	function listofroluser(){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname);
-		$cur = $mydb->executeQuery();
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM ".self::$tblname);
+		$cur = $mydb_user->executeQuery();
 		
 		if (!$cur) {
 			// Manejo de errores
-			error_log("Error executing query: " . $mydb->error);
+			error_log("Error executing query: " . $mydb_user->error);
 			return false;
 		}
 
@@ -30,17 +30,17 @@ class RolUser {
 		return $result;
 	}
 	function find_tumba($id="",$name=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." WHERE id_rol = {$id} OR rol_nom = '{$name}'");
-		$cur = $mydb->executeQuery();
-		$row_count = $mydb->num_rows($cur);
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM ".self::$tblname." WHERE id_rol = {$id} OR rol_nom = '{$name}'");
+		$cur = $mydb_user->executeQuery();
+		$row_count = $mydb_user->num_rows($cur);
 		return $row_count;
 	}
 	 
 	function single_tumba($id=""){
-		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname." where id_rol = {$id} LIMIT 1");
-		$cur = $mydb->loadSingleResult();
+		global $mydb_user;
+		$mydb_user->setQuery("SELECT * FROM ".self::$tblname." where id_rol = {$id} LIMIT 1");
+		$cur = $mydb_user->loadSingleResult();
 		return $cur;
 	}
 	
@@ -66,7 +66,7 @@ class RolUser {
 
 	protected function attributes() { 
 		// return an array of attribute names and their values
-	  global $mydb;
+	  global $mydb_user;
 	  $attributes = array();
 	  foreach($this->dbfields() as $field) {
 	    if(property_exists($this, $field)) {
@@ -77,12 +77,12 @@ class RolUser {
 	}
 	
 	protected function sanitized_attributes() {
-	  global $mydb;
+	  global $mydb_user;
 	  $clean_attributes = array();
 	  // sanitize the values before submitting
 	  // Note: does not alter the actual value of each attribute
 	  foreach($this->attributes() as $key => $value){
-	    $clean_attributes[$key] = $mydb->escape_value($value);
+	    $clean_attributes[$key] = $mydb_user->escape_value($value);
 	  }
 	  return $clean_attributes;
 	}
@@ -95,17 +95,17 @@ class RolUser {
 	}
 	
 	public function create() {
-		global $mydb;
+		global $mydb_user;
 		$attributes = $this->sanitized_attributes();
 		$sql = "INSERT INTO ".self::$tblname." (";
 		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
 		$sql .= "')";
-		echo $mydb->setQuery($sql);
+		echo $mydb_user->setQuery($sql);
 	
-	 if($mydb->executeQuery()) {
-	    $this->id = $mydb->insert_id();
+	 if($mydb_user->executeQuery()) {
+	    $this->id = $mydb_user->insert_id();
 	    return true;
 	  } else {
 	    return false;
@@ -113,7 +113,7 @@ class RolUser {
 	}
 
 	public function update($id=0) {
-	  global $mydb;
+	  global $mydb_user;
 		$attributes = $this->sanitized_attributes();
 		$attribute_pairs = array();
 		foreach($attributes as $key => $value) {
@@ -122,19 +122,19 @@ class RolUser {
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
 		$sql .= " WHERE id_rol =". $id;
-	  $mydb->setQuery($sql);
-	 	if(!$mydb->executeQuery()) return false; 	
+	  $mydb_user->setQuery($sql);
+	 	if(!$mydb_user->executeQuery()) return false; 	
 		
 	}
 
 	public function delete($id=0) {
-		global $mydb;
+		global $mydb_user;
 		  $sql = "DELETE FROM ".self::$tblname;
 		  $sql .= " WHERE id_rol =". $id;
 		  $sql .= " LIMIT 1 ";
-		  $mydb->setQuery($sql);
+		  $mydb_user->setQuery($sql);
 		  
-			if(!$mydb->executeQuery()) return false; 	
+			if(!$mydb_user->executeQuery()) return false; 	
 	
 	}	
 
