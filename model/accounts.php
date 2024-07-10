@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ ."/../controller/initialize.php");
-require_once(LIB_PATH_MODEL.DS.'database.php');
+require_once(LIB_PATH_MODEL.DS.'databaseuser.php');
 class User {
 	protected static  $tblname = "tblcuentauser";
 	protected static  $innertbl = " tcu INNER JOIN tblroluser tru ON tcu.id_rol = tru.id_rol ";
