@@ -107,7 +107,7 @@ function doInsert()
 				$p->new_escritura = $archivo_destino_new_escritura;
 				$p->pase_sepul = $archivo_destino_pase_sepul;
 				$p->create();
-				message("¡Nuevo registro creado exitosamente!", "exito");
+				message("¡Nuevo registro creado exitosamente!", "success");
 			}
 
 			redirect("../view/admin/personas_fallecidas/index.php");

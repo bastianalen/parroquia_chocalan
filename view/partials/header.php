@@ -44,7 +44,7 @@
                         </li>
                         <!-- se agrega el apartado de donaciones donde se implementara pagos por api de webpay -->
                         <li class="nav-item">
-                            <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
+                            <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="../../index.php#donaciones">Donaciones</a>
                         </li>
                         <!-- Redirige a la vista del calendario -->
                         <li class="nav-item">
@@ -94,7 +94,7 @@
                         <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#personal">Personal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php">Donaciones</a>
+                        <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#donaciones">Donaciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  nav-link-specific font-Sofia-serif" href="../admin/calendario_eucaristias/calendario.php">Calendario</a>

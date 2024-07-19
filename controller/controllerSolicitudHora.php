@@ -38,7 +38,7 @@ function doInsert()
 			$solicitud->comentario = $_POST['userMessage'];
 			$solicitud->estado = $_POST['estado_solicitud'];
 			$solicitud->create();
-			message("¡Nueva solicitud de [" . $_POST['nombre'] . "] enviada con exito!", "exito");
+			message("¡Nueva solicitud de [" . $_POST['nombre'] . "] enviada con exito!", "success");
 			redirect("../view/solicitarhora/index.php");
 
 		}
@@ -58,7 +58,7 @@ function doEdit()
 		$user->email = $_POST['user_nom'];
 		$user->update($_POST['user_id']);
 
-		message("[" . $_POST['nombre'] . "] ha sido actualizado!", "exito");
+		message("[" . $_POST['nombre'] . "] ha sido actualizado!", "success");
 		redirect("../view/solicitarhora/index.php");
 	}
 }

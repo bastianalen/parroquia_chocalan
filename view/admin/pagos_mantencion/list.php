@@ -66,7 +66,7 @@ $tipotumba = new TipoTumba();
                         <th>Tumba</th>
                         <th>Tipo Tumba</th>
                         <th>Sector</th>
-                        <th>acción</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>

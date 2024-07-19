@@ -10,7 +10,10 @@
 }
 
 
-
+#login-container {
+    height: 100vh;
+    align-content: center;
+}
 /*============================================*/
 /*============================================*/
 /*============================================*/
@@ -852,7 +855,7 @@ header .broad-nav.end-animation {
 
 header .broad-nav .close-nav {
     position: absolute;
-    top: 86px;
+    top: 75px;
     right: 10%;
     transition: .8s ease;
     cursor: pointer;

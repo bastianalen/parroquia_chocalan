@@ -15,6 +15,17 @@ function createTransaction($amount, $sessionId, $buyOrder, $returnUrl)
     $transaction = new Transaction();
     $response = $transaction->create($buyOrder, $sessionId, $amount, $returnUrl);
 
+    // $fecha_actual = date('Y-m-d');
+    
+    // $donacion = new Donacion();
+    // $donacion->monto = $response->$amount;
+    // $donacion->fecha = $fecha_actual;
+    // $donacion->save();
+
+
+
+
+
     return $response;
 }
 

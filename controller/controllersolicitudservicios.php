@@ -55,7 +55,7 @@ function doEdit() {
         if ($estado == 2) {
             message("¡La solicitud ha sido Aceptada!", "success");
 		} elseif ($estado == 3) {
-            message("¡La solicitud ha sido Rechazada!", "success");
+            message("¡La solicitud ha sido Rechazada!", "error");
 		} else {
             message("¡Error al actualizar el estado de la solicitud!", "error");
 

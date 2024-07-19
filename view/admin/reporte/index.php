@@ -4,7 +4,7 @@ if(!isset($_SESSION['user_id'])){
 	redirect(web_root."view/admin/index.php");
 }
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
-$titulo ='Report';
+$titulo ='Reportes';
 switch ($view) {
 	case 'list' :
 

@@ -31,7 +31,7 @@ $tipo_servicios = $tiposervicio->listoftiposervicio();
                     data-wow-duration="1s" data-wow-delay=".1s">
                     <br>
                     <br>
-                    <span class="d-block font-Sofia-serif">Solicitar servicio</span>
+                    <span class="d-block font-Sofia-serif">Solicitar Servicio</span>
                 </div>
             </div>
             <!--Heading-->

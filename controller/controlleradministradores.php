@@ -45,7 +45,7 @@ function doInsert()
 			$user->email = $_POST['user_nom'];
 			$user->create();
 
-			message("¡Nuevo usuario [" . $_POST['nombre'] . "] creado exitosamente!", "exito");
+			message("¡Nuevo usuario [" . $_POST['nombre'] . "] creado exitosamente!", "success");
 			redirect("../view/admin/administradores/index.php");
 
 		}
@@ -65,7 +65,7 @@ function doEdit()
 		$user->email = $_POST['user_nom'];
 		$user->update($_POST['user_id']);
 
-		message("[" . $_POST['nombre'] . "] ha sido actualizado!", "exito");
+		message("El usuario [" . $_POST['nombre'] . "] ha sido actualizado!", "success");
 		redirect("../view/admin/administradores/index.php");
 	}
 }
@@ -78,7 +78,7 @@ function doDelete()
 	$user = new User();
 	$user->delete($id);
 
-	message("¡Usuario ya eliminado!");
+	message("¡Usuario eliminado!","success");
 	redirect('../view/admin/administradores/index.php');
 
 }
@@ -115,6 +115,7 @@ function doupdateimage()
 			$user = new User();
 			$user->user_img = $location;
 			$user->update($_SESSION['user_id']);
+			message("¡La imagen se actualizó correctamente!", "success");
 			redirect("photos/");
 
 

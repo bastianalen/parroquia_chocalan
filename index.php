@@ -107,7 +107,7 @@ include_once("public/vendor/contact-mailer.php");
                             </li>
                             <!-- se agrega el apartado de donaciones donde se implementara pagos por api de webpay -->
                             <li class="nav-item">
-                                <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
+                                <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#donaciones">Donaciones</a>
                             </li>
                             <!-- Redirige a la vista del calendario -->
                             <li class="nav-item">
@@ -158,7 +158,7 @@ include_once("public/vendor/contact-mailer.php");
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#personal">Personal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="">Donaciones</a>
+                            <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="#donaciones">Donaciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll nav-link-specific font-Sofia-serif"
@@ -985,8 +985,8 @@ include_once("public/vendor/contact-mailer.php");
 
     <!-- Ultimo codigo para redireccionar a seccion de donaciones -->
     
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid" id="donaciones">
+        <div class="row donaciones">
             <div class="col-md-6 d-flex justify-content-end align-items-center">
                 <div class="text-center">
                     <h3>Donaciones para nuestra parroquia</h3>

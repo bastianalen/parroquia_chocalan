@@ -33,18 +33,18 @@
     <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>public/js/jquery.dataTables.js"></script>
     <!-- <script type="text/javascript" language="javascript" src="<?php echo web_root; ?>js/fixnmix.js"></script> / -->
     <link rel="icon" href="administradores/photos/logosinletras.png" type="image/x-icon">
-    
+    <link href="<?php echo web_root; ?>public/vista/css/custom.css" rel="stylesheet">
   <body>
 
 
-    <div class="container">
+    <div class="container" id="login-container">
 
       <div class="row" id="pwd-container">          
         <div class="col-md-4"></div>
         <div class="col-md-4">
+          <?php check_message(); ?>
 
           <section class="login-form">
-            <? echo check_message(); ?>
             <form method="post" action="" role="login">
               <img src="../../public/img/logo.png" height="25px" class="img-responsive" alt="" />
 

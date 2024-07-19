@@ -18,7 +18,7 @@ $roles = $rol->listofroluser();
 
   <fieldset>
     <legend>
-      Actualizar cuenta de usuario</legend>
+      Actualizar Cuenta de Usuario</legend>
 
 
     <input class="form-control input-sm" id="user_id" name="user_id" placeholder="Account Id" type="Hidden"

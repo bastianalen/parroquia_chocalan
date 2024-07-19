@@ -179,11 +179,11 @@
 
                   </li>
 
+                <?php } ?>
                   <li>
                     <a href="<?php echo web_root; ?>view/admin/personas_fallecidas/index.php"><i class="fa fa-plus"></i> Personas Fallecidas</a>
 
                   </li>
-
                   <li>
                     <a href="<?php echo web_root; ?>view/admin/patios_cementerio/index.php"><i class="fa fa-map-marker"></i> Patios
                       Cementerio</a>
@@ -194,19 +194,21 @@
                     <a href="<?php echo web_root; ?>view/admin/pagos_mantencion/index.php"><i class="fa fa fa-cogs"></i> Mantenciones De Tumbas</a>
                     
                   </li>
-                  
                   <li>
                     <a href="<?php echo web_root; ?>view/admin/calendario_eucaristias/calendario.php"><i class="fa fa-calendar"></i> Calendario Eucaristías</a>
                   </li>
+                <?php if ($_SESSION['id_rol'] == 1) {
+                  # code...
+                ?>  
                   <li>
                     <a href="<?php echo web_root; ?>view/admin/solicitud_servicio/index.php"><i class="fa fa-calendar"></i> Solicitud servicios</a>
                     
                     </li>
+                <?php } ?>
                     <li>
                       <a href="<?php echo web_root; ?>view/admin/reporte/index.php"><i class="fa fa-print"></i> Reporte</a>
                       </li>
                         
-                <?php } ?>
 
               </ul>
             </div>

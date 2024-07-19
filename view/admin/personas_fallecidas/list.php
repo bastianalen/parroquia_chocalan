@@ -113,12 +113,13 @@ $personas = $persona->listofpeople();
 
 					echo '<td align="center" > <a title="Editar" href="index.php?view=edit&id=' . $result['id_persona'] . '"  class="btn btn-primary btn-xs ' . $active . '">  <span class="fa fa-edit fw-fa"></span></a>					
 					<button type="submit" class="btn btn-danger btn-xs" name="delete"><i class="fa fa-trash fw-fa"></i>
-					</button>
+					</button><p></p>
 					<a href="../pagos_mantencion/index.php?view=add&id_persona=' . $result['id_persona'] . '" class="btn btn-primary btn-xs  "> <i class="fa fa-money fw-fa"></i> Pagar</a>
                      </td>';
 					echo '</tr>';
 				}
 				?>
+				
 			</tbody>
 		</table>
 		<!--<div class="btn-group">

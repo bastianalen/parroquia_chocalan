@@ -4,7 +4,7 @@ defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 // defined('SITE_ROOT') ? null : define('SITE_ROOT', '/home3/cpa101887/public_html');
 // FIN HOST
 //  Local
-defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'parroquia_chocalan');
+defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'parroquiachocalan');
 // Fin local
 
 
@@ -28,3 +28,4 @@ require_once(LIB_PATH_MODEL.DS."roluser.php");
 require_once(LIB_PATH_MODEL.DS."pagomantencion.php");
 require_once(LIB_PATH_MODEL.DS."estadospagos.php");
 require_once(LIB_PATH_MODEL.DS."anios.php");
+require_once(LIB_PATH_MODEL.DS."donaciones.php");
