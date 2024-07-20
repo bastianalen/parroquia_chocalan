@@ -71,7 +71,8 @@ $(".contact_btn").on('click', function () {
                     }
                 }
             },
-            error: function () {
+            error: function (e) {
+                console.log(e); 
                 alert("Mensaje de error para envio de correo! verifica los datos ingresados");
             }
         });

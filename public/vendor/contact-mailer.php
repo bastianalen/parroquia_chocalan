@@ -1,6 +1,5 @@
 <?php
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -268,7 +267,24 @@ if ($_POST) {
         }
     }
 
-
+    if(isset($_POST["asunto"])) {
+        if(!isset($_POST["asunto"])){
+            $output = json_encode(array('type'=>'error', 'text' => 'Campo vacío!'));
+            die($output);
+        }
+        else {
+            $asunto = filter_var($_POST["asunto"], FILTER_SANITIZE_STRING);
+        }
+    }
+    if($asunto != ''){
+        if($asunto == 'Confirmación de contacto'){
+            $mensaje_asunto = "Este es un correo predeterminado que confirma su contacto con Parroquia Santa Rosa de Lima de Chocalan, Pronto nos contactaremos.";
+        }elseif ($asunto == "solicitud de hora") {
+            $mensaje_asunto = "Este es un correo predeterminado que confirma su solicitud de hora con Parroquia Santa Rosa de Lima de Chocalan, Pronto nos contactaremos.";
+        }else {
+            $mensaje_asunto = "";
+        }
+    }
     try {
         //Server settings
         $mail->SMTPDebug = 0;
@@ -289,10 +305,10 @@ if ($_POST) {
 
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Nuevo contacto de consulta desde tu sitio web';
+        $mail->Subject = 'Respuesta desde Parroquia Santa Rosa de Lima de Chocalán, ' . $asunto;
         $mail->Body  = "<h4 style='text-align: center;padding: 25px 15px;background-color: #0c6c9e;color: #FFFFFF;font-size:16px;width:90%;border-radius: 10px;'>Hola! Tienes una nueva respuesta desde el sitio web parroquiachocalan.cl.</h4><br><br>";
+        $mail->Body .= "<p>".$mensaje_asunto."</p><br>";
         $mail->Body .= "<img src='https://parroquiachocalan.cl/public/img/logito.png' alt='Logo' class='img-load' style='width: 250px;'><br>";
-
 
         $mail->Body .= "<h3>Tu informaci&oacute;n: </h3><br>";
         if(isset($_POST["userEmail"])) {

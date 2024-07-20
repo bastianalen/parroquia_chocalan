@@ -1082,6 +1082,8 @@ include_once("public/vendor/contact-mailer.php");
                     <div>
                         <div class="col-12 col-lg-12 px-md-0 text-center">
 
+                            <input type="hidden" name="asunto" value="Confirmación de contacto" class="form-control input-info">
+
                             <input type="text" name="userName" placeholder="Nombre" class="form-control input-info">
 
                             <input type="email" name="userEmail" placeholder="E-mail" class="form-control input-info">
@@ -1136,8 +1138,6 @@ include_once("public/vendor/contact-mailer.php");
                         </ul>
                     </div>
 
-                    <!--Text-->
-                    <p class="company-about fadeIn">&copy; 2024 Made by JennyP@nk <a href="javascript:void(0);"></a></p>
                 </div>
             </div>
         </div>

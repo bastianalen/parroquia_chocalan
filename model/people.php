@@ -109,11 +109,32 @@ class Persona {
 		return $result;
 	}
 
-	function find_persona_tumba_sector($nro_tumba="",$id_sector=0){
+	function find_persona_tumba_sector($nro_tumba=0,$id_sector=0){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM ".self::$tblname.self::$innertbl." 
-			WHERE tper.nro_tumba = {$nro_tumba} and tper.id_sector = {$id_sector}");
-
+		$sql = "SELECT * FROM " . self::$tblname . self::$innertbl . " WHERE ";
+		
+		// Variable para mantener el seguimiento de si ya se agregó una condición
+		$hasCondition = false;
+		
+		if ($nro_tumba != '' && $nro_tumba != 0) {
+			$sql .= "tper.nro_tumba = " . $nro_tumba . " ";
+			$hasCondition = true;
+		}
+		
+		if ($id_sector != '' && $id_sector != 0) {
+			if ($hasCondition) {
+				$sql .= "AND ";
+			}
+			$sql .= "tper.id_sector = " . $id_sector . " ";
+			$hasCondition = true;
+		}
+		
+		// Si no se han añadido condiciones, añadir una condicional que siempre sea verdadera
+		if (!$hasCondition) {
+			$sql .= "1=1";
+		}
+		
+		$mydb->setQuery($sql);
 		$cur = $mydb->executeQuery();
 		
 		if (!$cur) {

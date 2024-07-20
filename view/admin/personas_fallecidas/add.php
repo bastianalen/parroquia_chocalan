@@ -158,7 +158,7 @@ if (!isset($_SESSION['user_id'])) {
   </div>
   <div class="form-group">
     <div class="col-md-8">
-      <label class="col-md-4 control-label" for="new_escritura">Renobación de escrituras:</label>
+      <label class="col-md-4 control-label" for="new_escritura">Renovación de escrituras:</label>
       <div class="col-md-8">
         
         <input type="file" id="new_escritura" name="new_escritura" accept=".pdf, .doc, .docx, .jpg, .png, .jpeg,">

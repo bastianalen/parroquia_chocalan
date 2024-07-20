@@ -1,6 +1,5 @@
 <?php
 require_once("initialize.php");
-
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
 
 switch ($action) {
@@ -21,15 +20,14 @@ switch ($action) {
 function doInsert()
 {
 	if (isset($_POST['save'])) {
-
-
-		if ($_POST['nombre'] == "" or $_POST['userEmail'] == "" or $_POST['fecha'] == "" or $_POST['hora_solicitud'] == "" or $_POST['tipo_servicio'] == "") {
+		
+		if ($_POST['userName'] == "" or $_POST['userEmail'] == "" or $_POST['fecha'] == "" or $_POST['hora_solicitud'] == "" or $_POST['tipo_servicio'] == "") {
 			$messageStats = false;
 			message("¡Todos los campos son obligatorios!", "error");
 			redirect('../view/solicitarhora/index.php');
 		} else {
 			$solicitud = new Solicitud();
-			$solicitud->nombre = $_POST['nombre'];
+			$solicitud->nombre = $_POST['userName'];
 			$solicitud->email = $_POST['userEmail'];
 			$solicitud->fecha_solicitud = $_POST['fecha'];
 			$solicitud->fecha_envio = (new DateTime())->format('Y-m-d H:i:s');;
@@ -38,7 +36,7 @@ function doInsert()
 			$solicitud->comentario = $_POST['userMessage'];
 			$solicitud->estado = $_POST['estado_solicitud'];
 			$solicitud->create();
-			message("¡Nueva solicitud de [" . $_POST['nombre'] . "] enviada con exito!", "success");
+			message("¡Nueva solicitud de [" . $_POST['userName'] . "] enviada con exito!", "success");
 			redirect("../view/solicitarhora/index.php");
 
 		}

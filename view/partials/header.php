@@ -49,7 +49,7 @@
                         <!-- Redirige a la vista del calendario -->
                         <li class="nav-item">
                             <a class="nav-link nav-link-specific font-Sofia-serif"
-                                href="view/calendario/index.php">Calendario</a>
+                                href="../calendario/index.php">Calendario</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link font-Sofia-serif" href="../../index.php#contact">Contacto</a>
@@ -97,7 +97,7 @@
                         <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#donaciones">Donaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  nav-link-specific font-Sofia-serif" href="../admin/calendario_eucaristias/calendario.php">Calendario</a>
+                        <a class="nav-link  nav-link-specific font-Sofia-serif" href="../calendario/index.php">Calendario</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link scroll nav-link-specific font-Sofia-serif" href="parroquiachocalan/index.php#contact">Contacto</a>

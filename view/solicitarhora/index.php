@@ -47,6 +47,7 @@ $tipo_servicios = $tiposervicio->listoftiposervicio();
                                     <!-- Formulario para solicitar un servicio -->
                                     <form class="row contact-form wow fadeInLeft mx-4 p-2 box box-form" id="contact-form-data" action="../../controller/controllerSolicitudHora.php?action=add" method="POST">
                                         <div class="col-12 col-lg-12 px-md-0 text-center">
+                                            <input type="hidden" name="asunto" value="solicitud de hora" class="form-control input-info">
                                             <input type="text" name="userName" placeholder="Nombre" class="form-control input-info">
                                             
                                             <input type="email" name="userEmail" placeholder="E-mail" class="form-control input-info">
@@ -73,10 +74,10 @@ $tipo_servicios = $tiposervicio->listoftiposervicio();
 
                                             <textarea class="form-control text-area-form" name="userMessage" rows="6"
                                                 placeholder="Escríbenos tu mensaje!"></textarea>
-                                            <a href="javascript:void(0);" class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit">
+                                            <button class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit">
                                                 <span class="fa fa-save fw-fa"></span> 
                                                 Guardar
-                                            </a>
+                                            </button>
                                             <!-- <button class="btn btn-medium btn-rounded btn-gradient rounded-pill w-100 contact_btn main-font" name="save" type="submit"><span class="fa fa-save fw-fa"></span> Guardar</button> -->
                                         </div>
                                         <br>

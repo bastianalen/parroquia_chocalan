@@ -78,8 +78,8 @@ if (!empty($nro_tumba) and $sector != 0){
             </div>
             <form class="" method="POST" action="printreport.php" target="_blank">
                 <div style="margin: 0px 0px 15px 0px">
-                    <input type="hidden" name="tipo_tumba"
-                        value="<?php echo isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : ''; ?>">
+                    <input type="hidden" name="nro_tumba"
+                        value="<?php echo isset($_POST['nro_tumba']) ? $_POST['nro_tumba'] : ''; ?>">
                     <input type="hidden" name="sector"
                         value="<?php echo  $id_sector ?>">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> imprimir</button>

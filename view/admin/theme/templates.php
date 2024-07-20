@@ -54,7 +54,7 @@
       <div id="wrapper">
 
         <!-- Barra de navegación -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #e1e1e1;">
+        <nav class="navbar navbar-inverse" role="navigation" style="background-color: #e1e1e1;">
           <div class="navbar-header">
             <!-- Botón para mostrar el menú en dispositivos móviles -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -337,13 +337,6 @@
 
     </body>
     <footer>
-      <!--<div class="row">
-        <div class="col-lg-12">
-            <img src= /PARROQUIA_CHOCALAN/img/ceenteriofullHD.png alt="Descripción de la imagen" 
-            class="img-responsive" style="max-width: 20%; height: auto; margin: 0 auto;">
-        </div>
-        </div>';-->
-      <div style="text-align: center;">&copy; 2024 Made by JennyP@nk</div>
     </footer>
 
 </html>

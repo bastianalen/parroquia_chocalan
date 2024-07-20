@@ -31,9 +31,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!--Text-->
-                <p class="company-about fadeIn">&copy; 2024 Made by JennyP@nk <a href="javascript:void(0);"></a></p>
             </div>
         </div>
     </div>

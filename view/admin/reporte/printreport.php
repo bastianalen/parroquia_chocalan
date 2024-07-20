@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
           <?php echo isset($_POST['TYPES']) ? $_POST['TYPES'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
-          <?php echo isset($_POST['tipo_tumba']) ? "Cementerio Parroquial " . $_POST['tipo_tumba'] : ""; ?>
+          <?php echo isset($_POST['nro_tumba']) ? "Cementerio Parroquial tumba: " . $_POST['nro_tumba'] : ""; ?>
         </div>
         <div style="text-align: center;font-size: 12px;">
           <?php echo isset($_POST['sector']) ? "Patio :" . $_POST['sector'] : "1"; ?>
@@ -72,12 +72,13 @@ if (!isset($_SESSION['user_id'])) {
 
             <tbody>
               <?php
-              $tipo_tumba = isset($_POST['tipo_tumba']) ? $_POST['tipo_tumba'] : "";
+              $nro_tumba = isset($_POST['nro_tumba']) ? $_POST['nro_tumba'] : "";
               $id_sector = isset($_POST['sector']) ? $_POST['sector'] : "1";
               echo "<script> console.log(".json_encode($id_sector).")</script>";
+              echo "<script> console.log(".json_encode($nro_tumba).")</script>";
               // echo "<script> console.log(".json_encode($_POST['sector']).")</script>";
               $persona = new Persona();
-							$personaResultado = $persona->find_persona_sector($id_sector);
+							$personaResultado = $persona->find_persona_tumba_sector($nro_tumba,$id_sector);
 
               echo "<script>console.log(".json_encode($personaResultado).")</script>";
               foreach ($personaResultado as $result) {
